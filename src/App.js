@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import firebase from "firebase";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// Components
+import Navigator from "./components/Navigator";
+
+var firebaseConfig = {
+  apiKey: "AIzaSyCY4ZBe-neEPqpB47hifDsn7cLARo50M-E",
+  authDomain: "goldenpankh-9b71e.firebaseapp.com",
+  databaseURL: "https://goldenpankh-9b71e.firebaseio.com",
+  projectId: "goldenpankh-9b71e",
+  storageBucket: "goldenpankh-9b71e.appspot.com",
+  messagingSenderId: "653785768442",
+  appId: "1:653785768442:web:c3c90d9c07073c6e320443",
+  measurementId: "G-W4DV1ZJVBL",
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const App = () => {
+  return <Navigator />;
+};
 
 export default App;

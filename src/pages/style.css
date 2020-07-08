@@ -1,0 +1,228 @@
+* {
+  user-select: none;
+}
+.navbar,
+header,
+.addr {
+  background: linear-gradient(to right, #ffe484, #e7717d);
+}
+.navbar-brand {
+  font-family: cursive;
+}
+.nav-link {
+  font-weight: bold;
+}
+.nav-link:hover {
+  background: #ee8c91;
+}
+nav .form-inline .form-control {
+  border: none;
+  outline: none;
+  width: 250px;
+}
+.language {
+  display: block;
+}
+header .language a:hover {
+  text-decoration: none;
+}
+.copyright {
+  font-size: 11px;
+}
+.detail {
+  text-align: justify;
+}
+table {
+  width: 100%;
+}
+.profile,
+.contact {
+  background: #eee;
+}
+span {
+  color: red;
+}
+img:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.social-media a i {
+  font-size: 20px;
+  padding-left: 5px;
+}
+
+.popular-products {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.popular-products p {
+  text-align: justify;
+}
+.popular-products ul li {
+  margin-left: 40px;
+}
+
+footer {
+  background: linear-gradient(to right, #ffe484, #e7717d);
+  padding-top: 35px;
+  padding-bottom: 25px;
+}
+footer h4 {
+  padding-bottom: 20px;
+}
+.enquire {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.call {
+  border: 1px solid #000;
+  padding: 8px 12px;
+  text-align: center;
+  color: #000;
+}
+.call:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.enquiry {
+  border: 1px solid #000;
+  padding: 8px 12px;
+  text-align: center;
+  color: #000;
+  /* background: ; */
+}
+.enquiry:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* footer .view-all{
+
+} */
+.social-media {
+  text-align: center;
+}
+.social-media i {
+  font-size: 20px;
+  color: #000;
+}
+.social-media i:hover {
+  font-size: 22px;
+}
+.social-media .fa-facebook-square {
+  color: #3b5998;
+}
+.social-media .fa-twitter-square {
+  color: #1da1f2;
+}
+.social-media .fa-instagram {
+  color: darkred;
+}
+.social-media .fa-linkedin-square {
+  color: #0073b0;
+}
+.social-media .fa-whatsapp {
+  color: #00e676;
+}
+.social-media .fa-youtube-play {
+  color: #ff0000;
+}
+footer .follow {
+  margin-bottom: 0;
+}
+footer .copyright {
+  font-size: 11px;
+  text-align: right;
+}
+
+.company-profile {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.company-profile p {
+  text-align: justify;
+}
+.company-profile .facts {
+  font-weight: bold;
+}
+.company-profile table {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.contact-form span {
+  color: #ff0000;
+}
+.contact-form button {
+  margin-top: 20px;
+}
+@media only screen and (max-width: 780px) {
+  .header .container h1 a {
+    text-align: center;
+  }
+  #logindiv {
+    padding-left: 8%;
+  }
+  #registerdiv {
+    padding-left: 8%;
+  }
+}
+.showroom {
+  background: #eeeeee;
+}
+.prod {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.prod h4 a:hover {
+  text-decoration: none;
+}
+.showroom .prod .row h5 a {
+  color: #000;
+}
+.showroom .prod .row h5 a:hover {
+  text-decoration: none;
+}
+.showroom .prod .row p {
+  text-align: justify;
+  padding-right: 20px;
+}
+.showroom .prod ul li a {
+  color: #000;
+}
+.showroom .prod ul li a:hover {
+  text-decoration: none;
+  color: #e7717d;
+}
+.home-decor,
+.christmas,
+.candle,
+.metal-urns,
+.mdf,
+.heart-frame,
+.farmstead,
+.contact-form,
+.products,
+.alphabet {
+  background: #eeeeee;
+}
+.ques {
+  float: right;
+}
+.metal-urns .prod h4 a {
+  text-decoration: none;
+}
+.christmas .prod h4 a {
+  text-decoration: none;
+}
+.price {
+  color: orangered;
+}
+table {
+  width: 100%;
+}
+img {
+  width: 250px;
+}
