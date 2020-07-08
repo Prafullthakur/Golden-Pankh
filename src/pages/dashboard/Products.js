@@ -11,11 +11,6 @@ import Title from "./Title";
 
 import firebase from "firebase";
 
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
-}
-
 const rows = [
   { name: "Home Decorative Items" },
   { name: "Metal Urns" },

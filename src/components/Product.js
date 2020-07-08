@@ -6,50 +6,33 @@ const Product = ({ data }) => {
       <div className="container">
         <div className="row">
           <div className="col-md-5 pt-3">
-            {!data.image ? (
-              ""
-            ) : (
-              <>
-                {" "}
-                <img src="data.image" />
-              </>
-            )}
+            {data.image && <img src="data.image" />}
           </div>
           <div className="col-md-7">
-            <h4 className="pt-3">
-              {!data.name ? (
-                ""
-              ) : (
-                <>
-                  {" "}
-                  <a href="#">{data.name}</a>
-                </>
-              )}
-            </h4>
-            {!data.price ? (
-              ""
-            ) : (
-              <>
-                {" "}
-                <h6>${data.price} USD</h6>
-              </>
-            )}
+            <h4 className="pt-3">{data.name && <a href="#">{data.name}</a>}</h4>
+            {data.price && <h6>${data.price} USD</h6>}
             <hr />
             <div className="container">
               <div className="row">
                 <div className="col-md-6">
-                  <p>Theme: {data.theme}</p>
-                  <p>Regional Style: {data.reginiolStyle}</p>
-                  <p>Feature: {data.feature}</p>
-                  <p>Material: {data.material}</p>
-                  <p>Delivery Time: {data.diliveryTime}</p>
+                  {data.theme && <p>Theme: {data.theme}</p>}
+                  {data.reginiolStyle && (
+                    <p>Regional Style: {data.reginiolStyle}</p>
+                  )}
+                  {data.feature && <p>Feature: {data.feature}</p>}
+                  {data.material && <p>Material: {data.material}</p>}
+                  {data.diliveryTime && (
+                    <p>Delivery Time: {data.diliveryTime}</p>
+                  )}
                 </div>
                 <div className="col-md-6">
-                  <p>Width: {data.width} Centimeter (cm)</p>
-                  <p>Color: {data.colour}</p>
-                  <p>Metals Type: {data.materialType}</p>
-                  <p>Product Type: {data.productType}</p>
-                  <p>Supply Ability: {data.supplyAbility} Per Month</p>
+                  {data.width && <p>Width: {data.width} Centimeter (cm)</p>}
+                  {data.colour && <p>Color: {data.colour}</p>}
+                  {data.materialType && <p>Metals Type: {data.materialType}</p>}
+                  {data.productType && <p>Product Type: {data.productType}</p>}
+                  {data.supplyAbility && (
+                    <p>Supply Ability: {data.supplyAbility} Per Month</p>
+                  )}
                 </div>
               </div>
             </div>

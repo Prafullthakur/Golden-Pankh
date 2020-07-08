@@ -30,7 +30,7 @@ import DisplayStand from "../pages/displayStand";
 import AdminLogin from "../pages/login";
 import AdminRegister from "../pages/register";
 import Dashboard from "../pages/dashboard/Dashboard";
-
+import Products from "../pages/dashboard/Products";
 const Navigator = () => {
   return (
     <Router>
