@@ -1,17 +1,26 @@
 import React from "react";
 import firebase from "firebase";
 import "./style.css";
+import { CircularProgress } from "@material-ui/core";
 const Login = () => {
   const [email, setEmail] = React.useState(null);
   const [pass, setPass] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
 
   const login = (e) => {
     e.preventDefault();
+    setLoading(true);
     if (!!email && !!pass) {
       firebase
         .auth()
         .signInWithEmailAndPassword(email, pass)
-        .then((data) => console.log(data.user.getIdToken()))
+        .then((data) => {
+          return data.user.getIdToken();
+        })
+        .then((token) => {
+          localStorage.setItem("userToken", token);
+          window.location.href = "/dashboard";
+        })
         .catch((err) => alert(err.message));
     } else {
       alert("Email or Password Empty!");
@@ -50,7 +59,7 @@ const Login = () => {
               />
             </div>
             <button type="submit" class="btn btn-primary btn-block">
-              Login
+              {!loading ? "Login" : <CircularProgress color="white" />}
             </button>
           </form>
           <p class="lead mt-4">

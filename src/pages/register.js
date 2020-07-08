@@ -1,12 +1,13 @@
 import React from "react";
 import firebase from "firebase";
 import "./style.css";
+import { CircularProgress } from "@material-ui/core";
 const Register = () => {
   const [email, setEmail] = React.useState(null);
   const [pass, setPass] = React.useState(null);
   const [name, setName] = React.useState(null);
   const [confpass, setConfPass] = React.useState(null);
-
+  const [loading, setLoading] = React.useState(false);
   const register = (e) => {
     e.preventDefault();
 
@@ -15,7 +16,13 @@ const Register = () => {
         firebase
           .auth()
           .createUserWithEmailAndPassword(email, pass)
-          .then((data) => console.log(data.user.getIdToken()))
+          .then((data) => {
+            return data.user.getIdToken();
+          })
+          .then((token) => {
+            localStorage.setItem("userToken", token);
+            window.location.href = "/dashboard";
+          })
           .catch((err) => alert(err.message));
       } else {
         alert(
@@ -92,7 +99,7 @@ const Register = () => {
               {console.log(confpass, pass)}
             </div>
             <button type="submit" class="btn btn-primary btn-block">
-              Register
+              {!loading ? "Register" : <CircularProgress color="white" />}
             </button>
           </form>
           <p class="lead mt-4">

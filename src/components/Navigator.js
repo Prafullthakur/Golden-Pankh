@@ -29,6 +29,7 @@ import BirdNest from "../pages/bird-nest";
 import DisplayStand from "../pages/displayStand";
 import AdminLogin from "../pages/login";
 import AdminRegister from "../pages/register";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 const Navigator = () => {
   return (
@@ -60,6 +61,7 @@ const Navigator = () => {
         <Route exact path="/display-stand" component={DisplayStand} />
         <Route exact path="/admin-login" component={AdminLogin} />
         <Route exact path="/admin-register" component={AdminRegister} />
+        <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
       <Footer />
     </Router>
