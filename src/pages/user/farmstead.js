@@ -1,5 +1,5 @@
 import React from "react";
-import Image1 from "../assets/Farmstead-Finials.jpg";
+import Image1 from "../../assets/Farmstead-Finials.jpg";
 
 export default function Farmstead() {
   return (

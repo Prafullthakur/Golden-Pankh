@@ -1,11 +1,8 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
 
 export default function birdnest() {
   return (
     <React.Fragment>
-      <Navbar />
       <section className="mdf pb-4">
         <div className="container">
           <h5 className="pt-4 pb-3">
@@ -173,7 +170,6 @@ export default function birdnest() {
           <br />
         </div>
       </section>
-      <Footer />
     </React.Fragment>
   );
 }

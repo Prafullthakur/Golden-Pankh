@@ -1,27 +1,29 @@
 import React from "react";
 import "./style.css";
-import Image1 from "../assets/Copper-Nest.jpg";
-import Image2 from "../assets/Recycle-Wooden-Heart-Ornament.jpg";
-import Image3 from "../assets/Metal-Bowl.jpg";
-const metalHandicrafts = () => {
+import Image1 from "../../assets/Hand-Made-Metal-Urn.jpg";
+import Image2 from "../../assets/Handmade-Iron-Wirework-Urn.jpg";
+import Image3 from "../../assets/Aluminum-Casted-Urn.jpg";
+const metalUrns = () => {
   return (
-    <section class="candle">
+    <section class="metal-urns">
       <div class="container">
         <p class="pt-4 pb-">
           <a href="/">Home</a> / <a href="/All-Products">Products</a> / Metal
-          Handicrafts
+          Urns
         </p>
-        <h3>Metal Handicrafts</h3>
+        <h3>Metal Urns</h3>
         <p class="pb-4">
-          The vast range of Metal Handicrafts provided by us includes copper
-          nets, metal bowl, metal ornament, etc. We design these products using
-          high-quality metals in unmatched finishing and polishing that ensures
-          maximum efficacy. They are provided in different attractive designs
-          and styles that can be tailored according to the needs of the clients.
-          These Metal Handicrafts are available in fine design with unmatched
-          texture to ensure maximum sturdiness without any abrasion and
-          corrosion.
+          We have a huge compilation of optimum quality Metal Urns that are
+          aluminium coated and handmade. These are designed by using
+          sophisticated equipments as well tools and methods that provides a
+          vintage look to the, which is going trendy these days. Moreover, the
+          said items are highly durable, sturdy in construction, anti-corrosive
+          in nature and compact in size. In addition to this, Metal Urns
+          provides elegant appearance, stunning patterns, exquisite designs and
+          vibrant colors that gives a charming look to that particular area
+          where these are placed.
         </p>
+
         <div class="prod mt-2">
           <div class="container">
             <div class="row">
@@ -30,16 +32,24 @@ const metalHandicrafts = () => {
               </div>
               <div class="col-md-7">
                 <h4 class="pt-3">
-                  <a href="#">COPPER NEST</a>
+                  <a href="#">HAND MADE METAL URN</a>
                 </h4>
-                <h6>Price: 4.55 USD ($)</h6>
+                <h6>Price: 17 USD ($)</h6>
                 <hr />
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>Supply Ability: 1000 PIECE Per Month</p>
+                      <p>Size:29x18.5x45.5 cm</p>
+                      <p>Style: Antique Imitation</p>
+                      <p>Finishing: Other</p>
+                      <p>Regional Style: India</p>
+                      <p>Supply Ability:1000 Per Month</p>
                     </div>
                     <div class="col-md-6">
+                      <p>Color: Antique</p>
+                      <p>Technique: Handmade by Hammering</p>
+                      <p>Material: Metal</p>
+                      <p>Product Type: Urn/Pot</p>
                       <p>Delivery Time: 60 Days</p>
                     </div>
                   </div>
@@ -144,7 +154,8 @@ const metalHandicrafts = () => {
           </div>
         </div>
         <br />
-        <div class="prod mt-2 mb-3">
+
+        <div class="prod mt-2">
           <div class="container">
             <div class="row">
               <div class="col-md-5 pt-3">
@@ -152,29 +163,24 @@ const metalHandicrafts = () => {
               </div>
               <div class="col-md-7">
                 <h4 class="pt-3">
-                  <a href="#">RECYCLE WOODEN HEART ORNAMENT</a>
+                  <a href="#">HANDMADE IRON WIREWORK URN</a>
                 </h4>
-                <h6>Price: 1.25 USD ($)</h6>
+                <h6>Price: 16.85 USD ($)</h6>
                 <hr />
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>Product Type: Decoration</p>
-                      <p>Technique: Handmade</p>
-                      <p>Theme: Decoration</p>
-                      <p>Finishing: Other</p>
                       <p>Delivery Time: 60 Days</p>
-                      <p>Supply Ability: 10000 Per Month</p>
+                      <p>Volume: 0.152 PER 2 PC CARTION Cubic Meter (m3)</p>
+                      <p>Product Type: HANDEMADE WIREWORK URN</p>
+                      <p>Regional Style: Indian</p>
+                      <p>Finishing: Rust</p>
                     </div>
                     <div class="col-md-6">
-                      <p>
-                        Feature: Other , Easy To Install, Antibacterial, Scratch
-                        Resistant, Non Toxic, Light Weight, Rust Proof, Easy To
-                        Clean, Durable
-                      </p>
-                      <p>Height: 11 Centimeter (cm)</p>
-                      <p>Style: Antique Imitation</p>
-                      <p>Material: Wood</p>
+                      <p>Supply Ability: 5000 pcs Per Month</p>
+                      <p>Metal Type: Iron</p>
+                      <p>Width: 35 Centimeter (cm)</p>
+                      <p>Material: Metal</p>
                     </div>
                   </div>
                 </div>
@@ -278,36 +284,34 @@ const metalHandicrafts = () => {
           </div>
         </div>
         <br />
-        <div class="prod mt-2 mb-3">
+
+        <div class="prod pt-2">
           <div class="container">
             <div class="row">
               <div class="col-md-5 pt-3">
                 <img src={Image3} alt="" />
               </div>
-              <div class="col-md-9">
+              <div class="col-md-7">
                 <h4 class="pt-3">
-                  <a href="#">METAL BOWL</a>
+                  <a href="#">ALUMINUM CASTED URN</a>
                 </h4>
-                <h6>Price: 6.95 USD ($)</h6>
+                <h6>Price: 11.85 USD ($)</h6>
                 <hr />
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>Delivery Time: 60 Days</p>
-                      <p>Technique: Casting</p>
-                      <p>Metals Type: Aluminum</p>
-                      <p>Width: 16 Centimeter (cm)</p>
+                      <p>Metal Type: Aluminum</p>
                       <p>Finishing: Other</p>
+                      <p>Width: 12 Centimeter (cm)</p>
+                      <p>Technique: Casting</p>
+                      <p>Delivery Time: 60 Days</p>
                     </div>
                     <div class="col-md-6">
-                      <p>Supply Ability: 5000 pcs Per Month</p>
-                      <p>
-                        Feature: Other , Easy To Install, Washable, Easy To
-                        Clean, Durable, Water Resistance
-                      </p>
-                      <p>Product Type: Other</p>
-                      <p>Height: 14 Centimeter (cm)</p>
+                      <p>Material: Other</p>
                       <p>Style: Antique Imitation</p>
+                      <p>Regional Style: Indian</p>
+                      <p>Size: 12x13x24 cm</p>
+                      <p>Supply Ability: 5000 Per Month</p>
                     </div>
                   </div>
                 </div>
@@ -416,4 +420,4 @@ const metalHandicrafts = () => {
   );
 };
 
-export default metalHandicrafts;
+export default metalUrns;

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "@material-ui/core/Link";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -16,13 +17,17 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Products" />
+      <Link href="/dashboard">
+        <ListItemText primary="Products" />
+      </Link>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
-      <ListItemText primary="Add Product" />
+      <Link href="/addProduct">
+        <ListItemText primary="Add Product" />
+      </Link>
     </ListItem>
   </div>
 );

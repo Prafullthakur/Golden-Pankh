@@ -23,7 +23,7 @@ const rows = [
   { name: "Decorative Alphabets Letters" },
   { name: "Jewelled Mirror" },
   { name: "Farmstead Finials" },
-  { name: "PPE kit; Full Body Gown, Goggles, Masks, Waste Bags" },
+  { name: "PPE kit, Full Body Gown, Goggles, Masks, Waste Bags" },
 ];
 
 function preventDefault(event) {
@@ -46,9 +46,11 @@ export default function Orders() {
       .collection("Products/")
       .get()
       .then((data) => {
+        let temp = [];
         data.forEach((doc) => {
-          setProducts([...products, doc.data()]);
+          temp.push(doc.data());
         });
+        setProducts(temp);
       });
   }, []);
 
@@ -66,7 +68,7 @@ export default function Orders() {
               }}
             >
               <ArrowBack />
-            </Link>{" "}
+            </Link>
             {category}
           </>
         )}
@@ -89,9 +91,10 @@ export default function Orders() {
         </Table>
       ) : (
         <>
-          {products.map((product) => (
-            <Product data={product} />
-          ))}
+          {products.map((product) => {
+            if (product.category === category)
+              return <Product data={product} />;
+          })}
         </>
       )}
     </React.Fragment>

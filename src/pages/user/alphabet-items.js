@@ -1,5 +1,5 @@
 import React from "react";
-import Image1 from "../assets/Decorative-Alphabets-Letters.jpg";
+import Image1 from "../../assets/Decorative-Alphabets-Letters.jpg";
 const alphabetItems = () => {
   return (
     <section classNameName="alphabet pb-4">

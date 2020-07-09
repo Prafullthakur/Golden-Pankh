@@ -1,8 +1,8 @@
 import React from "react";
-import Image1 from "../assets/Electric-Chandeliers.jpg";
-import Image2 from "../assets/Handmade-Glass-Beaded-Chandelier.jpg";
-import Image3 from "../assets/Handmade-Rope-Chandelier.jpg";
-import Image4 from "../assets/Wire-Cut-Bucket-Chandelier.jpg";
+import Image1 from "../../assets/Electric-Chandeliers.jpg";
+import Image2 from "../../assets/Handmade-Glass-Beaded-Chandelier.jpg";
+import Image3 from "../../assets/Handmade-Rope-Chandelier.jpg";
+import Image4 from "../../assets/Wire-Cut-Bucket-Chandelier.jpg";
 
 export default function Decorative() {
   return (

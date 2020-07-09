@@ -6,7 +6,7 @@ const Product = ({ data }) => {
       <div className="container">
         <div className="row">
           <div className="col-md-5 pt-3">
-            {data.image && <img src="data.image" />}
+            {data.image && <img src={data.image} />}
           </div>
           <div className="col-md-7">
             <h4 className="pt-3">{data.name && <a href="#">{data.name}</a>}</h4>

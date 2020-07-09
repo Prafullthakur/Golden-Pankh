@@ -1,27 +1,30 @@
 import React from "react";
 import "./style.css";
-import Image1 from "../assets/Hand-Made-Metal-Urn.jpg";
-import Image2 from "../assets/Handmade-Iron-Wirework-Urn.jpg";
-import Image3 from "../assets/Aluminum-Casted-Urn.jpg";
-const metalUrns = () => {
+import Image1 from "../../assets/Iron-Flower-Vase.jpg";
+import Image2 from "../../assets/Flower-Vase.jpg";
+import Image3 from "../../assets/Aluminium-Flower-Vases.jpg";
+const Flower = () => {
   return (
-    <section class="metal-urns">
+    <section class="flowers">
       <div class="container">
-        <p class="pt-4 pb-">
-          <a href="/">Home</a> / <a href="/All-Products">Products</a> / Metal
-          Urns
+        <p class="pt-4 pb-2">
+          <a href="/">Home</a> / <a href="/All-Products.html">Products</a> /
+          Flower Vase
         </p>
-        <h3>Metal Urns</h3>
+        <h3>Flower Vase</h3>
         <p class="pb-4">
-          We have a huge compilation of optimum quality Metal Urns that are
-          aluminium coated and handmade. These are designed by using
-          sophisticated equipments as well tools and methods that provides a
-          vintage look to the, which is going trendy these days. Moreover, the
-          said items are highly durable, sturdy in construction, anti-corrosive
-          in nature and compact in size. In addition to this, Metal Urns
-          provides elegant appearance, stunning patterns, exquisite designs and
-          vibrant colors that gives a charming look to that particular area
-          where these are placed.
+          The Flower Vases are meant to store flowers and enhance the look of
+          the interiors as well as exteriors. These handmade decorative items
+          are available in enticing patterns and are resistant to water. You can
+          place both artificial and original flowers in them without any
+          difficulty. The vases are proffered amend the looks of all traditional
+          as well as contemporary homes. These are extremely bright and shiny
+          pieces that add sophistication and greenery to every space of your
+          home. These top opened decorative containers are widely utilized to
+          hold artificial flowers. Their keeping symbolizes the possession of
+          something personal, beautiful and valuable. The vases are suited for
+          adding an ornamental accent to the room's decor. They can serve as the
+          best gifts for house warming, wedding, and are kept in party, spa etc.
         </p>
 
         <div class="prod mt-2">
@@ -32,24 +35,16 @@ const metalUrns = () => {
               </div>
               <div class="col-md-7">
                 <h4 class="pt-3">
-                  <a href="#">HAND MADE METAL URN</a>
+                  <a href="#">Iron Flower Vase</a>
                 </h4>
-                <h6>Price: 17 USD ($)</h6>
+                <h6 class="price">Price: 5.95 USD ($)</h6>
                 <hr />
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>Size:29x18.5x45.5 cm</p>
-                      <p>Style: Antique Imitation</p>
-                      <p>Finishing: Other</p>
-                      <p>Regional Style: India</p>
-                      <p>Supply Ability:1000 Per Month</p>
+                      <p>Supply Ability: 1000 PIECE Per Month</p>
                     </div>
                     <div class="col-md-6">
-                      <p>Color: Antique</p>
-                      <p>Technique: Handmade by Hammering</p>
-                      <p>Material: Metal</p>
-                      <p>Product Type: Urn/Pot</p>
                       <p>Delivery Time: 60 Days</p>
                     </div>
                   </div>
@@ -163,27 +158,16 @@ const metalUrns = () => {
               </div>
               <div class="col-md-7">
                 <h4 class="pt-3">
-                  <a href="#">HANDMADE IRON WIREWORK URN</a>
+                  <a href="#">FLOWER VASE</a>
                 </h4>
-                <h6>Price: 16.85 USD ($)</h6>
+                <h6 class="price">Price: 14.25 USD ($)</h6>
                 <hr />
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p>Delivery Time: 60 Days</p>
-                      <p>Volume: 0.152 PER 2 PC CARTION Cubic Meter (m3)</p>
-                      <p>Product Type: HANDEMADE WIREWORK URN</p>
-                      <p>Regional Style: Indian</p>
-                      <p>Finishing: Rust</p>
-                    </div>
-                    <div class="col-md-6">
-                      <p>Supply Ability: 5000 pcs Per Month</p>
-                      <p>Metal Type: Iron</p>
-                      <p>Width: 35 Centimeter (cm)</p>
-                      <p>Material: Metal</p>
-                    </div>
-                  </div>
-                </div>
+                <p>
+                  Provided Flower Vases are made to resist breakage and cracks.
+                  The vases can neutralize harmful electro-pollution and boast
+                  of durability & strength. The vases work as the both
+                  functional and extremely beautiful decorative accents.
+                </p>
               </div>
             </div>
             <div class="text-center mt-3 pb-4">
@@ -293,25 +277,22 @@ const metalUrns = () => {
               </div>
               <div class="col-md-7">
                 <h4 class="pt-3">
-                  <a href="#">ALUMINUM CASTED URN</a>
+                  <a href="#">ALUMINUM FLOWER VASES</a>
                 </h4>
-                <h6>Price: 11.85 USD ($)</h6>
+                <h6 class="price">Price: 14 USD ($)</h6>
                 <hr />
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>Metal Type: Aluminum</p>
-                      <p>Finishing: Other</p>
-                      <p>Width: 12 Centimeter (cm)</p>
-                      <p>Technique: Casting</p>
-                      <p>Delivery Time: 60 Days</p>
+                      <p>Supply Ability: 5000 PIECE Per Month</p>
+                      <p>
+                        Feature: Recyclable, Non Toxic, Easy To Clean, Water
+                        Resistance, Attractive, Durable
+                      </p>
                     </div>
                     <div class="col-md-6">
-                      <p>Material: Other</p>
-                      <p>Style: Antique Imitation</p>
-                      <p>Regional Style: Indian</p>
-                      <p>Size: 12x13x24 cm</p>
-                      <p>Supply Ability: 5000 Per Month</p>
+                      <p>Delivery Time: 60 Days</p>
+                      <p>Material: Metal</p>
                     </div>
                   </div>
                 </div>
@@ -420,4 +401,4 @@ const metalUrns = () => {
   );
 };
 
-export default metalUrns;
+export default Flower;

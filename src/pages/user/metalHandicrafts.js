@@ -1,32 +1,27 @@
 import React from "react";
 import "./style.css";
-import Image1 from "../assets/Iron-Flower-Vase.jpg";
-import Image2 from "../assets/Flower-Vase.jpg";
-import Image3 from "../assets/Aluminium-Flower-Vases.jpg";
-const Flower = () => {
+import Image1 from "../../assets/Copper-Nest.jpg";
+import Image2 from "../../assets/Recycle-Wooden-Heart-Ornament.jpg";
+import Image3 from "../../assets/Metal-Bowl.jpg";
+const metalHandicrafts = () => {
   return (
-    <section class="flowers">
+    <section class="candle">
       <div class="container">
-        <p class="pt-4 pb-2">
-          <a href="/">Home</a> / <a href="/All-Products.html">Products</a> /
-          Flower Vase
+        <p class="pt-4 pb-">
+          <a href="/">Home</a> / <a href="/All-Products">Products</a> / Metal
+          Handicrafts
         </p>
-        <h3>Flower Vase</h3>
+        <h3>Metal Handicrafts</h3>
         <p class="pb-4">
-          The Flower Vases are meant to store flowers and enhance the look of
-          the interiors as well as exteriors. These handmade decorative items
-          are available in enticing patterns and are resistant to water. You can
-          place both artificial and original flowers in them without any
-          difficulty. The vases are proffered amend the looks of all traditional
-          as well as contemporary homes. These are extremely bright and shiny
-          pieces that add sophistication and greenery to every space of your
-          home. These top opened decorative containers are widely utilized to
-          hold artificial flowers. Their keeping symbolizes the possession of
-          something personal, beautiful and valuable. The vases are suited for
-          adding an ornamental accent to the room's decor. They can serve as the
-          best gifts for house warming, wedding, and are kept in party, spa etc.
+          The vast range of Metal Handicrafts provided by us includes copper
+          nets, metal bowl, metal ornament, etc. We design these products using
+          high-quality metals in unmatched finishing and polishing that ensures
+          maximum efficacy. They are provided in different attractive designs
+          and styles that can be tailored according to the needs of the clients.
+          These Metal Handicrafts are available in fine design with unmatched
+          texture to ensure maximum sturdiness without any abrasion and
+          corrosion.
         </p>
-
         <div class="prod mt-2">
           <div class="container">
             <div class="row">
@@ -35,9 +30,9 @@ const Flower = () => {
               </div>
               <div class="col-md-7">
                 <h4 class="pt-3">
-                  <a href="#">Iron Flower Vase</a>
+                  <a href="#">COPPER NEST</a>
                 </h4>
-                <h6 class="price">Price: 5.95 USD ($)</h6>
+                <h6>Price: 4.55 USD ($)</h6>
                 <hr />
                 <div class="container">
                   <div class="row">
@@ -149,8 +144,7 @@ const Flower = () => {
           </div>
         </div>
         <br />
-
-        <div class="prod mt-2">
+        <div class="prod mt-2 mb-3">
           <div class="container">
             <div class="row">
               <div class="col-md-5 pt-3">
@@ -158,16 +152,32 @@ const Flower = () => {
               </div>
               <div class="col-md-7">
                 <h4 class="pt-3">
-                  <a href="#">FLOWER VASE</a>
+                  <a href="#">RECYCLE WOODEN HEART ORNAMENT</a>
                 </h4>
-                <h6 class="price">Price: 14.25 USD ($)</h6>
+                <h6>Price: 1.25 USD ($)</h6>
                 <hr />
-                <p>
-                  Provided Flower Vases are made to resist breakage and cracks.
-                  The vases can neutralize harmful electro-pollution and boast
-                  of durability & strength. The vases work as the both
-                  functional and extremely beautiful decorative accents.
-                </p>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p>Product Type: Decoration</p>
+                      <p>Technique: Handmade</p>
+                      <p>Theme: Decoration</p>
+                      <p>Finishing: Other</p>
+                      <p>Delivery Time: 60 Days</p>
+                      <p>Supply Ability: 10000 Per Month</p>
+                    </div>
+                    <div class="col-md-6">
+                      <p>
+                        Feature: Other , Easy To Install, Antibacterial, Scratch
+                        Resistant, Non Toxic, Light Weight, Rust Proof, Easy To
+                        Clean, Durable
+                      </p>
+                      <p>Height: 11 Centimeter (cm)</p>
+                      <p>Style: Antique Imitation</p>
+                      <p>Material: Wood</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="text-center mt-3 pb-4">
@@ -268,31 +278,36 @@ const Flower = () => {
           </div>
         </div>
         <br />
-
-        <div class="prod pt-2">
+        <div class="prod mt-2 mb-3">
           <div class="container">
             <div class="row">
               <div class="col-md-5 pt-3">
                 <img src={Image3} alt="" />
               </div>
-              <div class="col-md-7">
+              <div class="col-md-9">
                 <h4 class="pt-3">
-                  <a href="#">ALUMINUM FLOWER VASES</a>
+                  <a href="#">METAL BOWL</a>
                 </h4>
-                <h6 class="price">Price: 14 USD ($)</h6>
+                <h6>Price: 6.95 USD ($)</h6>
                 <hr />
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6">
-                      <p>Supply Ability: 5000 PIECE Per Month</p>
-                      <p>
-                        Feature: Recyclable, Non Toxic, Easy To Clean, Water
-                        Resistance, Attractive, Durable
-                      </p>
+                      <p>Delivery Time: 60 Days</p>
+                      <p>Technique: Casting</p>
+                      <p>Metals Type: Aluminum</p>
+                      <p>Width: 16 Centimeter (cm)</p>
+                      <p>Finishing: Other</p>
                     </div>
                     <div class="col-md-6">
-                      <p>Delivery Time: 60 Days</p>
-                      <p>Material: Metal</p>
+                      <p>Supply Ability: 5000 pcs Per Month</p>
+                      <p>
+                        Feature: Other , Easy To Install, Washable, Easy To
+                        Clean, Durable, Water Resistance
+                      </p>
+                      <p>Product Type: Other</p>
+                      <p>Height: 14 Centimeter (cm)</p>
+                      <p>Style: Antique Imitation</p>
                     </div>
                   </div>
                 </div>
@@ -401,4 +416,4 @@ const Flower = () => {
   );
 };
 
-export default Flower;
+export default metalHandicrafts;

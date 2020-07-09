@@ -1,7 +1,7 @@
 import React from "react";
-import Image1 from "../assets/Decorative-Beaded-Candle-Holder.jpg";
-import Image2 from "../assets/Iron-Candle-Holder.jpg";
-import Image3 from "../assets/Candle-Holder-Stand.jpg";
+import Image1 from "../../assets/Decorative-Beaded-Candle-Holder.jpg";
+import Image2 from "../../assets/Iron-Candle-Holder.jpg";
+import Image3 from "../../assets/Candle-Holder-Stand.jpg";
 
 export default function candleholder() {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import "./style.css";
-import Image1 from "../assets/Cotton-mask.jpg";
-import Image2 from "../assets/DISPOSABLE-NON-WOVEN-3PLY-MASKS.jpg";
-import Image3 from "../assets/PERSONAL-PROTECTION-KIT.jpg";
+import Image1 from "../../assets/Cotton-mask.jpg";
+import Image2 from "../../assets/DISPOSABLE-NON-WOVEN-3PLY-MASKS.jpg";
+import Image3 from "../../assets/PERSONAL-PROTECTION-KIT.jpg";
 const ppeKit = () => {
   return (
     <section class="flowers">

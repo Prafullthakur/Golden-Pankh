@@ -1,6 +1,6 @@
 import React from "react";
 import firebase from "firebase";
-import "./style.css";
+import "../user/style.css";
 import { CircularProgress } from "@material-ui/core";
 const Login = () => {
   const [email, setEmail] = React.useState(null);

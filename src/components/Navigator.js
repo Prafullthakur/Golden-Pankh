@@ -2,35 +2,35 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Pages
-import Navbar from "../pages/Navbar";
-import Footer from "../pages/Footer";
-import Home from "../pages/Home";
-import CompanyProfile from "../pages/companyProfile";
-import Contact from "../pages/contact";
-import HomeDecor from "../pages/home-decor";
-import MetalUrns from "../pages/metalUrns";
-import Christmas from "../pages/christmas";
-import Decorative from "../pages/decorative";
-import CandleHolder from "../pages/candle-holder";
-import MetalHandicrafts from "../pages/metalHandicrafts";
-import Flower from "../pages/flower";
-import MdfFrame from "../pages/mdfFrame";
-import AlphabetItems from "../pages/alphabet-items";
-import JwelledMirror from "../pages/jwelled-mirror";
-import FarmStead from "../pages/farmstead";
-import PpeKit from "../pages/ppeKit";
-import AllProducts from "../pages/All-Products";
-import RisePlanter from "../pages/riserPlanter";
-import WallDecor from "../pages/wallDecor";
-import MetalDecor from "../pages/metalDecor";
-import WallIron from "../pages/wallIron";
-import Hypercube from "../pages/hypercube";
-import BirdNest from "../pages/bird-nest";
-import DisplayStand from "../pages/displayStand";
-import AdminLogin from "../pages/login";
-import AdminRegister from "../pages/register";
-import Dashboard from "../pages/dashboard/Dashboard";
-import Products from "../pages/dashboard/Products";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import Home from "../pages/user/Home";
+import CompanyProfile from "../pages/user/companyProfile";
+import Contact from "../pages/user/contact";
+import HomeDecor from "../pages/user/home-decor";
+import MetalUrns from "../pages/user/metalUrns";
+import Christmas from "../pages/user/christmas";
+import Decorative from "../pages/user/decorative";
+import CandleHolder from "../pages/user/candle-holder";
+import MetalHandicrafts from "../pages/user/metalHandicrafts";
+import Flower from "../pages/user/flower";
+import MdfFrame from "../pages/user/mdfFrame";
+import AlphabetItems from "../pages/user/alphabet-items";
+import JwelledMirror from "../pages/user/jwelled-mirror";
+import FarmStead from "../pages/user/farmstead";
+import PpeKit from "../pages/user/ppeKit";
+import AllProducts from "../pages/user/All-Products";
+import RisePlanter from "../pages/user/riserPlanter";
+import WallDecor from "../pages/user/wallDecor";
+import MetalDecor from "../pages/user/metalDecor";
+import WallIron from "../pages/user/wallIron";
+import Hypercube from "../pages/user/hypercube";
+import BirdNest from "../pages/user/bird-nest";
+import DisplayStand from "../pages/user/displayStand";
+import AdminLogin from "../pages/admin/login";
+import AdminRegister from "../pages/admin/register";
+import Dashboard from "../pages/admin/Dashboard";
+import AddProduct from "../pages/admin/AddProduct";
 const Navigator = () => {
   return (
     <Router>
@@ -62,6 +62,7 @@ const Navigator = () => {
         <Route exact path="/admin-login" component={AdminLogin} />
         <Route exact path="/admin-register" component={AdminRegister} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/addProduct" component={AddProduct} />
       </Switch>
       <Footer />
     </Router>

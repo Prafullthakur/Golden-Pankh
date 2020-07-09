@@ -2,7 +2,11 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 const Navbar = (props) => {
-  if (props.location.pathname === "/dashboard") return null;
+  if (
+    props.location.pathname === "/dashboard" ||
+    props.location.pathname === "/addProduct"
+  )
+    return null;
   return (
     <nav class="navbar sticky-top navbar-expand-lg navbar-light py-4">
       <button

@@ -1,5 +1,5 @@
 import React from "react";
-import Image1 from "../assets/Wall-Decoration-Leaf-Wreath.jpg";
+import Image1 from "../../assets/Wall-Decoration-Leaf-Wreath.jpg";
 
 export default function christmas() {
   return (

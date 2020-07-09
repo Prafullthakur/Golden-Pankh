@@ -1,5 +1,5 @@
 import React from "react";
-import Image1 from "../assets/Jewelled-Mirror.jpg";
+import Image1 from "../../assets/Jewelled-Mirror.jpg";
 
 export default function JwelledMirror() {
   return (

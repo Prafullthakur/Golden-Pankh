@@ -2,35 +2,35 @@ import React from "react";
 import firebase from "firebase";
 
 // components
-import Product from "../components/Product";
+import Product from "../../components/Product";
 
 // Images
-import Image1 from "../assets/Riser-Planter.jpg";
-import Image2 from "../assets/Wall-Iron-Wreath.jpg";
-import Image3 from "../assets/Metal-Decorative-Plant.jpg";
-import Image4 from "../assets/Decorative-Hypercube.jpg";
-import Image5 from "../assets/Wall-Decor-Wreath.jpg";
-import Image6 from "../assets/Decorative-Bird-Nest.jpg";
-import Image7 from "../assets/Decorative-Display-Stand.jpg";
-import Image8 from "../assets/Decorative-Bird-Cage.jpg";
-import Image9 from "../assets/Handmade-Succulent.jpg";
-import Image10 from "../assets/Bird-Ornament.jpg";
-import Image11 from "../assets/Alumunium-Casted-Crow-Bird.jpg";
-import Image12 from "../assets/Decorative-Display-Stand.jpg";
-import Image13 from "../assets/Handmade-French-Wirework-Bird-Cage.jpg";
-import Image14 from "../assets/Decorative-Pot-with-plant.jpg";
-import Image15 from "../assets/Handmade-Sacred-Hearts.jpg";
-import Image16 from "../assets/Handmade-Wirework-Peacock.jpg";
-import Image17 from "../assets/Handmade-Decorative-Finial.jpg";
-import Image18 from "../assets/Metal-Decorative-Crown.jpg";
-import Image19 from "../assets/Metal-Geometrical-Star.jpg";
-import Image20 from "../assets/Wirework-Glass-Ornament.jpg";
-import Image21 from "../assets/Handmade-Christmas-Tree-Topper.jpg";
-import Image22 from "../assets/Handmade-Kerchief-Planter.jpg";
-import Image23 from "../assets/Display-Dome.jpg";
-import Image24 from "../assets/Iron-Ferris-Wheel.jpg";
-import Image25 from "../assets/Iron-Handmade-Decor.jpg";
-import Image26 from "../assets/Tripple-Arrow-Wall-Decor.jpg";
+import Image1 from "../../assets/Riser-Planter.jpg";
+import Image2 from "../../assets/Wall-Iron-Wreath.jpg";
+import Image3 from "../../assets/Metal-Decorative-Plant.jpg";
+import Image4 from "../../assets/Decorative-Hypercube.jpg";
+import Image5 from "../../assets/Wall-Decor-Wreath.jpg";
+import Image6 from "../../assets/Decorative-Bird-Nest.jpg";
+import Image7 from "../../assets/Decorative-Display-Stand.jpg";
+import Image8 from "../../assets/Decorative-Bird-Cage.jpg";
+import Image9 from "../../assets/Handmade-Succulent.jpg";
+import Image10 from "../../assets/Bird-Ornament.jpg";
+import Image11 from "../../assets/Alumunium-Casted-Crow-Bird.jpg";
+import Image12 from "../../assets/Decorative-Display-Stand.jpg";
+import Image13 from "../../assets/Handmade-French-Wirework-Bird-Cage.jpg";
+import Image14 from "../../assets/Decorative-Pot-with-plant.jpg";
+import Image15 from "../../assets/Handmade-Sacred-Hearts.jpg";
+import Image16 from "../../assets/Handmade-Wirework-Peacock.jpg";
+import Image17 from "../../assets/Handmade-Decorative-Finial.jpg";
+import Image18 from "../../assets/Metal-Decorative-Crown.jpg";
+import Image19 from "../../assets/Metal-Geometrical-Star.jpg";
+import Image20 from "../../assets/Wirework-Glass-Ornament.jpg";
+import Image21 from "../../assets/Handmade-Christmas-Tree-Topper.jpg";
+import Image22 from "../../assets/Handmade-Kerchief-Planter.jpg";
+import Image23 from "../../assets/Display-Dome.jpg";
+import Image24 from "../../assets/Iron-Ferris-Wheel.jpg";
+import Image25 from "../../assets/Iron-Handmade-Decor.jpg";
+import Image26 from "../../assets/Tripple-Arrow-Wall-Decor.jpg";
 
 export default function HomeDecor() {
   const [products, setProducts] = React.useState([]);

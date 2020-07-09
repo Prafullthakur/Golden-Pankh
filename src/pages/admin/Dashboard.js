@@ -21,19 +21,6 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems } from "./listItems";
 import Products from "./Products";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -128,6 +115,7 @@ export default function Dashboard() {
 
   React.useEffect(() => {
     if (!localStorage.getItem("userToken")) {
+      document.querySelector("html").innerHTML = "";
       alert("Please sign in");
       window.location.href = "/";
     }

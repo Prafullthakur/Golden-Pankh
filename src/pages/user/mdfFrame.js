@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import Image1 from "../assets/MDF-Frame.jpg";
+import Image1 from "../../assets/MDF-Frame.jpg";
 const mdfFrame = () => {
   return (
     <section class="mdf pb-4">
