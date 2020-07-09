@@ -1,4 +1,4 @@
-import React, { Components } from "react";
+import React from "react";
 
 export default function AllProducts() {
   return (
@@ -20,6 +20,7 @@ export default function AllProducts() {
                     smooth texture, long lasting shine, aesthetic appearance as
                     well as vibrant colors and sophisticated designs.
                   </p>
+
                   <div className="container">
                     <div className="row">
                       <div className="col-md-6">
@@ -80,6 +81,7 @@ export default function AllProducts() {
               </div>
             </div>
             <br />
+
             <div className="prod">
               <div className="row">
                 <div className="col-md-4"></div>

@@ -1,55 +1,49 @@
-import React, { useState } from "react";
-import Image1 from "../../assets/Farmstead-Finials.jpg";
-import firebase from "firebase";
-import Product from "../../components/Product";
-import ProductPage from "../../components/ProductPage";
-export default function Farmstead() {
-  const [products, setProducts] = React.useState([]);
-  const [productPage, setProductPage] = React.useState(false);
-  const [productData, setProductData] = React.useState({});
+import React from "react";
+import Link from "@material-ui/core/Link";
+import { ArrowBack } from "@material-ui/icons";
 
-  React.useEffect(() => {
-    firebase
-      .firestore()
-      .collection("Products/")
-      .get()
-      .then((data) => {
-        let temp = [];
-        data.forEach((doc) => {
-          temp.push(doc.data());
-        });
-        setProducts(temp);
-      });
-  }, []);
-  const handleProduct = (prodData) => {
-    setProductPage(true);
-    setProductData(prodData);
-  };
-  return productPage ? (
-    <ProductPage data={productData} setProductPage={setProductPage} />
-  ) : (
-    <>
-      <section className="farmstead">
+export default function ProductPage({ data, setProductPage }) {
+  return (
+    <React.Fragment>
+      <section className="mdf pb-4">
         <div className="container">
           <h5 className="pt-4 pb-3">
+            <Link onClick={() => setProductPage(false)}>
+              <ArrowBack />
+            </Link>
             <a href="/">Home</a> / <a href="/All-Products">Products</a> /
-            Farmstead Finials
+            {data.category}
           </h5>
-          {products.map((product) => {
-            if (product.category === "Farmstead Finials")
-              return <Product handleProduct={handleProduct} data={product} />;
-          })}
-          <div className="prod py-4 pl-3">
+          <h3>{data.name}</h3>
+          <p className="pb-4">
+            Spring is about to come and it is not too early to start your spring
+            decoration at home. It runs well into your existing decor and
+            enables the tint of nature in your home. Proffered with little
+            softness as well as fluff, this embellishing nest runs well in all
+            decors. It looks extremely pretty when paired with silver. Juts
+            decorate it with some artificial eggs as well as birds and the
+            gifting staple is set to go. Offered Bird Nest is appropriate for
+            your spring picture and enables a beautiful home decor. It vitalizes
+            a boring corner and makes it vivacious and attractive.
+          </p>
+          <div className="prod py-4">
             <div className="row">
-              <div className="col-md-5">
-                <img src={Image1} alt="" />
+              <div class="col-md-4 pl-4">
+                <img src={data.image} alt="" />
               </div>
-              <div className="col-md-7">
-                <h3>Farmstead Finials</h3>
+              <div className="col-md-8">
+                <h3>{data.name}</h3>
+                <h6 className="price">Price: {data.price} USD ($)</h6>
+                <h5>Products Details:</h5>
+                <table>
+                  <tr>
+                    <td>Supply Ability:</td>
+                    <td>{data.supplyAbility} Piece Per Month</td>
+                  </tr>
+                </table>
               </div>
-
               <div className="container">
-                <div className="text-center mt-5 pb-4">
+                <div className="text-center mt-3 pb-4">
                   <button
                     type="button"
                     className="btn btn-warning"
@@ -149,8 +143,38 @@ export default function Farmstead() {
             </div>
           </div>
           <br />
+
+          <div className="prod pt-4 pb-5 px-5">
+            <h4>Price & Quantity</h4>
+            <hr />
+            <table>
+              <tr>
+                <td>Price:</td>
+                <td>{data.price} USD ($)</td>
+                <td>Minimum Order Quantity:</td>
+                <td>{data.moq} Piece</td>
+              </tr>
+            </table>
+            <h4 className="pt-4">Trade Information</h4>
+            <hr />
+            <table>
+              <tr>
+                <td>Supply Ability:</td>
+                <td>{data.supplyAbility} Piece pcs Per Month</td>
+                <td>Delivery Time:</td>
+                <td>{data.deliveryTime} Days</td>
+              </tr>
+              <tr>
+                <td>Sample Available:</td>
+                <td>{data.sampleAvilable}</td>
+                <td>Sample Policy:</td>
+                <td>{data.samplePolicy}</td>
+              </tr>
+            </table>
+          </div>
+          <br />
         </div>
       </section>
-    </>
+    </React.Fragment>
   );
 }

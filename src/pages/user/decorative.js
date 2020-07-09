@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Image1 from "../../assets/Electric-Chandeliers.jpg";
 import Image2 from "../../assets/Handmade-Glass-Beaded-Chandelier.jpg";
 import Image3 from "../../assets/Handmade-Rope-Chandelier.jpg";
 import Image4 from "../../assets/Wire-Cut-Bucket-Chandelier.jpg";
-
+import firebase from "firebase";
+import Product from "../../components/Product";
+import ProductPage from "../../components/ProductPage";
 export default function Decorative() {
-  return (
+  const [products, setProducts] = useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Products/")
+      .get()
+      .then((data) => {
+        let temp = [];
+        data.forEach((doc) => {
+          temp.push(doc.data());
+        });
+        setProducts(temp);
+      });
+  }, []);
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
+  return productPage ? (
+    <ProductPage data={productData} setProductPage={setProductPage} />
+  ) : (
     <>
       <section className="christmas">
         <div className="container">
@@ -29,6 +53,10 @@ export default function Decorative() {
             They can create a warm as well as hospitable atmosphere of
             conventional ceiling and beauteous wall lights.
           </p>
+          {products.map((product) => {
+            if (product.category === "Decorative Chandelier")
+              return <Product handleProduct={handleProduct} data={product} />;
+          })}
           <div className="prod mt-2">
             <div className="container">
               <div className="row">

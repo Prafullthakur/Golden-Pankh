@@ -1,8 +1,33 @@
 import React from "react";
 import Image1 from "../../assets/Jewelled-Mirror.jpg";
-
+import firebase from "firebase";
+import Product from "../../components/Product";
+import ProductPage from "../../components/ProductPage";
 export default function JwelledMirror() {
-  return (
+  const [products, setProducts] = React.useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
+
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Products/")
+      .get()
+      .then((data) => {
+        let temp = [];
+        data.forEach((doc) => {
+          temp.push(doc.data());
+        });
+        setProducts(temp);
+      });
+  }, []);
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
+  return productPage ? (
+    <ProductPage data={productData} setProductPage={setProductPage} />
+  ) : (
     <>
       <section className="mdf pb-4">
         <div className="container">
@@ -24,6 +49,10 @@ export default function JwelledMirror() {
             Provided in a special ethnic style, it can draw the attention of the
             visitors.
           </p>
+          {products.map((product) => {
+            if (product.category === "Jwellled Mirror")
+              return <Product handleProduct={handleProduct} data={product} />;
+          })}
           <div className="prod py-4 pl-2">
             <div className="row">
               <div className="col-md-5 pl-3">

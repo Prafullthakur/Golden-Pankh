@@ -122,8 +122,22 @@ export default function Checkout() {
           .firestore()
           .collection("Products/")
           .add(data)
+          .then((doc) => {
+            data.productId = doc.id;
+          })
           .then(() => {
-            alert("Product Added Successfully!");
+            firebase
+              .firestore()
+              .doc(`Products/${data.productId}`)
+              .set(data)
+              .then((snap) => {
+                alert("Product Added Successfully!");
+                window.location.href('/dashboard')
+              })
+              .catch((err) => {
+                alert("An error occured");
+                console.log(err);
+              });
           })
           .catch((err) => alert("An error occured!"));
       })
@@ -164,7 +178,7 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Your Product Will Be Added
+                  Adding your Product... Please Wait
                 </Typography>
               </React.Fragment>
             ) : (

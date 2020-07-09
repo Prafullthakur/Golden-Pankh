@@ -1,6 +1,28 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+import firebase from "firebase";
+import Link from "@material-ui/core/Link";
+import ProductPage from "./ProductPage";
+const Product = ({ data, location, handleProduct }) => {
+  const deleteProduct = (productId) => {
+    if (window.confirm("Are you sure you want to delete the product")) {
+      firebase
+        .firestore()
+        .collection("Products/")
+        .doc(productId)
+        .delete()
+        .then((res) => {
+          alert("Product Deleted Successfully");
+          console.log(res);
+          window.location.href = "/dashboard";
+        })
+        .catch((err) => {
+          alert("Error Deleting Product");
+          console.log(err);
+        });
+    }
+  };
 
-const Product = ({ data }) => {
   return (
     <div className="prod mt-2">
       <div className="container">
@@ -9,7 +31,11 @@ const Product = ({ data }) => {
             {data.image && <img src={data.image} />}
           </div>
           <div className="col-md-7">
-            <h4 className="pt-3">{data.name && <a href="#">{data.name}</a>}</h4>
+            <h4 className="pt-3">
+              {data.name && (
+                <Link onClick={() => handleProduct(data)}>{data.name}</Link>
+              )}
+            </h4>
             {data.price && <h6>${data.price} USD</h6>}
             <hr />
             <div className="container">
@@ -39,14 +65,24 @@ const Product = ({ data }) => {
           </div>
         </div>
         <div className="text-center mt-3 pb-4">
-          <button
-            type="button"
-            className="btn btn-warning"
-            data-toggle="modal"
-            data-target="#exampleModal"
-          >
-            SEND ENQUIRY
-          </button>
+          {location.pathname === "/dashboard" ? (
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={() => deleteProduct(data.productId)}
+            >
+              Delete Product
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-warning"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              SEND ENQUIRY
+            </button>
+          )}
           <div
             className="modal fade"
             id="exampleModal"
@@ -138,4 +174,4 @@ const Product = ({ data }) => {
   );
 };
 
-export default Product;
+export default withRouter(Product);

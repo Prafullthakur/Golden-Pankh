@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Image1 from "../../assets/Wall-Decoration-Leaf-Wreath.jpg";
-
-export default function christmas() {
-  return (
+import firebase from "firebase";
+import Product from "../../components/Product";
+import ProductPage from "../../components/ProductPage";
+export default function Christmas() {
+  const [products, setProducts] = useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Products/")
+      .get()
+      .then((data) => {
+        let temp = [];
+        data.forEach((doc) => {
+          temp.push(doc.data());
+        });
+        setProducts(temp);
+      });
+  }, []);
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
+  return productPage ? (
+    <ProductPage data={productData} setProductPage={setProductPage} />
+  ) : (
     <React.Fragment>
       <section className="christmas">
         <div className="container">
@@ -21,6 +45,10 @@ export default function christmas() {
             proof design with non-corrosive texture to ensure no abrasion as
             well as maintenance.{" "}
           </p>
+          {products.map((product) => {
+            if (product.category === "Christmas Decoration Items")
+              return <Product handleProduct={handleProduct} data={product} />;
+          })}
           <div className="prod mt-2">
             <div className="container">
               <div className="row">

@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Orders() {
+export default function Products() {
   const [category, setCategory] = React.useState(null);
   const [products, setProducts] = React.useState([]);
 

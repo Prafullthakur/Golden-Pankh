@@ -3,6 +3,7 @@ import firebase from "firebase";
 
 // components
 import Product from "../../components/Product";
+import ProductPage from "../../components/ProductPage";
 
 // Images
 import Image1 from "../../assets/Riser-Planter.jpg";
@@ -34,6 +35,8 @@ import Image26 from "../../assets/Tripple-Arrow-Wall-Decor.jpg";
 
 export default function HomeDecor() {
   const [products, setProducts] = React.useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
 
   React.useEffect(() => {
     firebase
@@ -41,13 +44,22 @@ export default function HomeDecor() {
       .collection("Products/")
       .get()
       .then((data) => {
+        let temp = [];
         data.forEach((doc) => {
-          setProducts([...products, doc.data()]);
+          temp.push(doc.data());
         });
+        setProducts(temp);
       });
   }, []);
 
-  return (
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
+
+  return productPage ? (
+    <ProductPage data={productData} setProductPage={setProductPage} />
+  ) : (
     <>
       <section className="home-decor">
         <div className="container">
@@ -68,9 +80,10 @@ export default function HomeDecor() {
             presentation and vintage structure.
           </p>
 
-          {products.map((product) => (
-            <Product data={product} />
-          ))}
+          {products.map((product) => {
+            if (product.category === "Home Decorative Items")
+              return <Product handleProduct={handleProduct} data={product} />;
+          })}
 
           <div className="prod mt-2">
             <div className="container">

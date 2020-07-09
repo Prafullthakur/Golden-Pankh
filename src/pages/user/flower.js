@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
+import firebase from "firebase";
 import Image1 from "../../assets/Iron-Flower-Vase.jpg";
 import Image2 from "../../assets/Flower-Vase.jpg";
 import Image3 from "../../assets/Aluminium-Flower-Vases.jpg";
+import Product from "../../components/Product";
+import ProductPage from "../../components/ProductPage";
 const Flower = () => {
-  return (
+  const [products, setProducts] = useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
+
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Products/")
+      .get()
+      .then((data) => {
+        let temp = [];
+        data.forEach((doc) => {
+          temp.push(doc.data());
+        });
+        setProducts(temp);
+      });
+  }, []);
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
+  return productPage ? (
+    <ProductPage data={productData} setProductPage={setProductPage} />
+  ) : (
     <section class="flowers">
       <div class="container">
         <p class="pt-4 pb-2">
@@ -26,7 +52,10 @@ const Flower = () => {
           adding an ornamental accent to the room's decor. They can serve as the
           best gifts for house warming, wedding, and are kept in party, spa etc.
         </p>
-
+        {products.map((product) => {
+          if (product.category === "Flower Vase")
+            return <Product handleProduct={handleProduct} data={product} />;
+        })}
         <div class="prod mt-2">
           <div class="container">
             <div class="row">

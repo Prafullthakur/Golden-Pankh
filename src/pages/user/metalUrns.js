@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import Image1 from "../../assets/Hand-Made-Metal-Urn.jpg";
 import Image2 from "../../assets/Handmade-Iron-Wirework-Urn.jpg";
 import Image3 from "../../assets/Aluminum-Casted-Urn.jpg";
-const metalUrns = () => {
-  return (
+import firebase from "firebase";
+import Product from "../../components/Product";
+import ProductPage from "../../components/ProductPage";
+const MetalUrns = () => {
+  const [products, setProducts] = useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
+
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Products/")
+      .get()
+      .then((data) => {
+        let temp = [];
+        data.forEach((doc) => {
+          temp.push(doc.data());
+        });
+        setProducts(temp);
+      });
+  }, []);
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
+  return productPage ? (
+    <ProductPage data={productData} setProductPage={setProductPage} />
+  ) : (
     <section class="metal-urns">
       <div class="container">
         <p class="pt-4 pb-">
@@ -23,7 +49,10 @@ const metalUrns = () => {
           vibrant colors that gives a charming look to that particular area
           where these are placed.
         </p>
-
+        {products.map((product) => {
+          if (product.category === "Metal Urns")
+            return <Product handleProduct={handleProduct} data={product} />;
+        })}
         <div class="prod mt-2">
           <div class="container">
             <div class="row">
@@ -420,4 +449,4 @@ const metalUrns = () => {
   );
 };
 
-export default metalUrns;
+export default MetalUrns;

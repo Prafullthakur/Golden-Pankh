@@ -1,7 +1,33 @@
 import React from "react";
+import firebase from "firebase";
 import Image1 from "../../assets/Decorative-Alphabets-Letters.jpg";
-const alphabetItems = () => {
-  return (
+import Product from "../../components/Product";
+import ProductPage from "../../components/ProductPage";
+export default function AlphabetItems() {
+  const [products, setProducts] = React.useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Products/")
+      .get()
+      .then((data) => {
+        let temp = [];
+        data.forEach((doc) => {
+          temp.push(doc.data());
+        });
+        setProducts(temp);
+      });
+  }, []);
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
+
+  return productPage ? (
+    <ProductPage data={productData} setProductPage={setProductPage} />
+  ) : (
     <section classNameName="alphabet pb-4">
       <div className="container">
         <h5 className="pt-4 pb-3">
@@ -20,6 +46,10 @@ const alphabetItems = () => {
           our experts. Clients can avail this Metal Alphabets Letters from us in
           different sizes, materials at reasonable rates.
         </p>
+        {products.map((product) => {
+          if (product.category === "Decorative Alphabet Letters")
+            return <Product handleProduct={handleProduct} data={product} />;
+        })}
         <div className="prod py-4 pl-3">
           <div className="row">
             <div className="col-md-5">
@@ -331,6 +361,4 @@ const alphabetItems = () => {
       <br />
     </section>
   );
-};
-
-export default alphabetItems;
+}

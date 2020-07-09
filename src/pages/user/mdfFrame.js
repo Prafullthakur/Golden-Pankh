@@ -1,8 +1,34 @@
 import React from "react";
 import "./style.css";
 import Image1 from "../../assets/MDF-Frame.jpg";
-const mdfFrame = () => {
-  return (
+import firebase from "firebase";
+import Product from "../../components/Product";
+import ProductPage from "../../components/ProductPage";
+const MdfFrame = () => {
+  const [products, setProducts] = React.useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
+
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Products/")
+      .get()
+      .then((data) => {
+        let temp = [];
+        data.forEach((doc) => {
+          temp.push(doc.data());
+        });
+        setProducts(temp);
+      });
+  }, []);
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
+  return productPage ? (
+    <ProductPage data={productData} setProductPage={setProductPage} />
+  ) : (
     <section class="mdf pb-4">
       <div class="container">
         <h5 class="pt-4 pb-3">
@@ -20,6 +46,10 @@ const mdfFrame = () => {
           long life. We make available our product for clients in different
           designs and sizes.
         </p>
+        {products.map((product) => {
+          if (product.category === "MDF Frame")
+            return <Product handleProduct={handleProduct} data={product} />;
+        })}
         <div class="prod py-4 pl-3">
           <div class="row">
             <div class="col-md-5 pt-3">
@@ -264,4 +294,4 @@ const mdfFrame = () => {
   );
 };
 
-export default mdfFrame;
+export default MdfFrame;

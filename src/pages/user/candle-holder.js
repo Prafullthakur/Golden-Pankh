@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import firebase from "firebase";
 import Image1 from "../../assets/Decorative-Beaded-Candle-Holder.jpg";
 import Image2 from "../../assets/Iron-Candle-Holder.jpg";
 import Image3 from "../../assets/Candle-Holder-Stand.jpg";
-
-export default function candleholder() {
-  return (
+import Product from "../../components/Product";
+import ProductPage from "../../components/ProductPage";
+export default function Candleholder() {
+  const [products, setProducts] = useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Products/")
+      .get()
+      .then((data) => {
+        let temp = [];
+        data.forEach((doc) => {
+          temp.push(doc.data());
+        });
+        setProducts(temp);
+      });
+  }, []);
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
+  return productPage ? (
+    <ProductPage data={productData} setProductPage={setProductPage} />
+  ) : (
     <React.Fragment>
       <section className="candle">
         <div className="container">
@@ -26,6 +50,11 @@ export default function candleholder() {
             period of time and suffice as the highly beautiful illumination
             items.
           </p>
+          {products.map((product) => {
+            if (product.category === "Candle Holder")
+              return <Product handleProduct={handleProduct} data={product} />;
+          })}
+          {console.log(products)}
           <div className="prod mt-2">
             <div className="container">
               <div className="row">
