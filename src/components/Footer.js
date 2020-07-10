@@ -16,7 +16,7 @@ const Footer = () => {
   }, []);
   return (
     <footer>
-      <div class="container">
+      <div class="container" style={{ color: "white" }}>
         <h4>GOLDEN PANKH EXPORT IMPORT</h4>
         <div class="row">
           <div class="col-md-8">

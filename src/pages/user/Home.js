@@ -9,25 +9,6 @@ import Image5 from "../../assets/Metal-Decorative-Crown.jpg";
 const Home = () => {
   return (
     <>
-      <header class="pt-5 pb-4">
-        <div class="motive text-center wow fadeInDown delay-3s">
-          <div class="container pt-5">
-            <div class="wow fadeInUp delay-3s">
-              <h2 class="pt-5">
-                INTEGRATION, CONTINUAL IMPROVEMENT AND AFFORDABILITY
-              </h2>
-              <h5 class="pb-3">FOR COMPLETE CUSTOMER SATISFACTION</h5>
-              <hr style={{ background: "#fff" }} />
-              <p>
-                Get best quality home decor items like Candle Holder, Wall
-                Decoration Items, Beaded Chandelier, Tea Lights, Display Stands,
-                Velvet Products, etc., by dealing with us...
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
-
       <section class="popular-products">
         <div class="container">
           <h3>MOST POPULAR PRODUCTS</h3>

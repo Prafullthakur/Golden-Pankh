@@ -4,7 +4,6 @@
 .navbar,
 header,
 .addr {
-  background: linear-gradient(to right, #ffe484, #e7717d);
 }
 .navbar-brand {
   font-family: cursive;
@@ -63,7 +62,7 @@ img:hover {
 }
 
 footer {
-  background: linear-gradient(to right, #ffe484, #e7717d);
+  background: #052301;
   padding-top: 35px;
   padding-bottom: 25px;
 }
@@ -89,12 +88,12 @@ footer h4 {
   border: 1px solid #000;
   padding: 8px 12px;
   text-align: center;
-  color: #000;
+  color: white;
   /* background: ; */
 }
 .enquiry:hover {
   text-decoration: none;
-  color: #fff;
+  color: #000;
 }
 
 /* footer .view-all{
