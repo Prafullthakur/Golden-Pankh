@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 // Pages
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -62,7 +61,7 @@ const Navigator = () => {
         <Route exact path="/display-stand" component={DisplayStand} />
         <Route exact path="/admin-login" component={AdminLogin} />
         <Route exact path="/admin-register" component={AdminRegister} />
-        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact={true} path="/dashboard" component={Dashboard} />
         <Route exact path="/addProduct" component={AddProduct} />
         <Route exact path="/social" component={Social} />
       </Switch>
