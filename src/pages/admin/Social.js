@@ -19,7 +19,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 import { mainListItems } from "./listItems";
-import Checkout from "../checkout/Checkout";
+import EditSocial from "./EditSocial";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -174,7 +174,7 @@ export default function Dashboard() {
             {/* Add a Products */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Checkout />
+                <EditSocial />
               </Paper>
             </Grid>
           </Grid>

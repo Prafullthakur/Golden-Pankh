@@ -31,6 +31,7 @@ import AdminLogin from "../pages/admin/login";
 import AdminRegister from "../pages/admin/register";
 import Dashboard from "../pages/admin/Dashboard";
 import AddProduct from "../pages/admin/AddProduct";
+import Social from "../pages/admin/Social";
 const Navigator = () => {
   return (
     <Router>
@@ -63,6 +64,7 @@ const Navigator = () => {
         <Route exact path="/admin-register" component={AdminRegister} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/addProduct" component={AddProduct} />
+        <Route exact path="/social" component={Social} />
       </Switch>
       <Footer />
     </Router>

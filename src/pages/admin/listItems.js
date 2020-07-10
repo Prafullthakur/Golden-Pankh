@@ -5,6 +5,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import LayersIcon from "@material-ui/icons/Layers";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 export const mainListItems = (
   <div>
     <ListItem button>
@@ -21,6 +23,27 @@ export const mainListItems = (
       </ListItemIcon>
       <Link href="/addProduct">
         <ListItemText primary="Add Product" />
+      </Link>
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <SupervisorAccountIcon />
+      </ListItemIcon>
+      <Link href="/social">
+        <ListItemText primary="Social" />
+      </Link>
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <ExitToAppIcon />
+      </ListItemIcon>
+      <Link
+        onClick={() => {
+          localStorage.removeItem("userToken");
+          window.location.href = "/admin-login";
+        }}
+      >
+        <ListItemText primary="Sign Out" />
       </Link>
     </ListItem>
   </div>

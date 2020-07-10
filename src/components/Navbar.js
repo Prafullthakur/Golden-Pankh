@@ -4,7 +4,8 @@ import { withRouter } from "react-router-dom";
 const Navbar = (props) => {
   if (
     props.location.pathname === "/dashboard" ||
-    props.location.pathname === "/addProduct"
+    props.location.pathname === "/addProduct" ||
+    props.location.pathname === "/social"
   )
     return null;
   return (
