@@ -5,7 +5,8 @@ const Navbar = (props) => {
   if (
     props.location.pathname === "/dashboard" ||
     props.location.pathname === "/addProduct" ||
-    props.location.pathname === "/social"
+    props.location.pathname === "/social" ||
+    props.location.pathname === "/admin"
   )
     return null;
 

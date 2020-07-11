@@ -33,12 +33,28 @@ export default function ProductPage({ data, setProductPage }) {
               </div>
               <div className="col-md-8">
                 <h3>{data.name}</h3>
-                <h6 className="price">Price: {data.price} USD ($)</h6>
+                <h6 className="price">
+                  Price: {data.price} {data.priceType} ($)
+                </h6>
                 <h5>Products Details:</h5>
                 <table>
                   <tr>
-                    <td>Supply Ability:</td>
-                    <td>{data.supplyAbility} Piece Per Month</td>
+                    <td>
+                      Supply Ability: {data.supplyAbility} Piece Per Month
+                    </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <td>
+                      Width: {data.width} {data.unit}
+                    </td>
+                    <td>
+                      Height: {data.height} {data.unit}
+                    </td>
+                    <td>
+                      Length: {data.length} {data.unit}
+                    </td>
                   </tr>
                 </table>
               </div>
@@ -150,7 +166,9 @@ export default function ProductPage({ data, setProductPage }) {
             <table>
               <tr>
                 <td>Price:</td>
-                <td>{data.price} USD ($)</td>
+                <td>
+                  {data.price} {data.priceType} ($)
+                </td>
                 <td>Minimum Order Quantity:</td>
                 <td>{data.moq} Piece</td>
               </tr>

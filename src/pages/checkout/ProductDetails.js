@@ -4,12 +4,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -22,11 +19,13 @@ export default function AddressForm({
   category,
   name,
   price,
+  priceType,
   image,
   color,
   length,
   width,
   height,
+  unit,
   technique,
   style,
   regionalStyle,
@@ -97,16 +96,34 @@ export default function AddressForm({
             required
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <TextField
             id="price"
             name="price"
             label="Price"
+            value={price}
             onChange={handleChange}
             fullWidth
             required
           />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <FormControl style={{ width: "40%" }}>
+            <InputLabel id="demo-simple-select-label">Price Type</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              name="priceType"
+              onChange={handleChange}
+              value={priceType}
+            >
+              <MenuItem value={"USD"}>USD</MenuItem>
+
+              <MenuItem value={"EURO"}>EURO</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
         <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
           <label htmlFor="image"> Upload Image </label>
           <input
@@ -119,7 +136,7 @@ export default function AddressForm({
             accept="image/*"
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <TextField
             id="color"
             name="color"
@@ -140,6 +157,23 @@ export default function AddressForm({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
+          <FormControl style={{ width: "40%" }}>
+            <InputLabel id="demo-simple-select-label">Unit</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              name="priceType"
+              onChange={handleChange}
+              value={unit}
+            >
+              <MenuItem value={"centimeters"}>centimeters</MenuItem>
+
+              <MenuItem value={"meters"}>meters</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
           <TextField
             id="width"
             name="width"
@@ -150,6 +184,22 @@ export default function AddressForm({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
+          <FormControl style={{ width: "40%" }}>
+            <InputLabel id="demo-simple-select-label">Unit</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              name="priceType"
+              onChange={handleChange}
+              value={unit}
+            >
+              <MenuItem value={"centimeters"}>centimeters</MenuItem>
+
+              <MenuItem value={"meters"}>meters</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={6}>
           <TextField
             id="height"
             name="height"
@@ -158,6 +208,22 @@ export default function AddressForm({
             label="Height"
             fullWidth
           />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <FormControl style={{ width: "40%" }}>
+            <InputLabel id="demo-simple-select-label">Unit</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              name="priceType"
+              onChange={handleChange}
+              value={unit}
+            >
+              <MenuItem value={"centimeters"}>centimeters</MenuItem>
+
+              <MenuItem value={"meters"}>meters</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField

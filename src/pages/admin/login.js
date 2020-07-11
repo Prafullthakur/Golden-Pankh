@@ -63,7 +63,7 @@ const Login = () => {
             </button>
           </form>
           <p class="lead mt-4">
-            No Account? <a href="/admin-register">Register</a>
+            <a href="/admin-register">Forgot Password?</a>
           </p>
         </div>
       </div>

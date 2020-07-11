@@ -2,44 +2,40 @@ import React from "react";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import { ArrowBack } from "@material-ui/icons";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableRow from "@material-ui/core/TableRow";
 import Product from "../../components/Product";
 import Title from "./Title";
-
 import firebase from "firebase";
-
-const rows = [
-  { name: "Home Decorative Items" },
-  { name: "Metal Urns" },
-  { name: "Christmas Decoration Items" },
-  { name: "Decorative Chandelier" },
-  { name: "Candle Holder" },
-  { name: "Metal Handicrafts" },
-  { name: "Flower Vase" },
-  { name: "MDF Frame" },
-  { name: "Decorative Alphabets Letters" },
-  { name: "Jewelled Mirror" },
-  { name: "Farmstead Finials" },
-  { name: "PPE kit, Full Body Gown, Goggles, Masks, Waste Bags" },
-];
-
-function preventDefault(event) {
-  event.preventDefault();
-}
-
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import IconButton from "@material-ui/core/IconButton";
+import InfoIcon from "@material-ui/icons/Info";
+import ProductPage from "../../components/ProductPage";
 const useStyles = makeStyles((theme) => ({
-  seeMore: {
-    marginTop: theme.spacing(3),
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+  },
+  icon: {
+    color: "rgba(255, 255, 255, 0.54)",
   },
 }));
 
 export default function Products() {
+  const classes = useStyles();
   const [category, setCategory] = React.useState(null);
   const [products, setProducts] = React.useState([]);
-
+  const [productPhoto, setProductPhoto] = React.useState([]);
+  const [productPage, setProductPage] = React.useState(false);
+  const [productData, setProductData] = React.useState({});
+  var key = 1;
   React.useEffect(() => {
     firebase
       .firestore()
@@ -54,7 +50,23 @@ export default function Products() {
       });
   }, []);
 
-  const classes = useStyles();
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .collection("ProductPhoto/")
+      .get()
+      .then((data) => {
+        let temp = [];
+        data.forEach((doc) => {
+          temp.push(doc.data());
+        });
+        setProductPhoto(temp);
+      });
+  }, []);
+  const handleProduct = (prodData) => {
+    setProductPage(true);
+    setProductData(prodData);
+  };
   return (
     <React.Fragment>
       <Title>
@@ -74,27 +86,41 @@ export default function Products() {
         )}
       </Title>
       {!category ? (
-        <Table size="large">
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow>
-                <Link
-                  onClick={() => {
-                    setCategory(row.name);
-                  }}
-                >
-                  <TableCell>{row.name}</TableCell>
-                </Link>
-              </TableRow>
+        <div>
+          <GridList>
+            {productPhoto.map((tile) => (
+              <GridListTile key={key++}>
+                <img src={tile.img} alt={tile.title} />
+                <GridListTileBar
+                  title={tile.title}
+                  actionIcon={
+                    <IconButton
+                      aria-label={`info about ${tile.title}`}
+                      className={classes.icon}
+                      onClick={() => setCategory(tile.title)}
+                    >
+                      <InfoIcon />
+                    </IconButton>
+                  }
+                />
+              </GridListTile>
             ))}
-          </TableBody>
-        </Table>
+          </GridList>
+        </div>
       ) : (
         <>
-          {products.map((product) => {
-            if (product.category === category)
-              return <Product data={product} />;
-          })}
+          {productPage ? (
+            <ProductPage data={productData} setProductPage={setProductPage} />
+          ) : (
+            <>
+              {products.map((product) => {
+                if (product.category === category)
+                  return (
+                    <Product data={product} handleProduct={handleProduct} />
+                  );
+              })}
+            </>
+          )}
         </>
       )}
     </React.Fragment>

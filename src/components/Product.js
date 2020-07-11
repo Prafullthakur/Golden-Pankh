@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import firebase from "firebase";
 import Link from "@material-ui/core/Link";
-import ProductPage from "./ProductPage";
 const Product = ({ data, location, handleProduct }) => {
   const deleteProduct = (productId) => {
     if (window.confirm("Are you sure you want to delete the product")) {
@@ -36,7 +35,11 @@ const Product = ({ data, location, handleProduct }) => {
                 <Link onClick={() => handleProduct(data)}>{data.name}</Link>
               )}
             </h4>
-            {data.price && <h6>${data.price} USD</h6>}
+            {data.price && (
+              <h6>
+                ${data.price} {data.priceType}
+              </h6>
+            )}
             <hr />
             <div className="container">
               <div className="row">
@@ -52,7 +55,11 @@ const Product = ({ data, location, handleProduct }) => {
                   )}
                 </div>
                 <div className="col-md-6">
-                  {data.width && <p>Width: {data.width} Centimeter (cm)</p>}
+                  {data.width && (
+                    <p>
+                      Width: {data.width} {data.unit}
+                    </p>
+                  )}
                   {data.colour && <p>Color: {data.colour}</p>}
                   {data.materialType && <p>Metals Type: {data.materialType}</p>}
                   {data.productType && <p>Product Type: {data.productType}</p>}

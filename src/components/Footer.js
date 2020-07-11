@@ -1,6 +1,7 @@
 import React from "react";
 import firebase from "firebase";
-const Footer = () => {
+import { withRouter } from "react-router-dom";
+const Footer = (props) => {
   const [state, setState] = React.useState({});
   React.useEffect(() => {
     firebase
@@ -14,6 +15,15 @@ const Footer = () => {
         console.log(err);
       });
   }, []);
+
+  if (
+    props.location.pathname === "/dashboard" ||
+    props.location.pathname === "/addProduct" ||
+    props.location.pathname === "/social" ||
+    props.location.pathname === "/admin"
+  )
+    return null;
+
   return (
     <footer>
       <div class="container" style={{ color: "white" }}>
@@ -85,4 +95,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default withRouter(Footer);

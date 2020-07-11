@@ -27,7 +27,6 @@ import Hypercube from "../pages/user/hypercube";
 import BirdNest from "../pages/user/bird-nest";
 import DisplayStand from "../pages/user/displayStand";
 import AdminLogin from "../pages/admin/login";
-import AdminRegister from "../pages/admin/register";
 import Dashboard from "../pages/admin/Dashboard";
 import AddProduct from "../pages/admin/AddProduct";
 import Social from "../pages/admin/Social";
@@ -59,8 +58,7 @@ const Navigator = () => {
         <Route exact path="/Hypercube" component={Hypercube} />
         <Route exact path="/bird-nest" component={BirdNest} />
         <Route exact path="/display-stand" component={DisplayStand} />
-        <Route exact path="/admin-login" component={AdminLogin} />
-        <Route exact path="/admin-register" component={AdminRegister} />
+        <Route exact path="/admin" component={AdminLogin} />
         <Route exact={true} path="/dashboard" component={Dashboard} />
         <Route exact path="/addProduct" component={AddProduct} />
         <Route exact path="/social" component={Social} />

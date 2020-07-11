@@ -4,47 +4,49 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import Divider from "@material-ui/core/Divider";
 import LayersIcon from "@material-ui/icons/Layers";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 export const mainListItems = (
   <div>
-    <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <Link href="/dashboard">
+    <Link onClick={() => (window.location.href = "/dashboard")}>
+      <ListItem button>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
         <ListItemText primary="Products" />
-      </Link>
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <Link href="/addProduct">
+      </ListItem>
+    </Link>
+    <Link onClick={() => (window.location.href = "/addProduct")}>
+      <ListItem button>
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
         <ListItemText primary="Add Product" />
-      </Link>
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <SupervisorAccountIcon />
-      </ListItemIcon>
-      <Link href="/social">
+      </ListItem>
+    </Link>
+    <Link onClick={() => (window.location.href = "/social")}>
+      <ListItem button>
+        <ListItemIcon>
+          <SupervisorAccountIcon />
+        </ListItemIcon>
         <ListItemText primary="Social" />
-      </Link>
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <ExitToAppIcon />
-      </ListItemIcon>
-      <Link
-        onClick={() => {
-          localStorage.removeItem("userToken");
-          window.location.href = "/admin-login";
-        }}
-      >
+      </ListItem>
+    </Link>
+    <Divider />
+    <Link
+      onClick={() => {
+        localStorage.removeItem("userToken");
+        window.location.href = "/admin";
+      }}
+    >
+      <ListItem button>
+        <ListItemIcon>
+          <ExitToAppIcon />
+        </ListItemIcon>
         <ListItemText primary="Sign Out" />
-      </Link>
-    </ListItem>
+      </ListItem>
+    </Link>
   </div>
 );
