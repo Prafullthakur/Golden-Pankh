@@ -103,32 +103,20 @@ export default function Checkout() {
     setImage3(e.target.files[0]);
   };
   // Upload Image to Storage
-  const uploadImage = () => {
-    const ref = firebase.storage().ref();
-    const imgName1 = Date.now().toString() + "img1";
-    const imgName2 = Date.now().toString() + "img2";
-    const imgName3 = Date.now().toString() + "img3";
-    const imgRef1 = ref.child(imgName1);
-    const imgRef2 = ref.child(imgName2);
-    const imgRef3 = ref.child(imgName3);
+  const uploadImage1 = () => {
     return new Promise((resolve, reject) => {
+      const ref = firebase.storage().ref();
+      const imgName1 = Date.now().toString() + "img1";
+
+      const imgRef1 = ref.child(imgName1);
+
       if (!!image1) {
         imgRef1
           .put(image1)
-          .then((snap1) => {
-            if (!!image2) {
-              imgRef2.put(image2).then((snap2) => {
-                if (!!image3) {
-                  imgRef3.put(image3).then((snap3) => {
-                    resolve([
-                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName1}?alt=media`,
-                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName2}?alt=media`,
-                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName3}?alt=media`,
-                    ]);
-                  });
-                }
-              });
-            }
+          .then((snap) => {
+            resolve(
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName1}?alt=media`
+            );
           })
           .catch((err) => {
             reject(err);
@@ -138,33 +126,84 @@ export default function Checkout() {
       }
     });
   };
+  const uploadImage2 = () => {
+    return new Promise((resolve, reject) => {
+      const ref = firebase.storage().ref();
+      const imgName2 = Date.now().toString() + "img2";
 
-  // Upload Product to Database
-  const uploadProduct = () => {
-    const data = state;
-    uploadImage().then((imgUrls) => {
-      if (!!image1) data.image1 = imgUrls[0];
-      if (!!image1 && !!image2) data.image2 = imgUrls[1];
-      if (!!image1 && !!image2 && !!image3) data.image3 = imgUrls[2];
-      firebase
-        .firestore()
-        .collection("Products/")
-        .add(data)
-        .then((doc) => {
-          data.productId = doc.id;
-        })
-        .then(() => {
-          firebase
-            .firestore()
-            .doc(`Products/${data.productId}`)
-            .set(data)
-            .then((snap) => {
-              alert("Product Added Successfully!");
-              window.location.href = "/dashboard";
-            });
-        })
-        .catch((err) => alert("An error occured!"));
+      const imgRef2 = ref.child(imgName2);
+
+      if (!!image2) {
+        imgRef2
+          .put(image2)
+          .then((snap) => {
+            resolve(
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName2}?alt=media`
+            );
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      } else {
+        resolve(null);
+      }
     });
+  };
+  const uploadImage3 = () => {
+    return new Promise((resolve, reject) => {
+      const ref = firebase.storage().ref();
+      const imgName3 = Date.now().toString() + "img3";
+      const imgRef3 = ref.child(imgName3);
+
+      if (!!image3) {
+        imgRef3
+          .put(image3)
+          .then((snap) => {
+            resolve(
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName3}?alt=media`
+            );
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      } else {
+        resolve(null);
+      }
+    });
+  };
+  // Upload Product to Database
+  const uploadProduct = async () => {
+    const data = state;
+    if (image1) {
+      const tempImage1 = await uploadImage1();
+      data.image1 = tempImage1;
+    }
+    if (image2) {
+      const tempImage2 = await uploadImage2();
+      data.image2 = tempImage2;
+    }
+    if (image3) {
+      const tempImage3 = await uploadImage3();
+      data.image3 = tempImage3;
+    }
+    firebase
+      .firestore()
+      .collection("Products/")
+      .add(data)
+      .then((doc) => {
+        data.productId = doc.id;
+      })
+      .then(() => {
+        firebase
+          .firestore()
+          .doc(`Products/${data.productId}`)
+          .set(data)
+          .then((snap) => {
+            alert("Product Added Successfully!");
+            window.location.href = "/dashboard";
+          });
+      })
+      .catch((err) => alert("An error occured!"));
   };
 
   const handleNext = () => {

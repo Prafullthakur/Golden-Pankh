@@ -4,6 +4,7 @@ import firebase from "firebase";
 import Link from "@material-ui/core/Link";
 import ProductDetails from "../pages/checkout/ProductDetails";
 import DeliveryDetails from "../pages/checkout/DeliveryDetails";
+
 import Button from "@material-ui/core/Button";
 const Product = ({ data, location, handleProduct }) => {
   const [edit, setEdit] = React.useState(false);
@@ -58,32 +59,65 @@ const Product = ({ data, location, handleProduct }) => {
       });
   };
 
-  const uploadImage = () => {
-    const ref = firebase.storage().ref();
-    const imgName1 = Date.now().toString() + "img1";
-    const imgName2 = Date.now().toString() + "img2";
-    const imgName3 = Date.now().toString() + "img3";
-    const imgRef1 = ref.child(imgName1);
-    const imgRef2 = ref.child(imgName2);
-    const imgRef3 = ref.child(imgName3);
+  const uploadImage1 = () => {
     return new Promise((resolve, reject) => {
+      const ref = firebase.storage().ref();
+      const imgName1 = Date.now().toString() + "img1";
+
+      const imgRef1 = ref.child(imgName1);
+
       if (!!img1) {
         imgRef1
           .put(img1)
           .then((snap) => {
-            if (!!img2) {
-              imgRef2.put(img2).then((snap2) => {
-                if (!!img3) {
-                  imgRef3.put(img3).then((snap3) => {
-                    resolve([
-                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName1}?alt=media`,
-                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName2}?alt=media`,
-                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName3}?alt=media`,
-                    ]);
-                  });
-                }
-              });
-            }
+            resolve(
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName1}?alt=media`
+            );
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      } else {
+        resolve(null);
+      }
+    });
+  };
+  const uploadImage2 = () => {
+    return new Promise((resolve, reject) => {
+      const ref = firebase.storage().ref();
+      const imgName2 = Date.now().toString() + "img2";
+
+      const imgRef2 = ref.child(imgName2);
+
+      if (!!img2) {
+        imgRef2
+          .put(img2)
+          .then((snap) => {
+            resolve(
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName2}?alt=media`
+            );
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      } else {
+        resolve(null);
+      }
+    });
+  };
+  const uploadImage3 = () => {
+    return new Promise((resolve, reject) => {
+      const ref = firebase.storage().ref();
+      const imgName3 = Date.now().toString() + "img3";
+      const imgRef3 = ref.child(imgName3);
+
+      if (!!img3) {
+        imgRef3
+          .put(img3)
+          .then((snap) => {
+            resolve(
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName3}?alt=media`
+            );
           })
           .catch((err) => {
             reject(err);
@@ -95,28 +129,35 @@ const Product = ({ data, location, handleProduct }) => {
   };
 
   // Upload Product to Database
-  const uploadProduct = (productId) => {
+  const uploadProduct = async (productId) => {
     alert("Saving...");
-    uploadImage().then((imgUrls) => {
-      var data = state;
-      if (!!img1) data.image1 = imgUrls[0];
-      if (!!img1 && !!img2) data.image2 = imgUrls[1];
-      if (!!img1 && !!img2 && !!img3) data.image3 = imgUrls[2];
-      firebase
-        .firestore()
-        .collection("Products/")
-        .doc(productId)
-        .set(data, { merge: true })
-        .then((snap) => {
-          console.log(snap);
-          alert("Product edited successfully");
-          window.location.href = "/dashboard";
-        })
-        .catch((err) => {
-          alert("An error occured!");
-          console.log(err);
-        });
-    });
+    const data = state;
+    if (!!img1) {
+      const tempImage1 = await uploadImage1();
+      data.image1 = tempImage1;
+    }
+    if (!!img2) {
+      const tempImage2 = await uploadImage2();
+      data.image2 = tempImage2;
+    }
+    if (!!img3) {
+      const tempImage3 = await uploadImage3();
+      data.image3 = tempImage3;
+    }
+    firebase
+      .firestore()
+      .collection("Products/")
+      .doc(productId)
+      .set(data, { merge: true })
+      .then((snap) => {
+        console.log(snap);
+        alert("Product edited successfully");
+        window.location.href = "/dashboard";
+      })
+      .catch((err) => {
+        alert("An error occured!");
+        console.log(err);
+      });
   };
   return edit ? (
     <>
