@@ -30,7 +30,9 @@ export default function AddressForm({
     description,
   },
   handleChange,
-  handleImg,
+  handleImg1,
+  handleImg2,
+  handleImg3,
 }) {
   return (
     <React.Fragment>
@@ -115,13 +117,35 @@ export default function AddressForm({
         </Grid>
 
         <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
-          <label htmlFor="image"> Upload Image </label>
+          <label htmlFor="image"> Upload Image 1</label>
           <input
             style={{ marginLeft: 24 }}
-            id="image"
-            name="image"
+            id="image1"
+            name="image1"
             type="file"
-            onChange={handleImg}
+            onChange={handleImg1}
+            accept="image/*"
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
+          <label htmlFor="image"> Upload Image 2</label>
+          <input
+            style={{ marginLeft: 24 }}
+            id="image2"
+            name="image2"
+            type="file"
+            onChange={handleImg2}
+            accept="image/*"
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
+          <label htmlFor="image"> Upload Image 3</label>
+          <input
+            style={{ marginLeft: 24 }}
+            id="image3"
+            name="image3"
+            type="file"
+            onChange={handleImg3}
             accept="image/*"
           />
         </Grid>

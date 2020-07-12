@@ -9,9 +9,17 @@ const Product = ({ data, location, handleProduct }) => {
   const [edit, setEdit] = React.useState(false);
   const [state, setState] = React.useState({});
   const [delEdit, setDelEdit] = React.useState(false);
-  const [img, setImg] = React.useState(null);
-  const handleImg = (e) => {
-    setImg(e.target.files[0]);
+  const [img1, setImg1] = React.useState(null);
+  const [img2, setImg2] = React.useState(null);
+  const [img3, setImg3] = React.useState(null);
+  const handleImg1 = (e) => {
+    setImg1(e.target.files[0]);
+  };
+  const handleImg2 = (e) => {
+    setImg2(e.target.files[0]);
+  };
+  const handleImg3 = (e) => {
+    setImg3(e.target.files[0]);
   };
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -52,16 +60,30 @@ const Product = ({ data, location, handleProduct }) => {
 
   const uploadImage = () => {
     const ref = firebase.storage().ref();
-    const imgName = Date.now().toString();
-    const imgRef = ref.child(imgName);
+    const imgName1 = Date.now().toString() + "img1";
+    const imgName2 = Date.now().toString() + "img2";
+    const imgName3 = Date.now().toString() + "img3";
+    const imgRef1 = ref.child(imgName1);
+    const imgRef2 = ref.child(imgName2);
+    const imgRef3 = ref.child(imgName3);
     return new Promise((resolve, reject) => {
-      if (!!img) {
-        imgRef
-          .put(img)
+      if (!!img1) {
+        imgRef1
+          .put(img1)
           .then((snap) => {
-            resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName}?alt=media`
-            );
+            if (!!img2) {
+              imgRef2.put(img2).then((snap2) => {
+                if (!!img3) {
+                  imgRef3.put(img3).then((snap3) => {
+                    resolve([
+                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName1}?alt=media`,
+                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName2}?alt=media`,
+                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName3}?alt=media`,
+                    ]);
+                  });
+                }
+              });
+            }
           })
           .catch((err) => {
             reject(err);
@@ -74,9 +96,12 @@ const Product = ({ data, location, handleProduct }) => {
 
   // Upload Product to Database
   const uploadProduct = (productId) => {
-    uploadImage().then((imgUrl) => {
+    alert("Saving...");
+    uploadImage().then((imgUrls) => {
       var data = state;
-      if (!!imgUrl) data.image = imgUrl;
+      if (!!img1) data.image1 = imgUrls[0];
+      if (!!img1 && !!img2) data.image2 = imgUrls[1];
+      if (!!img1 && !!img2 && !!img3) data.image3 = imgUrls[2];
       firebase
         .firestore()
         .collection("Products/")
@@ -97,7 +122,9 @@ const Product = ({ data, location, handleProduct }) => {
     <>
       <ProductDetails
         state={state}
-        handleImg={handleImg}
+        handleImg1={handleImg1}
+        handleImg2={handleImg2}
+        handleImg3={handleImg3}
         handleChange={handleChange}
       />
       <br />
@@ -115,7 +142,7 @@ const Product = ({ data, location, handleProduct }) => {
     </>
   ) : delEdit ? (
     <>
-      <DeliveryDetails state={state} edit={edit} />
+      <DeliveryDetails state={state} edit={edit} handleChange={handleChange} />
       <br />
       <Button variant="contained" color="primary">
         <Link
@@ -123,7 +150,7 @@ const Product = ({ data, location, handleProduct }) => {
             uploadProduct(data.productId);
           }}
         >
-          Add Product
+          Save
         </Link>
       </Button>
     </>
@@ -133,7 +160,7 @@ const Product = ({ data, location, handleProduct }) => {
         <div className="container">
           <div className="row">
             <div className="col-md-5 pt-3">
-              {data.image && <img src={data.image} />}
+              <img src={data.image1} />
             </div>
             <div className="col-md-7">
               <h4 className="pt-3">
@@ -184,20 +211,27 @@ const Product = ({ data, location, handleProduct }) => {
           <div className="text-center mt-3 pb-4">
             {location.pathname === "/dashboard" ? (
               <>
-                <button
-                  type="button"
-                  className="btn btn-warning"
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleProduct(data)}
+                >
+                  View Product
+                </Button>{" "}
+                <Button
+                  variant="contained"
+                  style={{ background: "#dcdf13" }}
                   onClick={() => editProduct(data.productId)}
                 >
                   Edit Product
-                </button>{" "}
-                <button
-                  type="button"
-                  className="btn btn-danger"
+                </Button>{" "}
+                <Button
+                  variant="contained"
+                  color="secondary"
                   onClick={() => deleteProduct(data.productId)}
                 >
                   Delete Product
-                </button>
+                </Button>
               </>
             ) : (
               <button

@@ -15,8 +15,8 @@ export default function DeliveryDetails({
     paymentTerm,
     mainExportMarket,
     FobPort,
-    handleChange,
   },
+  handleChange,
 }) {
   return (
     <React.Fragment>

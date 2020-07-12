@@ -79,7 +79,7 @@ export default function Products() {
                 setCategory(null);
               }}
             >
-              <ArrowBack />
+              <ArrowBack />{" "}
             </Link>
             {category}
           </>

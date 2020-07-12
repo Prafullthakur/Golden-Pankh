@@ -15,21 +15,84 @@ export default function ProductPage({ data, setProductPage }) {
             {data.category}
           </h5>
           <h3>{data.name}</h3>
-          <p className="pb-4">
-            Spring is about to come and it is not too early to start your spring
-            decoration at home. It runs well into your existing decor and
-            enables the tint of nature in your home. Proffered with little
-            softness as well as fluff, this embellishing nest runs well in all
-            decors. It looks extremely pretty when paired with silver. Juts
-            decorate it with some artificial eggs as well as birds and the
-            gifting staple is set to go. Offered Bird Nest is appropriate for
-            your spring picture and enables a beautiful home decor. It vitalizes
-            a boring corner and makes it vivacious and attractive.
-          </p>
+          <p className="pb-4">{data.description}</p>
           <div className="prod py-4">
             <div className="row">
               <div class="col-md-4 pl-4">
-                <img src={data.image} alt="" />
+                <div
+                  id="carouselExampleIndicators"
+                  class="carousel slide"
+                  data-ride="carousel"
+                >
+                  <ol class="carousel-indicators">
+                    <li
+                      data-target="#carouselExampleIndicators"
+                      data-slide-to="0"
+                      class="active"
+                    ></li>
+                    <li
+                      data-target="#carouselExampleIndicators"
+                      data-slide-to="1"
+                    ></li>
+                    <li
+                      data-target="#carouselExampleIndicators"
+                      data-slide-to="2"
+                    ></li>
+                  </ol>
+                  <div class="carousel-inner">
+                    {data.image1 && (
+                      <div class="carousel-item active">
+                        <img
+                          class="d-block w-100"
+                          src={data.image1}
+                          alt="First slide"
+                        />
+                      </div>
+                    )}
+                    {data.image2 && (
+                      <div class="carousel-item">
+                        <img
+                          class="d-block w-100"
+                          src={data.image2}
+                          alt="Second slide"
+                        />
+                      </div>
+                    )}
+                    {data.image3 && (
+                      <div class="carousel-item">
+                        <img
+                          class="d-block w-100"
+                          src={data.image3}
+                          alt="Third slide"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <a
+                    class="carousel-control-prev"
+                    href="#carouselExampleIndicators"
+                    role="button"
+                    data-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a
+                    class="carousel-control-next"
+                    href="#carouselExampleIndicators"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
               </div>
               <div className="col-md-8">
                 <h3>{data.name}</h3>
@@ -167,7 +230,7 @@ export default function ProductPage({ data, setProductPage }) {
               <tr>
                 <td>Price:</td>
                 <td>
-                  {data.price} {data.priceType} ($)
+                  {data.price} {data.priceType}
                 </td>
                 <td>Minimum Order Quantity:</td>
                 <td>{data.moq} Piece</td>
@@ -178,7 +241,7 @@ export default function ProductPage({ data, setProductPage }) {
             <table>
               <tr>
                 <td>Supply Ability:</td>
-                <td>{data.supplyAbility} Piece pcs Per Month</td>
+                <td>{data.supplyAbility} Pieces Per Month</td>
                 <td>Delivery Time:</td>
                 <td>{data.deliveryTime} Days</td>
               </tr>

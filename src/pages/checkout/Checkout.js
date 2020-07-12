@@ -89,38 +89,63 @@ export default function Checkout() {
     mainExportMarket: "",
     fobPort: "",
   });
-  const [image, setImage] = React.useState(null);
-
-  const handleImg = (e) => {
-    setImage(e.target.files[0]);
+  const [image1, setImage1] = React.useState(null);
+  const [image2, setImage2] = React.useState(null);
+  const [image3, setImage3] = React.useState(null);
+  const handleImg1 = (e) => {
+    setImage1(e.target.files[0]);
   };
 
+  const handleImg2 = (e) => {
+    setImage2(e.target.files[0]);
+  };
+  const handleImg3 = (e) => {
+    setImage3(e.target.files[0]);
+  };
   // Upload Image to Storage
   const uploadImage = () => {
-    if (!!image) {
-      const ref = firebase.storage().ref();
-      const imgName = Date.now().toString();
-      const imgRef = ref.child(imgName);
-      return new Promise((resolve, reject) => {
-        imgRef
-          .put(image)
-          .then((snap) => {
-            resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName}?alt=media`
-            );
+    const ref = firebase.storage().ref();
+    const imgName1 = Date.now().toString() + "img1";
+    const imgName2 = Date.now().toString() + "img2";
+    const imgName3 = Date.now().toString() + "img3";
+    const imgRef1 = ref.child(imgName1);
+    const imgRef2 = ref.child(imgName2);
+    const imgRef3 = ref.child(imgName3);
+    return new Promise((resolve, reject) => {
+      if (!!image1) {
+        imgRef1
+          .put(image1)
+          .then((snap1) => {
+            if (!!image2) {
+              imgRef2.put(image2).then((snap2) => {
+                if (!!image3) {
+                  imgRef3.put(image3).then((snap3) => {
+                    resolve([
+                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName1}?alt=media`,
+                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName2}?alt=media`,
+                      `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName3}?alt=media`,
+                    ]);
+                  });
+                }
+              });
+            }
           })
           .catch((err) => {
             reject(err);
           });
-      });
-    }
+      } else {
+        resolve(null);
+      }
+    });
   };
 
   // Upload Product to Database
   const uploadProduct = () => {
     const data = state;
-    uploadImage().then((imgUrl) => {
-      data.image = imgUrl;
+    uploadImage().then((imgUrls) => {
+      if (!!image1) data.image1 = imgUrls[0];
+      if (!!image1 && !!image2) data.image2 = imgUrls[1];
+      if (!!image1 && !!image2 && !!image3) data.image3 = imgUrls[2];
       firebase
         .firestore()
         .collection("Products/")
@@ -135,11 +160,7 @@ export default function Checkout() {
             .set(data)
             .then((snap) => {
               alert("Product Added Successfully!");
-              window.location.href("/dashboard");
-            })
-            .catch((err) => {
-              alert("An error occured");
-              console.log(err);
+              window.location.href = "/dashboard";
             });
         })
         .catch((err) => alert("An error occured!"));
@@ -185,7 +206,9 @@ export default function Checkout() {
                 {activeStep === 0 ? (
                   <ProductDetails
                     state={state}
-                    handleImg={handleImg}
+                    handleImg1={handleImg1}
+                    handleImg2={handleImg2}
+                    handleImg3={handleImg3}
                     handleChange={handleChange}
                   />
                 ) : activeStep === 1 ? (
