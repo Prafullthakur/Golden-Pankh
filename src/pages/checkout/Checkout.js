@@ -62,10 +62,12 @@ export default function Checkout() {
     category: "",
     name: "",
     price: "",
+    priceType: "",
     color: "",
     length: "",
     width: "",
     height: "",
+    unit: "",
     technique: "",
     style: "",
     regionalStyle: "",
@@ -95,56 +97,53 @@ export default function Checkout() {
 
   // Upload Image to Storage
   const uploadImage = () => {
-    const ref = firebase.storage().ref();
-    const imgName = Date.now().toString();
-    const imgRef = ref.child(imgName);
-    return new Promise((resolve, reject) => {
-      imgRef
-        .put(image)
-        .then((snap) => {
-          resolve(
-            `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName}?alt=media`
-          );
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+    if (!!image) {
+      const ref = firebase.storage().ref();
+      const imgName = Date.now().toString();
+      const imgRef = ref.child(imgName);
+      return new Promise((resolve, reject) => {
+        imgRef
+          .put(image)
+          .then((snap) => {
+            resolve(
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName}?alt=media`
+            );
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+    }
   };
 
   // Upload Product to Database
   const uploadProduct = () => {
     const data = state;
-    uploadImage()
-      .then((imgUrl) => {
-        data.image = imgUrl;
-        firebase
-          .firestore()
-          .collection("Products/")
-          .add(data)
-          .then((doc) => {
-            data.productId = doc.id;
-          })
-          .then(() => {
-            firebase
-              .firestore()
-              .doc(`Products/${data.productId}`)
-              .set(data)
-              .then((snap) => {
-                alert("Product Added Successfully!");
-                window.location.href('/dashboard')
-              })
-              .catch((err) => {
-                alert("An error occured");
-                console.log(err);
-              });
-          })
-          .catch((err) => alert("An error occured!"));
-      })
-      .catch((err) => {
-        alert("An error occured!");
-        console.log(err);
-      });
+    uploadImage().then((imgUrl) => {
+      data.image = imgUrl;
+      firebase
+        .firestore()
+        .collection("Products/")
+        .add(data)
+        .then((doc) => {
+          data.productId = doc.id;
+        })
+        .then(() => {
+          firebase
+            .firestore()
+            .doc(`Products/${data.productId}`)
+            .set(data)
+            .then((snap) => {
+              alert("Product Added Successfully!");
+              window.location.href("/dashboard");
+            })
+            .catch((err) => {
+              alert("An error occured");
+              console.log(err);
+            });
+        })
+        .catch((err) => alert("An error occured!"));
+    });
   };
 
   const handleNext = () => {

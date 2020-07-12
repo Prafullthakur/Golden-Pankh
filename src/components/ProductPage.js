@@ -34,7 +34,7 @@ export default function ProductPage({ data, setProductPage }) {
               <div className="col-md-8">
                 <h3>{data.name}</h3>
                 <h6 className="price">
-                  Price: {data.price} {data.priceType} ($)
+                  Price: {data.price} {data.priceType}
                 </h6>
                 <h5>Products Details:</h5>
                 <table>
