@@ -30,6 +30,10 @@ import AdminLogin from "../pages/admin/login";
 import Dashboard from "../pages/admin/Dashboard";
 import AddProduct from "../pages/admin/AddProduct";
 import Social from "../pages/admin/Social";
+
+// Secured Route
+import AuthRoute from "./AuthRoute";
+
 const Navigator = () => {
   return (
     <Router>
@@ -59,9 +63,10 @@ const Navigator = () => {
         <Route exact path="/bird-nest" component={BirdNest} />
         <Route exact path="/display-stand" component={DisplayStand} />
         <Route exact path="/admin" component={AdminLogin} />
-        <Route exact={true} path="/dashboard" component={Dashboard} />
-        <Route exact path="/addProduct" component={AddProduct} />
-        <Route exact path="/social" component={Social} />
+        <AuthRoute exact path="/dashboard" component={Dashboard} />
+        <AuthRoute exact path="/addProduct" component={AddProduct} />
+        <AuthRoute exact path="/social" component={Social} />
+        <AuthRoute exact path="/changePassword" component={Social} />
       </Switch>
       <Footer />
     </Router>

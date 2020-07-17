@@ -105,14 +105,6 @@ export default function Dashboard() {
     setOpen(!open);
   };
 
-  React.useEffect(() => {
-    if (!localStorage.getItem("userToken")) {
-      document.querySelector("html").innerHTML = "";
-      alert("Please sign in");
-      window.location.href = "/";
-    }
-  }, []);
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -171,6 +163,22 @@ export default function Dashboard() {
               </Paper>
             </Grid>
           </Grid>
+          <div
+            class="col-md-6"
+            style={{
+              paddingTop: "30px",
+              margin: "0px",
+            }}
+          >
+            <p class="copyright">
+              GOLDEN PANKH EXPORT IMPORT All Rights Reserved.{" "}
+              <a href="https://www.tradeindia.com/about-us/terms/terms_01.html">
+                {" "}
+                (Terms of Use)
+              </a>{" "}
+              <br /> Developed and Managed by Augur IT Consulting Pvt. Ltd
+            </p>
+          </div>
         </Container>
       </main>
     </div>

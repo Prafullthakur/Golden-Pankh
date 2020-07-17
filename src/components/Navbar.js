@@ -2,15 +2,24 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import firebase from "firebase";
-const Navbar = (props) => {
+const Navbar = ({ location }) => {
+  const [social, setSocial] = React.useState({});
   const [categories, setCategories] = React.useState({});
 
   React.useEffect(() => {
     firebase
       .firestore()
-      .doc("Meta/categories")
+      .collection("Meta")
       .get()
-      .then((data) => setCategories(data.data()))
+      .then((data) => {
+        data.forEach((doc) => {
+          if (doc.id === "social") {
+            setSocial(doc.data());
+          } else if (doc.id === "categories") {
+            setCategories(doc.data());
+          }
+        });
+      })
       .catch((err) => {
         console.log(err);
         alert("An error Occured");
@@ -26,13 +35,16 @@ const Navbar = (props) => {
     }
   };
   window.addEventListener("scroll", checkScrollTop);
-  if (
-    props.location.pathname === "/dashboard" ||
-    props.location.pathname === "/addProduct" ||
-    props.location.pathname === "/social" ||
-    props.location.pathname === "/admin"
-  )
-    return null;
+
+  const notAllowedPaths = [
+    "/dashboard",
+    "/addProduct",
+    "/social",
+    "/admin",
+    "/changePassword",
+  ];
+
+  if (notAllowedPaths.includes(location.pathname)) return null;
 
   return (
     <div
@@ -45,12 +57,12 @@ const Navbar = (props) => {
     >
       {showScroll ? (
         <nav
-          class="navbar sticky-top navbar-expand-lg navbar-light py-4"
+          class="navbar sticky-top navbar-expand-lg py-4"
           style={{ background: "#052301" }}
         >
           {" "}
           <button
-            class="navbar-toggler"
+            class="navbar-toggler custom-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarTogglerDemo01"
@@ -154,7 +166,7 @@ const Navbar = (props) => {
                 </a>
               </li>
             </ul>
-            <div class="language">
+            {/* <div class="language">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -198,7 +210,7 @@ const Navbar = (props) => {
                   Portuguese
                 </a>
               </div>
-            </div>
+            </div> */}
             <form class="form-inline my-2 my-lg-0 pl-4">
               <input
                 class="form-control mr-sm-2"
@@ -211,12 +223,12 @@ const Navbar = (props) => {
         </nav>
       ) : (
         <nav
-          class="navbar sticky-top navbar-expand-lg navbar-light py-4"
+          class="navbar sticky-top navbar-expand-lg navbar-light   py-4"
           style={{ background: "transparent" }}
         >
           {" "}
           <button
-            class="navbar-toggler"
+            class="navbar-toggler custom-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarTogglerDemo01"
@@ -320,7 +332,7 @@ const Navbar = (props) => {
                 </a>
               </li>
             </ul>
-            <div class="language">
+            {/* <div class="language">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -364,7 +376,7 @@ const Navbar = (props) => {
                   Portuguese
                 </a>
               </div>
-            </div>
+            </div> */}
             <form class="form-inline my-2 my-lg-0 pl-4">
               <input
                 class="form-control mr-sm-2"
@@ -376,17 +388,40 @@ const Navbar = (props) => {
           </div>
         </nav>
       )}
-
-      <header class="pt-5 pb-4">
+      <header class="pt-5 pb-4 px-5">
         <div class="motive text-center wow fadeInDown delay-3s">
-          <div class="container pt-5">
+          <div class="pt-5">
             <div class="wow fadeInUp delay-3s">
-              <h2 class="pt-5">
-                INTEGRATION, CONTINUAL IMPROVEMENT AND AFFORDABILITY
-              </h2>
-              <h5 class="pb-3">FOR COMPLETE CUSTOMER SATISFACTION</h5>
-              <hr style={{ background: "#fff" }} />
-              <p>
+              <img
+                className="nav-img"
+                src={
+                  "https://tiimg.tistatic.com/catalogs/template52566/punchline.png"
+                }
+              />
+              <div className="nav-nonimg">
+                <h2 class="pt-5">
+                  INTEGRATION,{" "}
+                  <span
+                    style={{ color: "rgb(33, 198, 12)", fontWeight: "bold" }}
+                  >
+                    CONTINUAL IMPROVEMENT
+                  </span>{" "}
+                  AND AFFORDABILITY
+                </h2>
+                <h5
+                  class="pb-3"
+                  style={{
+                    fontWeight: "400",
+                    opacity: "0.8",
+                    fontFamily: "Arial",
+                  }}
+                >
+                  FOR COMPLETE CUSTOMER SATISFACTION
+                </h5>
+              </div>
+              <p
+                style={{ fontStyle: "italic", fontWeight: "400", fontSize: 18 }}
+              >
                 Get best quality home decor items like Candle Holder, Wall
                 Decoration Items, Beaded Chandelier, Tea Lights, Display Stands,
                 Velvet Products, etc., by dealing with us...
@@ -398,13 +433,15 @@ const Navbar = (props) => {
       <section>
         <div className="social-button">
           <div className="btn1">
-            <a className="callme">CALL ME FREE</a>
+            <a className="callme" href={social.whatsapp}>
+              Send Whatsapp
+            </a>
           </div>
-          <div className="btn2">
-            <a className="sms">SEND SMS</a>
-          </div>
+
           <div className="btn3">
-            <a className="send-enquiry">SEND ENQUIRY</a>
+            <a className="send-enquiry" href={"tel:08037302152"}>
+              SEND ENQUIRY
+            </a>
           </div>
         </div>
       </section>

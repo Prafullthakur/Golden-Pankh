@@ -71,103 +71,123 @@ export default function SignIn() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <SupervisorAccountIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Edit Social Links
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={uploadEdit}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            id="facebook"
-            label="Facebook"
-            name="facebook"
-            value={state.facebook}
-            onChange={(e) => {
-              setState({ ...state, facebook: e.target.value });
-            }}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            id="twitter"
-            label="Twitter"
-            name="twitter"
-            value={state.twitter}
-            onChange={(e) => {
-              setState({ ...state, twitter: e.target.value });
-            }}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="instagram"
-            label="Instagram"
-            type="instagram"
-            id="instagram"
-            value={state.instagram}
-            onChange={(e) => {
-              setState({ ...state, instagram: e.target.value });
-            }}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="linkedin"
-            label="LinkedIn"
-            type="linkedin"
-            id="linkedin"
-            value={state.linkedin}
-            onChange={(e) => {
-              setState({ ...state, linkedin: e.target.value });
-            }}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="whatsapp"
-            label="Whatsapp"
-            type="whatsapp"
-            id="whatsapp"
-            value={state.whatsapp}
-            onChange={(e) => {
-              setState({ ...state, whatsapp: e.target.value });
-            }}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="youtube"
-            label="Youtube"
-            type="youtube"
-            id="youtube"
-            value={state.youtube}
-            onChange={(e) => {
-              setState({ ...state, youtube: e.target.value });
-            }}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            {loading ? <CircularProgress color="white" /> : "Save"}
-          </Button>
-        </form>
+    <>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <SupervisorAccountIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Edit Social Links
+          </Typography>
+          <form className={classes.form} noValidate onSubmit={uploadEdit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="facebook"
+              label="Facebook"
+              name="facebook"
+              value={state.facebook}
+              onChange={(e) => {
+                setState({ ...state, facebook: e.target.value });
+              }}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="twitter"
+              label="Twitter"
+              name="twitter"
+              value={state.twitter}
+              onChange={(e) => {
+                setState({ ...state, twitter: e.target.value });
+              }}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              name="instagram"
+              label="Instagram"
+              type="instagram"
+              id="instagram"
+              value={state.instagram}
+              onChange={(e) => {
+                setState({ ...state, instagram: e.target.value });
+              }}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              name="linkedin"
+              label="LinkedIn"
+              type="linkedin"
+              id="linkedin"
+              value={state.linkedin}
+              onChange={(e) => {
+                setState({ ...state, linkedin: e.target.value });
+              }}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              name="whatsapp"
+              label="Whatsapp"
+              type="whatsapp"
+              id="whatsapp"
+              value={state.whatsapp}
+              onChange={(e) => {
+                setState({ ...state, whatsapp: e.target.value });
+              }}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              name="youtube"
+              label="Youtube"
+              type="youtube"
+              id="youtube"
+              value={state.youtube}
+              onChange={(e) => {
+                setState({ ...state, youtube: e.target.value });
+              }}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              {loading ? <CircularProgress color="white" /> : "Save"}
+            </Button>
+          </form>
+        </div>
+      </Container>
+
+      <div
+        class="col-md-6"
+        style={{
+          paddingTop: "30px",
+
+          margin: "0px",
+        }}
+      >
+        <p class="copyright">
+          GOLDEN PANKH EXPORT IMPORT All Rights Reserved.{" "}
+          <a href="https://www.tradeindia.com/about-us/terms/terms_01.html">
+            {" "}
+            (Terms of Use)
+          </a>{" "}
+          <br /> Developed and Managed by Augur IT Consulting Pvt. Ltd
+        </p>
       </div>
-    </Container>
+    </>
   );
 }

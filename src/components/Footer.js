@@ -1,7 +1,7 @@
 import React from "react";
 import firebase from "firebase";
 import { withRouter } from "react-router-dom";
-const Footer = (props) => {
+const Footer = ({ location }) => {
   const [state, setState] = React.useState({});
   React.useEffect(() => {
     firebase
@@ -16,13 +16,15 @@ const Footer = (props) => {
       });
   }, []);
 
-  if (
-    props.location.pathname === "/dashboard" ||
-    props.location.pathname === "/addProduct" ||
-    props.location.pathname === "/social" ||
-    props.location.pathname === "/admin"
-  )
-    return null;
+  const notAllowedPaths = [
+    "/dashboard",
+    "/addProduct",
+    "/social",
+    "/admin",
+    "/changePassword",
+  ];
+
+  if (notAllowedPaths.includes(location.pathname)) return null;
 
   return (
     <footer>
@@ -41,17 +43,20 @@ const Footer = (props) => {
           </div>
         </div>
         <br />
-        <div class="whatsCall">
-          <a href={state.whatsapp} class="enquiry">
-            Call
-          </a>
-        </div>
-        <div class="text-center mt-3">
-          <a href="/All-Products">
-            <button type="submit" class="btn btn-danger text-center">
+        <div className="footer-btn">
+          <div className="btn1">
+            <a className="callme" href="">
+              Send Whatsapp
+            </a>
+          </div>
+          <div className="btn2">
+            <a className="viewproducts" href="/all-products">
               View All Products
-            </button>
-          </a>
+            </a>
+          </div>
+          <div className="btn3">
+            <a className="send-enquiry">SEND ENQUIRY</a>
+          </div>
         </div>
         <br />
         <div class="row">

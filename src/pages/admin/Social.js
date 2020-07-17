@@ -19,7 +19,10 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 import { mainListItems } from "./listItems";
+import { withRouter } from "react-router-dom";
+
 import EditSocial from "./EditSocial";
+import ChangePassword from "./ChangePassword";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -101,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+function Dashboard({ location }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
@@ -168,10 +171,13 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Add a Products */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <EditSocial />
+                {location.pathname === "/social" ? (
+                  <EditSocial />
+                ) : (
+                  <ChangePassword />
+                )}
               </Paper>
             </Grid>
           </Grid>
@@ -180,3 +186,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+export default withRouter(Dashboard);

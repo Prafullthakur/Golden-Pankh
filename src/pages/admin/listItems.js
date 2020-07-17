@@ -8,6 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
 export const mainListItems = (
   <div>
     <Link onClick={() => (window.location.href = "/dashboard")}>
@@ -32,6 +33,14 @@ export const mainListItems = (
           <SupervisorAccountIcon />
         </ListItemIcon>
         <ListItemText primary="Social" />
+      </ListItem>
+    </Link>
+    <Link onClick={() => (window.location.href = "/changePassword")}>
+      <ListItem button>
+        <ListItemIcon>
+          <VpnKeyIcon />
+        </ListItemIcon>
+        <ListItemText primary="Change Password" />
       </ListItem>
     </Link>
     <Divider />

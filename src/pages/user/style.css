@@ -1,18 +1,35 @@
 * {
   user-select: none;
 }
-.navbar,
-header,
-.addr {
+
+.custom-toggler.navbar-toggler {
+  border-color: lightgreen;
 }
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 128, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
 .navbar-brand {
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .nav-link {
   font-weight: bold;
+  transition: 0.5s;
 }
 .nav-link:hover {
   background: rgb(33, 198, 12);
+}
+.nav-img {
+  width: 70vw;
+  background-size: no-repeat top center;
+  border-bottom: 1px solid #5f7a5b;
+  height: 20vh;
+  margin: 15px 0px 30px 0px;
+  padding: 0px 0px 30px 0px;
+}
+.nav-nonimg {
+  display: none;
 }
 nav .form-inline .form-control {
   border: none;
@@ -71,7 +88,7 @@ footer h4 {
 }
 .whatsCall {
   text-align: center;
-  padding: 10px 0px 10px 0px;
+  padding: 25px 0px 0px 0px;
   border-radius: 2px;
 }
 .call {
@@ -85,11 +102,22 @@ footer h4 {
   text-decoration: none;
 }
 .enquiry {
-  border: 1px solid #000;
   padding: 8px 56px;
+  border: 1px solid #fff;
   text-align: center;
   color: white;
+  text-decoration: none;
   /* background: ; */
+}
+.all-productbtn {
+  box-sizing: border-box;
+  margin: 0px 5px 0px 5px;
+  border: 1px solid #fff;
+  padding: 8px 8px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  background: rgb(33, 198, 12);
 }
 .social-button {
   display: flex;
@@ -103,14 +131,16 @@ footer h4 {
   text-align: center;
   color: white;
   text-decoration: none;
+  transition: 0.4s;
 }
-.sms {
+.viewproducts {
   margin: 0px 5px 0px 5px;
   border: 1px solid #fff;
   padding: 8px 45px;
   text-align: center;
   color: white;
   text-decoration: none;
+  transition: 0.4s;
 }
 .send-enquiry {
   box-sizing: border-box;
@@ -124,13 +154,17 @@ footer h4 {
 }
 .callme:hover {
   background: rgb(33, 198, 12);
-}
-.sms:hover {
-  background: rgb(33, 198, 12);
-}
-.enquiry:hover {
   text-decoration: none;
-  color: #000;
+  color: white;
+}
+.viewproducts:hover {
+  background: rgb(33, 198, 12);
+  text-decoration: none;
+  color: white;
+}
+.send-enquiry:hover {
+  text-decoration: none;
+  color: white;
 }
 
 /* footer .view-all{
@@ -171,6 +205,12 @@ footer .copyright {
   font-size: 11px;
   text-align: right;
 }
+.footer-btn {
+  display: flex;
+
+  justify-content: center;
+  margin-top: 20;
+}
 
 .company-profile {
   margin-bottom: 30px;
@@ -194,6 +234,12 @@ footer .copyright {
   margin-top: 20px;
 }
 @media only screen and (max-width: 780px) {
+  .nav-img {
+    display: none;
+  }
+  .nav-nonimg {
+    display: block;
+  }
   .header .container h1 a {
     text-align: center;
   }
@@ -204,16 +250,21 @@ footer .copyright {
     padding-left: 8%;
   }
   .callme {
-    padding: 8px 8px;
-    margin: 0px 2px 0px 2px;
+    padding: 8px 5px;
+    margin: 0px 0px 0px 0px;
   }
-  .sms {
-    padding: 8px 8px;
+  .viewproducts {
+    padding: 8px 5px;
     margin: 0px 2px 0px 2px;
   }
   .send-enquiry {
-    padding: 8px 8px;
-    margin: 0px 2px 0px 2px;
+    padding: 8px 5px;
+    margin: 0px 0px 0px 0px;
+  }
+  .footer-btn {
+    display: flex;
+
+    justify-content: center;
   }
 }
 @media only screen and (max-width: 320px) {
