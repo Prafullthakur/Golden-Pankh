@@ -214,6 +214,19 @@ const Navbar = (props) => {
           </div>
         </div>
       </header>
+      <section>
+        <div className="social-button">
+          <div className="btn1">
+            <a className="callme">CALL ME FREE</a>
+          </div>
+          <div className="btn2">
+            <a className="sms">SEND SMS</a>
+          </div>
+          <div className="btn3">
+            <a className="send-enquiry">SEND ENQUIRY</a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
