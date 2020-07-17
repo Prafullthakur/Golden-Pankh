@@ -12,7 +12,7 @@ header,
   font-weight: bold;
 }
 .nav-link:hover {
-  background: #ee8c91;
+  background: rgb(33, 198, 12);
 }
 nav .form-inline .form-control {
   border: none;
