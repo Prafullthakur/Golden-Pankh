@@ -13,6 +13,7 @@ const Product = ({ data, location, handleProduct }) => {
   const [img1, setImg1] = React.useState(null);
   const [img2, setImg2] = React.useState(null);
   const [img3, setImg3] = React.useState(null);
+  const [img4, setImg4] = React.useState(null);
   const handleImg1 = (e) => {
     setImg1(e.target.files[0]);
   };
@@ -21,6 +22,9 @@ const Product = ({ data, location, handleProduct }) => {
   };
   const handleImg3 = (e) => {
     setImg3(e.target.files[0]);
+  };
+  const handleImg4 = (e) => {
+    setImg4(e.target.files[0]);
   };
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -127,7 +131,28 @@ const Product = ({ data, location, handleProduct }) => {
       }
     });
   };
+  const uploadImage4 = () => {
+    return new Promise((resolve, reject) => {
+      const ref = firebase.storage().ref();
+      const imgName4 = Date.now().toString() + "img4";
+      const imgRef4 = ref.child(imgName4);
 
+      if (!!img4) {
+        imgRef4
+          .put(img4)
+          .then((snap) => {
+            resolve(
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName4}?alt=media`
+            );
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      } else {
+        resolve(null);
+      }
+    });
+  };
   // Upload Product to Database
   const uploadProduct = async (productId) => {
     alert("Saving...");
@@ -143,6 +168,10 @@ const Product = ({ data, location, handleProduct }) => {
     if (!!img3) {
       const tempImage3 = await uploadImage3();
       data.image3 = tempImage3;
+    }
+    if (!!img4) {
+      const tempImage4 = await uploadImage4();
+      data.image4 = tempImage4;
     }
     firebase
       .firestore()
@@ -261,7 +290,7 @@ const Product = ({ data, location, handleProduct }) => {
                 </Button>{" "}
                 <Button
                   variant="contained"
-                  style={{ background: "#dcdf13" }}
+                  style={{ background: "#f3f566" }}
                   onClick={() => editProduct(data.productId)}
                 >
                   Edit Product

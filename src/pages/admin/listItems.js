@@ -5,9 +5,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import Divider from "@material-ui/core/Divider";
-import LayersIcon from "@material-ui/icons/Layers";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
 export const mainListItems = (
   <div>
     <Link onClick={() => (window.location.href = "/dashboard")}>
@@ -21,7 +21,7 @@ export const mainListItems = (
     <Link onClick={() => (window.location.href = "/addProduct")}>
       <ListItem button>
         <ListItemIcon>
-          <LayersIcon />
+          <AddToPhotosIcon />
         </ListItemIcon>
         <ListItemText primary="Add Product" />
       </ListItem>

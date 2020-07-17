@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "@material-ui/core/Link";
+import { withRouter } from "react-router-dom";
 import { ArrowBack } from "@material-ui/icons";
 
-export default function ProductPage({ data, setProductPage }) {
+const ProductPage = ({ data, setProductPage, location }) => {
   return (
     <React.Fragment>
       <section className="mdf pb-4">
@@ -11,8 +12,20 @@ export default function ProductPage({ data, setProductPage }) {
             <Link onClick={() => setProductPage(false)}>
               <ArrowBack />
             </Link>
-            <a href="/">Home</a> / <a href="/All-Products">Products</a> /
-            {data.category}
+            {location.pathname === "/dashboard" ? (
+              <a href="/dashboard">Dashboard</a>
+            ) : (
+              <a href="/">Home</a>
+            )}{" "}
+            /
+            {location.pathname === "/dashboard" ? (
+              <Link onClick={() => setProductPage(false)}>
+                <a href="#">Products</a>
+              </Link>
+            ) : (
+              <a href="/All-Products">Products</a>
+            )}{" "}
+            /{data.category}
           </h5>
           <h3>{data.name}</h3>
           <p className="pb-4">{data.description}</p>
@@ -37,6 +50,10 @@ export default function ProductPage({ data, setProductPage }) {
                     <li
                       data-target="#carouselExampleIndicators"
                       data-slide-to="2"
+                    ></li>
+                    <li
+                      data-target="#carouselExampleIndicators"
+                      data-slide-to="3"
                     ></li>
                   </ol>
                   <div class="carousel-inner">
@@ -64,6 +81,15 @@ export default function ProductPage({ data, setProductPage }) {
                           class="d-block w-100"
                           src={data.image3}
                           alt="Third slide"
+                        />
+                      </div>
+                    )}
+                    {data.image4 && (
+                      <div class="carousel-item">
+                        <img
+                          class="d-block w-100"
+                          src={data.image4}
+                          alt="Fourth slide"
                         />
                       </div>
                     )}
@@ -258,4 +284,6 @@ export default function ProductPage({ data, setProductPage }) {
       </section>
     </React.Fragment>
   );
-}
+};
+
+export default withRouter(ProductPage);

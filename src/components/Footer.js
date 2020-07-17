@@ -42,8 +42,8 @@ const Footer = (props) => {
         </div>
         <br />
         <div class="enquire">
-          <a href="/contact" class="enquiry">
-            SEND ENQUIRY
+          <a href={state.whatsapp} class="enquiry">
+            Call
           </a>
         </div>
         <div class="text-center mt-3">

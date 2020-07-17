@@ -14,7 +14,7 @@ export default function DeliveryDetails({
     samplePolicy,
     paymentTerm,
     mainExportMarket,
-    FobPort,
+    fobPort,
   },
   handleChange,
 }) {
@@ -113,8 +113,8 @@ export default function DeliveryDetails({
             onChange={handleChange}
             required
             name="fobPort"
-            label="FobPort"
-            value={FobPort}
+            label="FOB Port"
+            value={fobPort}
             fullWidth
           />
         </Grid>

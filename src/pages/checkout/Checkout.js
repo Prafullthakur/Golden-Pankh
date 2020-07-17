@@ -92,6 +92,7 @@ export default function Checkout() {
   const [image1, setImage1] = React.useState(null);
   const [image2, setImage2] = React.useState(null);
   const [image3, setImage3] = React.useState(null);
+  const [image4, setImage4] = React.useState(null);
   const handleImg1 = (e) => {
     setImage1(e.target.files[0]);
   };
@@ -101,6 +102,9 @@ export default function Checkout() {
   };
   const handleImg3 = (e) => {
     setImage3(e.target.files[0]);
+  };
+  const handleImg4 = (e) => {
+    setImage4(e.target.files[0]);
   };
   // Upload Image to Storage
   const uploadImage1 = () => {
@@ -171,6 +175,28 @@ export default function Checkout() {
       }
     });
   };
+  const uploadImage4 = () => {
+    return new Promise((resolve, reject) => {
+      const ref = firebase.storage().ref();
+      const imgName4 = Date.now().toString() + "img4";
+      const imgRef4 = ref.child(imgName4);
+
+      if (!!image4) {
+        imgRef4
+          .put(image4)
+          .then((snap) => {
+            resolve(
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName4}?alt=media`
+            );
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      } else {
+        resolve(null);
+      }
+    });
+  };
   // Upload Product to Database
   const uploadProduct = async () => {
     const data = state;
@@ -185,6 +211,10 @@ export default function Checkout() {
     if (image3) {
       const tempImage3 = await uploadImage3();
       data.image3 = tempImage3;
+    }
+    if (image4) {
+      const tempImage4 = await uploadImage4();
+      data.image4 = tempImage4;
     }
     firebase
       .firestore()
@@ -248,6 +278,7 @@ export default function Checkout() {
                     handleImg1={handleImg1}
                     handleImg2={handleImg2}
                     handleImg3={handleImg3}
+                    handleImg4={handleImg4}
                     handleChange={handleChange}
                   />
                 ) : activeStep === 1 ? (

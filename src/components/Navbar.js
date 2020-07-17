@@ -1,7 +1,22 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import logo from "../assets/logo.jpg";
+import firebase from "firebase";
 const Navbar = (props) => {
+  const [categories, setCategories] = React.useState({});
+
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .doc("Meta/categories")
+      .get()
+      .then((data) => setCategories(data.data()))
+      .catch((err) => {
+        console.log(err);
+        alert("An error Occured");
+      });
+  }, []);
+
   if (
     props.location.pathname === "/dashboard" ||
     props.location.pathname === "/addProduct" ||
@@ -69,43 +84,55 @@ const Navbar = (props) => {
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <a class="dropdown-item" href="/home-decor">
-                  Home Decorative Items
-                </a>
-                <a class="dropdown-item" href="/metal-urns">
-                  Metal Urns
-                </a>
-                <a class="dropdown-item" href="/christmas">
-                  Christmas Decoration Items
-                </a>
-                <a class="dropdown-item" href="/decorative">
-                  Decorative Chandelier
-                </a>
-                <a class="dropdown-item" href="/candle-holder">
-                  Candle Holder
-                </a>
-                <a class="dropdown-item" href="/metal-handicrafts">
-                  Metal Handicrafts
-                </a>
-                <a class="dropdown-item" href="/flower">
-                  Flower Vase
-                </a>
-                <a class="dropdown-item" href="/mdf-frame">
-                  MDF Frame
-                </a>
-                <a class="dropdown-item" href="/alphabet-items">
-                  Decorative Alphabets Letters
-                </a>
-                <a class="dropdown-item" href="/jwelled-mirror">
-                  Jewelled Mirror
-                </a>
-                <a class="dropdown-item" href="/farmstead">
-                  Farmstead Finials
-                </a>
-                <a class="dropdown-item" href="/ppe-kit">
-                  PPE kit; Full Body Gown,
-                  <br /> Goggles, Masks, Waste Bags
-                </a>
+                {Object.keys(categories).map((cat) => {
+                  let href = "#";
+                  switch (cat) {
+                    case "Home Decorative Items":
+                      href = "/home-decor";
+                      break;
+                    case "Metal Urns":
+                      href = "/metal-urns";
+                      break;
+                    case "Christmas Decoration Items":
+                      href = "/christmas";
+                      break;
+                    case "Decorative Chandelier":
+                      href = "/decoratibe";
+                      break;
+                    case "Candle Holder":
+                      href = "/candle-holder";
+                      break;
+                    case "Metal Handicrafts":
+                      href = "/metal-handicrafts";
+                      break;
+                    case "Flower Vase":
+                      href = "/flower";
+                      break;
+                    case "MDF Frame":
+                      href = "/mdf-frame";
+                      break;
+                    case "Decorative Alphabets Letters":
+                      href = "/alphabet-items";
+                      break;
+                    case "Jewelled Mirror":
+                      href = "/jwelled-mirror";
+                      break;
+                    case "Farmstead Finials":
+                      href = "/farmstead";
+                      break;
+                    case "PPE kit, Full Body Gown, Goggles, Masks, Waste Bags":
+                      href = "/ppe-kit";
+                      break;
+                    default:
+                      href = "#";
+                      break;
+                  }
+                  return (
+                    <a class="dropdown-item" href={href}>
+                      {cat}
+                    </a>
+                  );
+                })}
               </div>
             </li>
             <li class="nav-item pl-2">

@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import firebase from "firebase";
 
 export default function AddressForm({
   state: {
@@ -33,7 +34,22 @@ export default function AddressForm({
   handleImg1,
   handleImg2,
   handleImg3,
+  handleImg4,
 }) {
+  const [categories, setCategories] = React.useState({});
+
+  React.useEffect(() => {
+    firebase
+      .firestore()
+      .doc("Meta/categories")
+      .get()
+      .then((data) => setCategories(data.data()))
+      .catch((err) => {
+        console.log(err);
+        alert("An error Occured!");
+      });
+  }, []);
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -50,30 +66,9 @@ export default function AddressForm({
               onChange={handleChange}
               value={category}
             >
-              <MenuItem value={"Home Decorative Items"}>
-                Home Decorative Items
-              </MenuItem>
-              <MenuItem value={"Metal Urns"}>Metal Urns</MenuItem>
-              <MenuItem value={"Christmas Decoration Items"}>
-                Christmas Decoration Items
-              </MenuItem>
-              <MenuItem value={"Decorative Chandelier"}>
-                Decorative Chandelier
-              </MenuItem>
-              <MenuItem value={"Candle Holder"}>Candle Holder</MenuItem>
-              <MenuItem value={"Metal Handicrafts"}>Metal Handicrafts</MenuItem>
-              <MenuItem value={"Flower Vase"}>Flower Vase</MenuItem>
-              <MenuItem value={"MDF Frame"}>MDF Frame</MenuItem>
-              <MenuItem value={"Decorative Alphabets Letters"}>
-                Decorative Alphabets Letters
-              </MenuItem>
-              <MenuItem value={"Jewelled Mirror"}>Jewelled Mirror</MenuItem>
-              <MenuItem value={"Farmstead Finials"}>Farmstead Finials</MenuItem>
-              <MenuItem
-                value={"PPE kit, Full Body Gown, Goggles, Masks, Waste Bags"}
-              >
-                PPE kit, Full Body Gown, Goggles, Masks, Waste Bags
-              </MenuItem>
+              {Object.keys(categories).map((key) => (
+                <MenuItem value={key}>{key}</MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Grid>
@@ -117,7 +112,7 @@ export default function AddressForm({
         </Grid>
 
         <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
-          <label htmlFor="image"> Upload Image 1</label>
+          <label htmlFor="image1"> Upload Image 1</label>
           <input
             style={{ marginLeft: 24 }}
             id="image1"
@@ -128,7 +123,7 @@ export default function AddressForm({
           />
         </Grid>
         <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
-          <label htmlFor="image"> Upload Image 2</label>
+          <label htmlFor="image2"> Upload Image 2</label>
           <input
             style={{ marginLeft: 24 }}
             id="image2"
@@ -139,7 +134,7 @@ export default function AddressForm({
           />
         </Grid>
         <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
-          <label htmlFor="image"> Upload Image 3</label>
+          <label htmlFor="image3"> Upload Image 3</label>
           <input
             style={{ marginLeft: 24 }}
             id="image3"
@@ -149,6 +144,18 @@ export default function AddressForm({
             accept="image/*"
           />
         </Grid>
+        <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
+          <label htmlFor="image4"> Upload Image 4</label>
+          <input
+            style={{ marginLeft: 24 }}
+            id="image4"
+            name="image4"
+            type="file"
+            onChange={handleImg4}
+            accept="image/*"
+          />
+        </Grid>
+
         <Grid item xs={12}>
           <TextField
             id="color"
@@ -170,9 +177,9 @@ export default function AddressForm({
               onChange={handleChange}
               value={unit}
             >
-              <MenuItem value={"centimeters"}>centimeters</MenuItem>
+              <MenuItem value={"cm"}>cm</MenuItem>
 
-              <MenuItem value={"meters"}>meters</MenuItem>
+              <MenuItem value={"m"}>m</MenuItem>
             </Select>
           </FormControl>
         </Grid>
