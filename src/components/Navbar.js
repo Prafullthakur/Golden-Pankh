@@ -212,7 +212,13 @@ const Navbar = ({ location, handleSearch }) => {
                 </a>
               </div>
             </div> */}
-          <form class="form-inline my-2 my-lg-0 pl-4">
+          <form
+            class="form-inline my-2 my-lg-0 pl-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSearch(search);
+            }}
+          >
             <input
               class="form-control mr-sm-2"
               type="search"
