@@ -22,6 +22,7 @@ const Footer = ({ location }) => {
     "/social",
     "/admin",
     "/changePassword",
+    "/not-found",
   ];
 
   if (notAllowedPaths.includes(location.pathname)) return null;
@@ -32,13 +33,13 @@ const Footer = ({ location }) => {
         <h4>GOLDEN PANKH EXPORT IMPORT</h4>
         <div class="row">
           <div class="col-md-8">
-            <i class="fa fa-map-marker"></i>
-            Block-A, Lane No.-2 Plot No.-20, Govind Nagar, Moradabad - 244001,
-            Uttar Pradesh, India <br /> <strong> Phone : </strong>08037302152
+            <i class="fa fa-map-marker"></i> Block-A, Lane No.-2 Plot No.-20,
+            Govind Nagar, Moradabad - 244001, Uttar Pradesh, India <br />{" "}
+            <strong> Phone : </strong>08037302152
           </div>
           <div class="col-md-4">
-            <i class="fa fa-user"></i>
-            Mr Naresh Vatsal (Partner) <br /> <strong>Mobile :</strong>
+            <i class="fa fa-user"></i> Mr Naresh Vatsal (Partner) <br />{" "}
+            <strong>Mobile :</strong>
             08037302152
           </div>
         </div>
@@ -86,12 +87,9 @@ const Footer = ({ location }) => {
           </div>
           <div class="col-md-6">
             <p class="copyright">
-              GOLDEN PANKH EXPORT IMPORT All Rights Reserved.{" "}
-              <a href="https://www.tradeindia.com/about-us/terms/terms_01.html">
-                {" "}
-                (Terms of Use)
-              </a>{" "}
-              <br /> Developed and Managed by Augur IT Consulting Pvt. Ltd
+              GOLDEN PANKH EXPORT IMPORT All Rights Reserved. (Terms of Use){" "}
+              <br /> Developed and Managed by{" "}
+              <a href="http://www.augurit.co/">Augur IT</a> Consulting Pvt. Ltd
             </p>
           </div>
         </div>

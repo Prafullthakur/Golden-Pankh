@@ -249,22 +249,28 @@ footer .copyright {
   #registerdiv {
     padding-left: 8%;
   }
+  .btn1 {
+    margin: 0px 0px 30px 0px;
+  }
+  .btn2 {
+    margin: 0px 0px 30px 0px;
+  }
   .callme {
-    padding: 8px 5px;
+    padding: 8px 8px;
     margin: 0px 0px 0px 0px;
   }
   .viewproducts {
-    padding: 8px 5px;
-    margin: 0px 2px 0px 2px;
+    padding: 8px 8px;
+    margin: 0px 0px 0px 0px;
   }
   .send-enquiry {
-    padding: 8px 5px;
-    margin: 0px 0px 0px 0px;
+    padding: 8px 8px;
+    margin: 0px 3px 0px 3px;
   }
   .footer-btn {
     display: flex;
-
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 }
 @media only screen and (max-width: 320px) {

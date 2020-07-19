@@ -1,12 +1,15 @@
 import React from "react";
 import "./style.css";
-
 import Image1 from "../../assets/Handmade-Wirework-Peacock.jpg";
 import Image2 from "../../assets/Decorative-Heart-Frame.jpg";
 import Image3 from "../../assets/Iron-Ferris-Wheel.jpg";
 import Image4 from "../../assets/Metal-Geometrical-Star.jpg";
 import Image5 from "../../assets/Metal-Decorative-Crown.jpg";
-const Home = () => {
+const Home = (props) => {
+  React.useEffect(() => {
+    console.log(props.searchResult);
+  }, []);
+
   return (
     <>
       <section class="popular-products">
