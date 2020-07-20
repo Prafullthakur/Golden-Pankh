@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import firebase from "firebase";
 import Link from "@material-ui/core/Link";
+import Contact from "../pages/user/contact";
 import ProductDetails from "../pages/checkout/ProductDetails";
 import DeliveryDetails from "../pages/checkout/DeliveryDetails";
 
@@ -323,78 +324,7 @@ const Product = ({ data, location, handleProduct }) => {
             >
               <div className="modal-dialog">
                 <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">
-                      GOLDEN PANKH EXPORT IMPORT
-                    </h5>
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div className="modal-body">
-                    <h5>
-                      Describe Your BUYING Requirements <span>*</span>
-                    </h5>
-                    <form>
-                      <div className="form-group">
-                        <label for="exampleFormControlTextarea1">
-                          <span>*</span> Tips on getting accurate quotes. Please
-                          include product name, order quantity, usage, special
-                          requests if any in your inquiry.
-                        </label>
-                        <textarea
-                          className="form-control"
-                          id="exampleFormControlTextarea1"
-                          rows="3"
-                          required
-                        ></textarea>
-                      </div>
-                      <div className="form-group">
-                        <input
-                          type="file"
-                          className="form-control-file"
-                          id="exampleFormControlFile1"
-                          required
-                        />
-                      </div>
-                      <div className="form-row">
-                        <div className="form-group col-md-6">
-                          <label for="inputEmail4">
-                            Email <span>*</span>
-                          </label>
-                          <input
-                            type="email"
-                            className="form-control"
-                            id="inputEmail4"
-                            placeholder="Enter your Email"
-                            required
-                          />
-                        </div>
-                        <div className="form-group col-md-6">
-                          <label for="inputPhone">
-                            Mobile No. <span>*</span>
-                          </label>
-                          <input
-                            type="number"
-                            className="form-control"
-                            id="inputPhone"
-                            placeholder="Enter your Phone Number"
-                            required
-                          />
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="modal-footer text-center">
-                    <button type="button" className="btn btn-warning">
-                      SEND ENQUIRY
-                    </button>
-                  </div>
+                  <Contact />
                 </div>
               </div>
             </div>

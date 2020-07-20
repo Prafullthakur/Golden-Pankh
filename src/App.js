@@ -15,6 +15,8 @@ var firebaseConfig = {
   measurementId: "G-W4DV1ZJVBL",
 };
 
+window.emailjs.init("user_oOWTvwmYzDpjf3yINOs4X");
+
 firebase.initializeApp(firebaseConfig);
 
 const App = () => {
