@@ -6,12 +6,15 @@ import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import firebase from "firebase";
 
-export default function AddressForm({
+import firebase from "firebase";
+import { withRouter } from "react-router-dom";
+
+function ProductDetails({
   state: {
     category,
     name,
+    itemNumber,
     price,
     priceType,
     color,
@@ -35,8 +38,10 @@ export default function AddressForm({
   handleImg2,
   handleImg3,
   handleImg4,
+  location,
 }) {
   const [categories, setCategories] = React.useState({});
+  const editPath = location.pathname === "/dashboard";
 
   React.useEffect(() => {
     firebase
@@ -80,6 +85,17 @@ export default function AddressForm({
             label="Name"
             onChange={handleChange}
             value={name}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            id="itemNumber"
+            name="itemNumber"
+            label="Item Number"
+            onChange={handleChange}
+            value={itemNumber}
             fullWidth
           />
         </Grid>
@@ -245,16 +261,18 @@ export default function AddressForm({
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="theme"
-            name="theme"
-            onChange={handleChange}
-            value={theme}
-            label="Theme"
-            fullWidth
-          />
-        </Grid>
+        {!editPath && (
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="theme"
+              name="theme"
+              onChange={handleChange}
+              value={theme}
+              label="Theme"
+              fullWidth
+            />
+          </Grid>
+        )}
         <Grid item xs={12} sm={6}>
           <TextField
             id="material"
@@ -265,16 +283,18 @@ export default function AddressForm({
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="materialType"
-            name="materialType"
-            label="Material Type"
-            onChange={handleChange}
-            value={materialType}
-            fullWidth
-          />
-        </Grid>
+        {!editPath && (
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="materialType"
+              name="materialType"
+              label="Material Type"
+              onChange={handleChange}
+              value={materialType}
+              fullWidth
+            />
+          </Grid>
+        )}
         <Grid item xs={12} sm={6}>
           <TextField
             id="productType"
@@ -289,7 +309,7 @@ export default function AddressForm({
           <TextField
             id="finishing"
             name="finishing"
-            label="Finishing"
+            label="Finishing/Color"
             onChange={handleChange}
             value={finishing}
             fullWidth
@@ -319,3 +339,5 @@ export default function AddressForm({
     </React.Fragment>
   );
 }
+
+export default withRouter(ProductDetails);

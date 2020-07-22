@@ -38,23 +38,31 @@ const ProductPage = ({ data, setProductPage, location }) => {
                   data-ride="carousel"
                 >
                   <ol class="carousel-indicators">
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="0"
-                      class="active"
-                    ></li>
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="1"
-                    ></li>
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="2"
-                    ></li>
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="3"
-                    ></li>
+                    {data.image1 && (
+                      <li
+                        data-target="#carouselExampleIndicators"
+                        data-slide-to="0"
+                        class="active"
+                      ></li>
+                    )}
+                    {data.image2 && (
+                      <li
+                        data-target="#carouselExampleIndicators"
+                        data-slide-to="1"
+                      ></li>
+                    )}
+                    {data.image3 && (
+                      <li
+                        data-target="#carouselExampleIndicators"
+                        data-slide-to="2"
+                      ></li>
+                    )}
+                    {data.image4 && (
+                      <li
+                        data-target="#carouselExampleIndicators"
+                        data-slide-to="3"
+                      ></li>
+                    )}
                   </ol>
                   <div class="carousel-inner">
                     {data.image1 && (
@@ -122,6 +130,7 @@ const ProductPage = ({ data, setProductPage, location }) => {
               </div>
               <div className="col-md-8">
                 <h3>{data.name}</h3>
+                <h5>Item No. {data.itemNumber}</h5>
                 <h6 className="price">
                   Price: {data.price} {data.priceType}
                 </h6>
@@ -135,6 +144,9 @@ const ProductPage = ({ data, setProductPage, location }) => {
                 </table>
                 <table>
                   <tr>
+                    <td>Color: {data.color}</td>
+                  </tr>
+                  <tr>
                     <td>
                       Width: {data.width} {data.unit}
                     </td>
@@ -144,6 +156,29 @@ const ProductPage = ({ data, setProductPage, location }) => {
                     <td>
                       Length: {data.length} {data.unit}
                     </td>
+                  </tr>
+                  <tr>
+                    <td>Finishing/Color: {data.finishing}</td>
+
+                    <td>Material: {data.material}</td>
+                  </tr>
+                  <tr>
+                    <td>Technique: {data.technique}</td>
+
+                    <td>Style: {data.style}</td>
+                  </tr>
+                  <tr>
+                    <td>Regional Style: {data.regionalStyle}</td>
+
+                    <td>Theme: {data.theme}</td>
+                  </tr>
+                  <tr>
+                    <td>Material Type: {data.materialType}</td>
+
+                    <td>Product Type: {data.productType}</td>
+                  </tr>
+                  <tr>
+                    <td>Feature: {data.feature}</td>
                   </tr>
                 </table>
               </div>
@@ -254,28 +289,37 @@ const ProductPage = ({ data, setProductPage, location }) => {
             <hr />
             <table>
               <tr>
-                <td>Price:</td>
                 <td>
-                  {data.price} {data.priceType}
+                  Price: {data.price} {data.priceType}
                 </td>
-                <td>Minimum Order Quantity:</td>
-                <td>{data.moq} Piece</td>
+
+                <td>Minimum Order Quantity: {data.moq} Piece</td>
+
+                <td>Unit Of Measurement: {data.uom}</td>
               </tr>
             </table>
             <h4 className="pt-4">Trade Information</h4>
             <hr />
             <table>
               <tr>
-                <td>Supply Ability:</td>
-                <td>{data.supplyAbility} Pieces Per Month</td>
-                <td>Delivery Time:</td>
-                <td>{data.deliveryTime} Days</td>
+                <td>Packing Details: {data.packingDetails}</td>
               </tr>
               <tr>
-                <td>Sample Available:</td>
-                <td>{data.sampleAvilable}</td>
-                <td>Sample Policy:</td>
-                <td>{data.samplePolicy}</td>
+                <td>Supply Ability: {data.supplyAbility} Pieces Per Month</td>
+
+                <td>Delivery Time: {data.deliveryTime} Days</td>
+              </tr>
+              <tr>
+                <td>Sample Available: {data.sampleAvilable}</td>
+
+                <td>Sample Policy: {data.samplePolicy}</td>
+              </tr>
+              <tr>
+                <td>Payment Terms: {data.paymentTerm}</td>
+
+                <td>Main Export Market: {data.mainExportMarket}</td>
+
+                <td>FOB Port: {data.fobPort}</td>
               </tr>
             </table>
           </div>

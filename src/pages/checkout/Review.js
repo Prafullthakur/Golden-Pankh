@@ -233,7 +233,7 @@ export default function Review({
               gutterBottom
               className={classes.title}
             >
-              Finishing
+              Finishing/Color
             </Typography>
             <Typography gutterBottom>{finishing}</Typography>
           </Grid>
@@ -311,7 +311,7 @@ export default function Review({
               gutterBottom
               className={classes.title}
             >
-              Packing Detail
+              Packing Details
             </Typography>
             <Typography gutterBottom>{packingDetail}</Typography>
           </Grid>

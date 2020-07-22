@@ -47,7 +47,7 @@ export default function DeliveryDetails({
             onChange={handleChange}
             name="uom"
             value={uom}
-            label="Unit of Measure"
+            label="Unit of Measurement"
             fullWidth
           />
         </Grid>
@@ -56,7 +56,7 @@ export default function DeliveryDetails({
             onChange={handleChange}
             name="packingDetail"
             value={packingDetail}
-            label="Packing Detail"
+            label="Packing Details (Inner/Master)"
             fullWidth
           />
         </Grid>
