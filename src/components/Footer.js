@@ -33,8 +33,8 @@ const Footer = ({ location }) => {
         <h4>GOLDEN PANKH EXPORT IMPORT</h4>
         <div class="row">
           <div class="col-md-8">
-            <i class="fa fa-map-marker"></i> Block-A, Lane No.-2 Plot No.-20,
-            Govind Nagar, Moradabad - 244001, Uttar Pradesh, India <br />{" "}
+            <i class="fa fa-map-marker"></i> D-8, Harthala Industrial Estate,
+            Kanth Road, Moradabad 244001, Uttar Pradesh India <br />{" "}
             <strong> Phone : </strong>08037302152
           </div>
           <div class="col-md-4">

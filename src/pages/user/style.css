@@ -20,6 +20,26 @@
 .nav-link:hover {
   background: rgb(33, 198, 12);
 }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after {
+  content: ">";
+  font-size: 50px;
+  font-weight: bold;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: "<";
+  font-size: 50px;
+  font-weight: bold;
+  color: black;
+}
 .nav-img {
   width: 70vw;
   background-size: no-repeat top center;

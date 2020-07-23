@@ -1,5 +1,6 @@
 import React from "react";
-
+import Certificate1 from "../../assets/certificate1.jpg";
+import Certificate2 from "../../assets/certificate2.jpg";
 export default function companyprofile() {
   return (
     <>
@@ -94,8 +95,8 @@ export default function companyprofile() {
             </tr>
           </table>
           <div className="certificates">
-            <img src="" alt="image1" />
-            <img src="" alt="image2" />
+            <img src={Certificate1} alt="image1" style={{ marginRight: 20 }} />
+            <img src={Certificate2} alt="image2" />
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/L-2.jpg";
 import firebase from "firebase";
 import SearchIcon from "@material-ui/icons/Search";
 const Navbar = ({ location, handleSearch }) => {
