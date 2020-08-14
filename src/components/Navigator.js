@@ -38,6 +38,7 @@ import AddProduct from "../pages/admin/AddProduct";
 import Social from "../pages/admin/Social";
 import Search from "../pages/user/Search";
 import NotFound from "../pages/user/NotFound";
+import ProdCatDefault from "../pages/user/ProdCatDefault";
 // Secured Route
 import AuthRoute from "./AuthRoute";
 
@@ -105,6 +106,7 @@ const Navigator = () => {
         <AuthRoute exact path="/social" component={Social} />
         <AuthRoute exact path="/changePassword" component={Social} />
         <Route exact path="/not-found" component={NotFound} />
+        <Route exact path="/prodCatDefault" component={ProdCatDefault} />
         <Redirect to="/not-found" />
       </Switch>
       <Footer />

@@ -150,7 +150,7 @@ const Navbar = ({ location, handleSearch }) => {
                       href = "/ppe-kit";
                       break;
                     default:
-                      href = "#";
+                      href = `/prodCatDefault?category=${cat}`;
                       break;
                   }
                   return (
