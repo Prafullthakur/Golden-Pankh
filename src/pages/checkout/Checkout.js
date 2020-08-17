@@ -66,7 +66,7 @@ export default function Checkout() {
     height: "",
     unit: "",
     technique: "",
-    style: "",
+    origin: "India",
     material: "",
     productType: "",
     deliveryTime: "",

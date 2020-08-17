@@ -27,7 +27,7 @@ export default function Review({
     height,
     unit,
     technique,
-    style,
+    origin,
 
     material,
     productType,
@@ -199,7 +199,7 @@ export default function Review({
             <Typography gutterBottom>{technique}</Typography>
           </Grid>
         )}
-        {style && (
+        {origin && (
           <Grid item xs={12} sm={6}>
             <Typography
               color={"primary"}
@@ -207,9 +207,9 @@ export default function Review({
               gutterBottom
               className={classes.title}
             >
-              Style
+              Origin
             </Typography>
-            <Typography gutterBottom>{style}</Typography>
+            <Typography gutterBottom>{origin}</Typography>
           </Grid>
         )}
 

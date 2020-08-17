@@ -24,7 +24,7 @@ function ProductDetails({
     cbm,
     unit,
     technique,
-    style,
+    origin,
     material,
   },
   handleChange,
@@ -248,11 +248,11 @@ function ProductDetails({
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="style"
-            name="style"
+            id="origin"
+            name="origin"
             onChange={handleChange}
-            value={style}
-            label="Style"
+            value={origin}
+            label="Origin"
             fullWidth
           />
         </Grid>

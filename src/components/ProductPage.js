@@ -165,7 +165,7 @@ const ProductPage = ({ data, setProductPage, location }) => {
                   <tr>
                     <td>Technique: {data.technique}</td>
 
-                    <td>Style: {data.style}</td>
+                    <td>Origin: {data.origin}</td>
                   </tr>
 
                   <tr>
