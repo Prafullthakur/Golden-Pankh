@@ -21,17 +21,11 @@ function ProductDetails({
     length,
     width,
     height,
+    cbm,
     unit,
     technique,
     style,
-    regionalStyle,
-    theme,
     material,
-    materialType,
-    productType,
-    finishing,
-    feature,
-    description,
   },
   handleChange,
   handleImg1,
@@ -178,7 +172,7 @@ function ProductDetails({
             name="color"
             onChange={handleChange}
             value={color}
-            label="Color"
+            label="Color/Finish"
             fullWidth
           />
         </Grid>
@@ -195,7 +189,7 @@ function ProductDetails({
             >
               <MenuItem value={"cm"}>cm</MenuItem>
 
-              <MenuItem value={"m"}>m</MenuItem>
+              <MenuItem value={"inch"}>inch</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -233,6 +227,17 @@ function ProductDetails({
 
         <Grid item xs={12} sm={6}>
           <TextField
+            id="cbm"
+            name="cbm"
+            onChange={handleChange}
+            value={cbm}
+            label="CBM"
+            fullWidth
+          />
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <TextField
             id="technique"
             name="technique"
             label="Technique"
@@ -251,7 +256,7 @@ function ProductDetails({
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        {/* <Grid item xs={12} sm={6}>
           <TextField
             id="regionalStyle"
             name="regionalStyle"
@@ -260,7 +265,7 @@ function ProductDetails({
             value={regionalStyle}
             fullWidth
           />
-        </Grid>
+        </Grid> 
         {!editPath && (
           <Grid item xs={12} sm={6}>
             <TextField
@@ -272,7 +277,7 @@ function ProductDetails({
               fullWidth
             />
           </Grid>
-        )}
+        )}*/}
         <Grid item xs={12} sm={6}>
           <TextField
             id="material"
@@ -283,7 +288,7 @@ function ProductDetails({
             fullWidth
           />
         </Grid>
-        {!editPath && (
+        {/* {!editPath && (
           <Grid item xs={12} sm={6}>
             <TextField
               id="materialType"
@@ -294,7 +299,7 @@ function ProductDetails({
               fullWidth
             />
           </Grid>
-        )}
+        )} 
         <Grid item xs={12} sm={6}>
           <TextField
             id="productType"
@@ -314,7 +319,7 @@ function ProductDetails({
             value={finishing}
             fullWidth
           />
-        </Grid>
+        </Grid> 
         <Grid item xs={12} sm={6}>
           <TextField
             id="feature"
@@ -334,7 +339,7 @@ function ProductDetails({
             value={description}
             fullWidth
           />
-        </Grid>
+        </Grid> */}
       </Grid>
     </React.Fragment>
   );

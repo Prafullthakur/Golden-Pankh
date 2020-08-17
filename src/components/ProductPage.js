@@ -158,7 +158,7 @@ const ProductPage = ({ data, setProductPage, location }) => {
                     </td>
                   </tr>
                   <tr>
-                    <td>Finishing/Color: {data.finishing}</td>
+                    <td>CBM: {data.cbm}</td>
 
                     <td>Material: {data.material}</td>
                   </tr>
@@ -167,18 +167,9 @@ const ProductPage = ({ data, setProductPage, location }) => {
 
                     <td>Style: {data.style}</td>
                   </tr>
-                  <tr>
-                    <td>Regional Style: {data.regionalStyle}</td>
 
-                    <td>Theme: {data.theme}</td>
-                  </tr>
                   <tr>
-                    <td>Material Type: {data.materialType}</td>
-
                     <td>Product Type: {data.productType}</td>
-                  </tr>
-                  <tr>
-                    <td>Feature: {data.feature}</td>
                   </tr>
                 </table>
               </div>
@@ -315,11 +306,18 @@ const ProductPage = ({ data, setProductPage, location }) => {
                 <td>Sample Policy: {data.samplePolicy}</td>
               </tr>
               <tr>
+                <td>Delivery Details: {data.deliveryDetails}</td>
+
+                <td>Master Carton Size: {data.masterCartonSize}</td>
+              </tr>
+              <tr>
                 <td>Payment Terms: {data.paymentTerm}</td>
 
                 <td>Main Export Market: {data.mainExportMarket}</td>
-
+              </tr>
+              <tr>
                 <td>FOB Port: {data.fobPort}</td>
+                <td>Remarks: {data.remark}</td>
               </tr>
             </table>
           </div>

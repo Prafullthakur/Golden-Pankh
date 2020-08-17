@@ -1,9 +1,6 @@
 import React from "react";
 import firebase from "firebase";
 import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -70,15 +67,12 @@ export default function Checkout() {
     unit: "",
     technique: "",
     style: "",
-    regionalStyle: "",
-    theme: "",
     material: "",
-    materialType: "",
     productType: "",
-    finishing: "",
-    feature: "",
-    description: "",
     deliveryTime: "",
+    deliveryDetails: "",
+    masterCartonSize: "",
+    cbm: "",
     moq: "",
     uom: "",
     packingDetail: "",
@@ -88,11 +82,22 @@ export default function Checkout() {
     paymentTerm: "",
     mainExportMarket: "",
     fobPort: "",
+    remark: "",
   });
   const [image1, setImage1] = React.useState(null);
   const [image2, setImage2] = React.useState(null);
   const [image3, setImage3] = React.useState(null);
   const [image4, setImage4] = React.useState(null);
+
+  React.useEffect(() => {
+    if (!!state.length && !!state.width && !!state.height) {
+      setState({
+        ...state,
+        cbm: (state.length * state.width * state.height) / 1000000,
+      });
+    }
+  }, [state.length, state.width, state.height]);
+
   const handleImg1 = (e) => {
     setImage1(e.target.files[0]);
   };

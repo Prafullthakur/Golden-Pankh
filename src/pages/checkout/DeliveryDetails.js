@@ -15,6 +15,7 @@ export default function DeliveryDetails({
     paymentTerm,
     mainExportMarket,
     fobPort,
+    remark,
   },
   handleChange,
 }) {
@@ -115,6 +116,16 @@ export default function DeliveryDetails({
             name="fobPort"
             label="FOB Port"
             value={fobPort}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            onChange={handleChange}
+            required
+            name="remark"
+            label="Remark"
+            value={remark}
             fullWidth
           />
         </Grid>

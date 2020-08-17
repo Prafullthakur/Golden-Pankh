@@ -35,12 +35,12 @@ const Footer = ({ location }) => {
           <div class="col-md-8">
             <i class="fa fa-map-marker"></i> D-8, Harthala Industrial Estate,
             Kanth Road, Moradabad 244001, Uttar Pradesh India <br />{" "}
-            <strong> Phone : </strong>08037302152
+            <strong> Phone : </strong>05912970888
           </div>
           <div class="col-md-4">
             <i class="fa fa-user"></i> Mr Naresh Vatsal (Partner) <br />{" "}
-            <strong>Mobile :</strong>
-            08037302152
+            <strong>Mobile : </strong>
+            7417555555
           </div>
         </div>
         <br />
@@ -89,7 +89,13 @@ const Footer = ({ location }) => {
             <p class="copyright">
               GOLDEN PANKH EXPORT IMPORT All Rights Reserved. (Terms of Use){" "}
               <br /> Developed and Managed by{" "}
-              <a href="http://www.augurit.co/">Augur IT</a> Consulting Pvt. Ltd
+              <a
+                href="http://augurit.co/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Augur IT Consulting Pvt. Ltd{" "}
+              </a>
             </p>
           </div>
         </div>

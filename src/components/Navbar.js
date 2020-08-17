@@ -287,6 +287,17 @@ const Navbar = ({ location, handleSearch }) => {
               SEND ENQUIRY
             </a>
           </div>
+
+          <div className="btn3">
+            <a
+              className="callme"
+              href="https://app.poly9.ai/s/jlp1zamx63nsmusx"
+              target="blank"
+              rel="noreferrer noopener"
+            >
+              Visit Our 3D Catalog
+            </a>
+          </div>
         </div>
       </section>
     </div>
