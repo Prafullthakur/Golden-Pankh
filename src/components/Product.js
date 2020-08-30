@@ -1,20 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import firebase from "firebase";
 import Link from "@material-ui/core/Link";
 import Contact from "../pages/user/contact";
+// import Snackbar from "@material-ui/core/Snackbar";
 import ProductDetails from "../pages/checkout/ProductDetails";
 import DeliveryDetails from "../pages/checkout/DeliveryDetails";
-
+// import MuiAlert from "@material-ui/lab/Alert";
 import Button from "@material-ui/core/Button";
+
+// function Alert(props) {
+//   return <MuiAlert elevation={6} variant="filled" {...props} />;
+// }
+
 const Product = ({ data, location, handleProduct }) => {
-  const [edit, setEdit] = React.useState(false);
-  const [state, setState] = React.useState({});
-  const [delEdit, setDelEdit] = React.useState(false);
-  const [img1, setImg1] = React.useState(null);
-  const [img2, setImg2] = React.useState(null);
-  const [img3, setImg3] = React.useState(null);
-  const [img4, setImg4] = React.useState(null);
+  const [edit, setEdit] = useState(false);
+  const [state, setState] = useState({});
+  const [delEdit, setDelEdit] = useState(false);
+  const [img1, setImg1] = useState(null);
+  const [img2, setImg2] = useState(null);
+  const [img3, setImg3] = useState(null);
+  // // For Snackbar
+  // const [snackOptions, setSnackOptions] = useState({
+  //   open: false,
+  //   msg: "",
+  //   type: "",
+  // });
+
+  // const handleCloseSnack = () => {
+  //   setSnackOptions({
+  //     open: false,
+  //     msg: "",
+  //     type: "",
+  //   });
+  // };
   const handleImg1 = (e) => {
     setImg1(e.target.files[0]);
   };
@@ -23,9 +42,6 @@ const Product = ({ data, location, handleProduct }) => {
   };
   const handleImg3 = (e) => {
     setImg3(e.target.files[0]);
-  };
-  const handleImg4 = (e) => {
-    setImg4(e.target.files[0]);
   };
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -132,31 +148,9 @@ const Product = ({ data, location, handleProduct }) => {
       }
     });
   };
-  const uploadImage4 = () => {
-    return new Promise((resolve, reject) => {
-      const ref = firebase.storage().ref();
-      const imgName4 = Date.now().toString() + "img4";
-      const imgRef4 = ref.child(imgName4);
-
-      if (!!img4) {
-        imgRef4
-          .put(img4)
-          .then((snap) => {
-            resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName4}?alt=media`
-            );
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      } else {
-        resolve(null);
-      }
-    });
-  };
   // Upload Product to Database
   const uploadProduct = async (productId) => {
-    alert("Saving...");
+    alert("Saving Press Ok...");
     const data = state;
     if (!!img1) {
       const tempImage1 = await uploadImage1();
@@ -170,18 +164,13 @@ const Product = ({ data, location, handleProduct }) => {
       const tempImage3 = await uploadImage3();
       data.image3 = tempImage3;
     }
-    if (!!img4) {
-      const tempImage4 = await uploadImage4();
-      data.image4 = tempImage4;
-    }
     firebase
       .firestore()
       .collection("Products/")
       .doc(productId)
       .set(data, { merge: true })
       .then((snap) => {
-        console.log(snap);
-        alert("Product edited successfully");
+        alert("Saved Successfully");
         window.location.href = "/dashboard";
       })
       .catch((err) => {
@@ -228,15 +217,26 @@ const Product = ({ data, location, handleProduct }) => {
   ) : (
     <>
       <div className="prod mt-2">
+        {/* <Snackbar
+          open={snackOptions.open}
+          autoHideDuration={2000}
+          onClose={handleCloseSnack}
+        >
+          <Alert onClose={handleCloseSnack} severity={snackOptions.type}>
+            {snackOptions.msg}
+          </Alert>
+        </Snackbar> */}
         <div className="container">
           <div className="row">
-            <div className="col-md-5 pt-3">
-              <img src={data.image1} />
+            <div className="col-md-4 p-4">
+              <img src={data.image1} alt="product-view" />
             </div>
-            <div className="col-md-7">
-              <h4 className="pt-3">
+            <div className="col-md-8 p-4">
+              <h4>
                 {data.name && (
-                  <Link onClick={() => handleProduct(data)}>{data.name}</Link>
+                  <Link onClick={() => handleProduct(data)}>
+                    <a href="#">{data.name}</a>
+                  </Link>
                 )}
               </h4>
               {data.price && (

@@ -1,15 +1,9 @@
 import React from "react";
 import "./style.css";
 import Image1 from "../../assets/Handmade-Wirework-Peacock.jpg";
-import Image2 from "../../assets/Decorative-Heart-Frame.jpg";
 import Image3 from "../../assets/Iron-Ferris-Wheel.jpg";
 import Image4 from "../../assets/Metal-Geometrical-Star.jpg";
-import Image5 from "../../assets/Metal-Decorative-Crown.jpg";
-const Home = (props) => {
-  React.useEffect(() => {
-    console.log(props.searchResult);
-  }, []);
-
+const Home = () => {
   return (
     <>
       <section class="popular-products">
@@ -24,19 +18,25 @@ const Home = (props) => {
               >
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src={Image4} class="d-block w-100 h-100" />
+                    <img
+                      alt="coraousel-1"
+                      src={Image4}
+                      class="d-block w-100 h-100"
+                    />
                   </div>
                   <div class="carousel-item">
-                    <img src={Image3} class="d-block w-100 h-100" />
+                    <img
+                      alt="coraousel-2"
+                      src={Image3}
+                      class="d-block w-100 h-100"
+                    />
                   </div>
                   <div class="carousel-item">
-                    <img src={Image1} class="d-block w-100 h-100" />
-                  </div>
-                  <div class="carousel-item">
-                    <img src={Image2} class="d-block w-100 h-100" />
-                  </div>
-                  <div class="carousel-item">
-                    <img src={Image5} class="d-block w-100 h-100" />
+                    <img
+                      alt="coraousel-3"
+                      src={Image1}
+                      class="d-block w-100 h-100"
+                    />
                   </div>
                 </div>
                 <a

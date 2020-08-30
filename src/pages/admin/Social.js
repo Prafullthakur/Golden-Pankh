@@ -23,6 +23,8 @@ import { withRouter } from "react-router-dom";
 
 import EditSocial from "./EditSocial";
 import ChangePassword from "./ChangePassword";
+import Catalog from "./Catalog";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -110,7 +112,6 @@ function Dashboard({ location }) {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   React.useEffect(() => {
     if (!localStorage.getItem("userToken")) {
@@ -175,8 +176,10 @@ function Dashboard({ location }) {
               <Paper className={classes.paper}>
                 {location.pathname === "/social" ? (
                   <EditSocial />
-                ) : (
+                ) : location.pathname === "/changePassword" ? (
                   <ChangePassword />
+                ) : (
+                  <Catalog />
                 )}
               </Paper>
             </Grid>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -53,50 +53,51 @@ const steps = ["Product Details", "Delivery Details", "Review"];
 
 export default function Checkout() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
 
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     category: "",
     name: "",
+    itemNumber: "",
     price: "",
     priceType: "",
-    color: "",
+    colorFinish: "",
     length: "",
     width: "",
     height: "",
-    unit: "",
+    sizeUnit: "",
     technique: "",
-    origin: "India",
     material: "",
-    productType: "",
+    origin: "India",
+    remarks: "",
     deliveryTime: "",
-    deliveryDetails: "",
-    masterCartonSize: "",
-    cbm: "",
     moq: "",
     uom: "",
-    packingDetail: "",
+    packingDetails: "",
+    mcsLength: "",
+    mcsWidth: "",
+    mcsHeight: "",
+    cbm: "",
     supplyAbility: "",
     sampleAvailable: "",
     samplePolicy: "",
     paymentTerm: "",
     mainExportMarket: "",
     fobPort: "",
-    remark: "",
   });
-  const [image1, setImage1] = React.useState(null);
-  const [image2, setImage2] = React.useState(null);
-  const [image3, setImage3] = React.useState(null);
-  const [image4, setImage4] = React.useState(null);
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
+  // const [image4, setImage4] = useState(null);
 
-  React.useEffect(() => {
-    if (!!state.length && !!state.width && !!state.height) {
+  useEffect(() => {
+    if (!!state.mcsLength && !!state.mcsWidth && !!state.mcsHeight) {
       setState({
         ...state,
-        cbm: (state.length * state.width * state.height) / 1000000,
+        cbm: (state.mcsLength * state.mcsWidth * state.mcsHeight) / 1000000,
       });
     }
-  }, [state.length, state.width, state.height]);
+  }, [state.mcsLength, state.mcsWidth, state.mcsHeight]);
 
   const handleImg1 = (e) => {
     setImage1(e.target.files[0]);
@@ -108,9 +109,9 @@ export default function Checkout() {
   const handleImg3 = (e) => {
     setImage3(e.target.files[0]);
   };
-  const handleImg4 = (e) => {
-    setImage4(e.target.files[0]);
-  };
+  // const handleImg4 = (e) => {
+  //   setImage4(e.target.files[0]);
+  // };
   // Upload Image to Storage
   const uploadImage1 = () => {
     return new Promise((resolve, reject) => {
@@ -180,28 +181,28 @@ export default function Checkout() {
       }
     });
   };
-  const uploadImage4 = () => {
-    return new Promise((resolve, reject) => {
-      const ref = firebase.storage().ref();
-      const imgName4 = Date.now().toString() + "img4";
-      const imgRef4 = ref.child(imgName4);
+  // const uploadImage4 = () => {
+  //   return new Promise((resolve, reject) => {
+  //     const ref = firebase.storage().ref();
+  //     const imgName4 = Date.now().toString() + "img4";
+  //     const imgRef4 = ref.child(imgName4);
 
-      if (!!image4) {
-        imgRef4
-          .put(image4)
-          .then((snap) => {
-            resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName4}?alt=media`
-            );
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      } else {
-        resolve(null);
-      }
-    });
-  };
+  //     if (!!image4) {
+  //       imgRef4
+  //         .put(image4)
+  //         .then((snap) => {
+  //           resolve(
+  //             `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName4}?alt=media`
+  //           );
+  //         })
+  //         .catch((err) => {
+  //           reject(err);
+  //         });
+  //     } else {
+  //       resolve(null);
+  //     }
+  //   });
+  // };
   // Upload Product to Database
   const uploadProduct = async () => {
     const data = state;
@@ -217,10 +218,10 @@ export default function Checkout() {
       const tempImage3 = await uploadImage3();
       data.image3 = tempImage3;
     }
-    if (image4) {
-      const tempImage4 = await uploadImage4();
-      data.image4 = tempImage4;
-    }
+    // if (image4) {
+    //   const tempImage4 = await uploadImage4();
+    //   data.image4 = tempImage4;
+    // }
     firebase
       .firestore()
       .collection("Products/")
@@ -283,7 +284,7 @@ export default function Checkout() {
                     handleImg1={handleImg1}
                     handleImg2={handleImg2}
                     handleImg3={handleImg3}
-                    handleImg4={handleImg4}
+                    // handleImg4={handleImg4}
                     handleChange={handleChange}
                   />
                 ) : activeStep === 1 ? (

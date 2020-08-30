@@ -55,7 +55,7 @@ export default function Contact() {
 
   return (
     <>
-      <section className="contact-form py-5">
+      <section className="contact-form py-5" style={{ color: "black" }}>
         <div className="container">
           <h4 className="text-center">GOLDEN PANKH EXPORT IMPORT</h4>
           <hr />

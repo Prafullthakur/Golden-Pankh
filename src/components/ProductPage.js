@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "@material-ui/core/Link";
 import { withRouter } from "react-router-dom";
 import { ArrowBack } from "@material-ui/icons";
 
+const autoScroll = (ref) => {
+  window.scrollTo(0, ref.current.offsetTop);
+};
+
 const ProductPage = ({ data, setProductPage, location }) => {
+  const myRef = useRef(null);
+  React.useEffect(() => {
+    autoScroll(myRef);
+  });
   return (
     <React.Fragment>
-      <section className="mdf pb-4">
+      <section className="mdf pb-4" ref={myRef}>
         <div className="container">
           <h5 className="pt-4 pb-3">
             <Link onClick={() => setProductPage(false)}>
@@ -29,9 +37,9 @@ const ProductPage = ({ data, setProductPage, location }) => {
           </h5>
           <h3>{data.name}</h3>
           <p className="pb-4">{data.description}</p>
-          <div className="prod py-4">
+          <div className="prod p-4">
             <div className="row">
-              <div class="col-md-4 pl-4">
+              <div class="col-md-5 p-4">
                 <div
                   id="carouselExampleIndicators"
                   class="carousel slide"
@@ -128,7 +136,7 @@ const ProductPage = ({ data, setProductPage, location }) => {
                   </a>
                 </div>
               </div>
-              <div className="col-md-8">
+              <div className="col-md-7 p-4">
                 <h3>{data.name}</h3>
                 <h5>Item No. {data.itemNumber}</h5>
                 <h6 className="price">
@@ -138,38 +146,34 @@ const ProductPage = ({ data, setProductPage, location }) => {
                 <table>
                   <tr>
                     <td>
-                      Supply Ability: {data.supplyAbility} Piece Per Month
+                      Supply Ability: {data.supplyAbility} Pieces Per Month
                     </td>
                   </tr>
                 </table>
                 <table>
                   <tr>
-                    <td>Color: {data.color}</td>
+                    <td>Color: {data.colorFinish}</td>
                   </tr>
                   <tr>
                     <td>
-                      Width: {data.width} {data.unit}
+                      Length: {data.length} {data.sizeUnit}
                     </td>
                     <td>
-                      Height: {data.height} {data.unit}
+                      Width: {data.width} {data.sizeUnit}
                     </td>
                     <td>
-                      Length: {data.length} {data.unit}
+                      Height: {data.height} {data.sizeUnit}
                     </td>
-                  </tr>
-                  <tr>
-                    <td>CBM: {data.cbm}</td>
-
-                    <td>Material: {data.material}</td>
                   </tr>
                   <tr>
                     <td>Technique: {data.technique}</td>
 
-                    <td>Origin: {data.origin}</td>
+                    <td>Material: {data.material}</td>
                   </tr>
-
                   <tr>
-                    <td>Product Type: {data.productType}</td>
+                    <td>Origin: {data.origin}</td>
+
+                    <td>CBM: {data.cbm}</td>
                   </tr>
                 </table>
               </div>
@@ -283,9 +287,7 @@ const ProductPage = ({ data, setProductPage, location }) => {
                 <td>
                   Price: {data.price} {data.priceType}
                 </td>
-
                 <td>Minimum Order Quantity: {data.moq} Piece</td>
-
                 <td>Unit Of Measurement: {data.uom}</td>
               </tr>
             </table>
@@ -297,28 +299,21 @@ const ProductPage = ({ data, setProductPage, location }) => {
               </tr>
               <tr>
                 <td>Supply Ability: {data.supplyAbility} Pieces Per Month</td>
-
                 <td>Delivery Time: {data.deliveryTime} Days</td>
               </tr>
               <tr>
-                <td>Sample Available: {data.sampleAvilable}</td>
-
+                <td>Sample Available: {data.sampleAvailable}</td>
                 <td>Sample Policy: {data.samplePolicy}</td>
               </tr>
               <tr>
-                <td>Delivery Details: {data.deliveryDetails}</td>
-
-                <td>Master Carton Size: {data.masterCartonSize}</td>
+                <td>Main Export Market: {data.mainExportMarket}</td>
+                <td>FOB Port: {data.fobPort}</td>
               </tr>
               <tr>
                 <td>Payment Terms: {data.paymentTerm}</td>
-
-                <td>Main Export Market: {data.mainExportMarket}</td>
+                <td>Remarks: {data.remarks}</td>
               </tr>
-              <tr>
-                <td>FOB Port: {data.fobPort}</td>
-                <td>Remarks: {data.remark}</td>
-              </tr>
+              <tr></tr>
             </table>
           </div>
           <br />

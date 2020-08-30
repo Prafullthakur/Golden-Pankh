@@ -1,11 +1,14 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import logo from "../assets/L-2.jpg";
+import logo from "../assets/logo.png";
 import firebase from "firebase";
 import SearchIcon from "@material-ui/icons/Search";
+import Contact from "../pages/user/contact";
+
 const Navbar = ({ location, handleSearch }) => {
   const [social, setSocial] = React.useState({});
   const [categories, setCategories] = React.useState({});
+  const [catalog, setCatalog] = React.useState("");
   const [showScroll, setShowScroll] = React.useState("transparent");
   const [search, setSearch] = React.useState("");
 
@@ -20,6 +23,8 @@ const Navbar = ({ location, handleSearch }) => {
             setSocial(doc.data());
           } else if (doc.id === "categories") {
             setCategories(doc.data());
+          } else if (doc.id === "3dCatalog") {
+            setCatalog(doc.data().link);
           }
         });
       })
@@ -43,6 +48,7 @@ const Navbar = ({ location, handleSearch }) => {
     "/social",
     "/admin",
     "/changePassword",
+    "/catalog",
     "/not-found",
   ];
 
@@ -73,11 +79,13 @@ const Navbar = ({ location, handleSearch }) => {
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <img src={logo} style={{ height: 26, width: 62, marginRight: 12 }} />
+        <img
+          alt="logo"
+          src={logo}
+          style={{ height: 26, width: 62, marginRight: 12 }}
+        />
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="/" style={{ color: "white" }}>
-            Golden Pankh Export Import
-          </a>
+          Golden Pankh Export Import
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item pl-2">
               <a class="nav-link" href="/" style={{ color: "white" }}>
@@ -110,55 +118,16 @@ const Navbar = ({ location, handleSearch }) => {
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                {Object.keys(categories).map((cat) => {
-                  let href = "#";
-                  switch (cat) {
-                    case "Home Decorative Items":
-                      href = "/home-decor";
-                      break;
-                    case "Metal Urns":
-                      href = "/metal-urns";
-                      break;
-                    case "Christmas Decoration Items":
-                      href = "/christmas";
-                      break;
-                    case "Decorative Chandelier":
-                      href = "/decoratibe";
-                      break;
-                    case "Candle Holder":
-                      href = "/candle-holder";
-                      break;
-                    case "Metal Handicrafts":
-                      href = "/metal-handicrafts";
-                      break;
-                    case "Flower Vase":
-                      href = "/flower";
-                      break;
-                    case "MDF Frame":
-                      href = "/mdf-frame";
-                      break;
-                    case "Decorative Alphabets Letters":
-                      href = "/alphabet-items";
-                      break;
-                    case "Jewelled Mirror":
-                      href = "/jwelled-mirror";
-                      break;
-                    case "Farmstead Finials":
-                      href = "/farmstead";
-                      break;
-                    case "PPE kit, Full Body Gown, Goggles, Masks, Waste Bags":
-                      href = "/ppe-kit";
-                      break;
-                    default:
-                      href = `/prodCatDefault?category=${cat}`;
-                      break;
-                  }
-                  return (
-                    <a class="dropdown-item" href={href}>
-                      {cat}
-                    </a>
-                  );
-                })}
+                {Object.keys(categories)
+                  .sort()
+                  .map((cat) => {
+                    let href = `/prodCatDefault?category=${cat}`;
+                    return (
+                      <a class="dropdown-item" href={href}>
+                        {cat}
+                      </a>
+                    );
+                  })}
               </div>
             </li>
             <li class="nav-item pl-2">
@@ -277,21 +246,44 @@ const Navbar = ({ location, handleSearch }) => {
       <section>
         <div className="social-button">
           <div className="btn1">
-            <a className="callme" href={social.whatsapp}>
+            <a
+              className="send-enquiry"
+              href={social.whatsapp}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               Send Whatsapp
             </a>
           </div>
 
           <div className="btn3">
-            <a className="send-enquiry" href={"tel:08037302152"}>
-              SEND ENQUIRY
+            <a
+              className="send-enquiry"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              Send Enquiry
             </a>
+          </div>
+          <div
+            className="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <Contact />
+              </div>
+            </div>
           </div>
 
           <div className="btn3">
             <a
               className="callme"
-              href="https://app.poly9.ai/s/jlp1zamx63nsmusx"
+              href={catalog}
               target="blank"
               rel="noreferrer noopener"
             >

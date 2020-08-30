@@ -19,32 +19,32 @@ export default function Review({
   state: {
     category,
     name,
+    itemNumber,
     price,
     priceType,
-    color,
+    colorFinish,
     length,
     width,
     height,
-    unit,
+    sizeUnit,
     technique,
-    origin,
-
     material,
-    productType,
+    origin,
+    remarks,
     deliveryTime,
-    deliveryDetails,
-    masterCartonSize,
-    cbm,
     moq,
     uom,
-    packingDetail,
+    packingDetails,
+    mcsLength,
+    mcsWidth,
+    mcsHeight,
+    cbm,
     supplyAbility,
     sampleAvailable,
     samplePolicy,
     paymentTerm,
     mainExportMarket,
     fobPort,
-    remark,
   },
 }) {
   const classes = useStyles();
@@ -81,6 +81,19 @@ export default function Review({
             <Typography gutterBottom>{name}</Typography>
           </Grid>
         )}
+        {itemNumber && (
+          <Grid item xs={12} sm={6}>
+            <Typography
+              color={"primary"}
+              variant="h6"
+              gutterBottom
+              className={classes.title}
+            >
+              Item Number
+            </Typography>
+            <Typography gutterBottom>{`${itemNumber}`}</Typography>
+          </Grid>
+        )}
         {price && (
           <Grid item xs={12} sm={6}>
             <Typography
@@ -94,7 +107,7 @@ export default function Review({
             <Typography gutterBottom>{`${price} ${priceType}`}</Typography>
           </Grid>
         )}
-        {color && (
+        {colorFinish && (
           <Grid item xs={12} sm={6}>
             <Typography
               color={"primary"}
@@ -102,9 +115,9 @@ export default function Review({
               gutterBottom
               className={classes.title}
             >
-              Color
+              Color/Finish
             </Typography>
-            <Typography gutterBottom>{color}</Typography>
+            <Typography gutterBottom>{colorFinish}</Typography>
           </Grid>
         )}
         {length && (
@@ -117,7 +130,7 @@ export default function Review({
             >
               Length
             </Typography>
-            <Typography gutterBottom>{`${length} ${unit}`}</Typography>
+            <Typography gutterBottom>{`${length} ${sizeUnit}`}</Typography>
           </Grid>
         )}
         {width && (
@@ -130,7 +143,7 @@ export default function Review({
             >
               Width
             </Typography>
-            <Typography gutterBottom>{`${width} ${unit}`}</Typography>
+            <Typography gutterBottom>{`${width} ${sizeUnit}`}</Typography>
           </Grid>
         )}
         {height && (
@@ -143,47 +156,7 @@ export default function Review({
             >
               Height
             </Typography>
-            <Typography gutterBottom>{`${height} ${unit}`}</Typography>
-          </Grid>
-        )}
-        {cbm && (
-          <Grid item xs={12} sm={6}>
-            <Typography
-              color={"primary"}
-              variant="h6"
-              gutterBottom
-              className={classes.title}
-            >
-              CBM
-            </Typography>
-            <Typography gutterBottom>{cbm}</Typography>
-          </Grid>
-        )}
-        {material && (
-          <Grid item xs={12} sm={6}>
-            <Typography
-              color={"primary"}
-              variant="h6"
-              gutterBottom
-              className={classes.title}
-            >
-              Material
-            </Typography>
-            <Typography gutterBottom>{material}</Typography>
-          </Grid>
-        )}
-
-        {productType && (
-          <Grid item xs={12} sm={6}>
-            <Typography
-              color={"primary"}
-              variant="h6"
-              gutterBottom
-              className={classes.title}
-            >
-              Product Type
-            </Typography>
-            <Typography gutterBottom>{productType}</Typography>
+            <Typography gutterBottom>{`${height} ${sizeUnit}`}</Typography>
           </Grid>
         )}
         {technique && (
@@ -199,6 +172,19 @@ export default function Review({
             <Typography gutterBottom>{technique}</Typography>
           </Grid>
         )}
+        {material && (
+          <Grid item xs={12} sm={6}>
+            <Typography
+              color={"primary"}
+              variant="h6"
+              gutterBottom
+              className={classes.title}
+            >
+              Material
+            </Typography>
+            <Typography gutterBottom>{material}</Typography>
+          </Grid>
+        )}
         {origin && (
           <Grid item xs={12} sm={6}>
             <Typography
@@ -212,7 +198,19 @@ export default function Review({
             <Typography gutterBottom>{origin}</Typography>
           </Grid>
         )}
-
+        {remarks && (
+          <Grid item xs={12} sm={6}>
+            <Typography
+              color={"primary"}
+              variant="h6"
+              gutterBottom
+              className={classes.title}
+            >
+              Remarks
+            </Typography>
+            <Typography gutterBottom>{remarks}</Typography>
+          </Grid>
+        )}
         {deliveryTime && (
           <Grid item xs={12} sm={6}>
             <Typography
@@ -226,32 +224,6 @@ export default function Review({
             <Typography gutterBottom>{deliveryTime}</Typography>
           </Grid>
         )}
-        {deliveryDetails && (
-          <Grid item xs={12} sm={6}>
-            <Typography
-              color={"primary"}
-              variant="h6"
-              gutterBottom
-              className={classes.title}
-            >
-              Delivery Details
-            </Typography>
-            <Typography gutterBottom>{deliveryDetails}</Typography>
-          </Grid>
-        )}
-        {masterCartonSize && (
-          <Grid item xs={12} sm={6}>
-            <Typography
-              color={"primary"}
-              variant="h6"
-              gutterBottom
-              className={classes.title}
-            >
-              Master Carton Size
-            </Typography>
-            <Typography gutterBottom>{masterCartonSize}</Typography>
-          </Grid>
-        )}
         {moq && (
           <Grid item xs={12} sm={6}>
             <Typography
@@ -260,7 +232,7 @@ export default function Review({
               gutterBottom
               className={classes.title}
             >
-              Minimum order Quantity
+              Minimum Order Quantity
             </Typography>
             <Typography gutterBottom>{moq}</Typography>
           </Grid>
@@ -278,7 +250,7 @@ export default function Review({
             <Typography gutterBottom>{uom}</Typography>
           </Grid>
         )}
-        {packingDetail && (
+        {packingDetails && (
           <Grid item xs={12} sm={6}>
             <Typography
               color={"primary"}
@@ -288,7 +260,59 @@ export default function Review({
             >
               Packing Details
             </Typography>
-            <Typography gutterBottom>{packingDetail}</Typography>
+            <Typography gutterBottom>{packingDetails}</Typography>
+          </Grid>
+        )}
+        {mcsLength && (
+          <Grid item xs={12} sm={6}>
+            <Typography
+              color={"primary"}
+              variant="h6"
+              gutterBottom
+              className={classes.title}
+            >
+              MCS Length
+            </Typography>
+            <Typography gutterBottom>{mcsLength}</Typography>
+          </Grid>
+        )}
+        {mcsWidth && (
+          <Grid item xs={12} sm={6}>
+            <Typography
+              color={"primary"}
+              variant="h6"
+              gutterBottom
+              className={classes.title}
+            >
+              MCS Width
+            </Typography>
+            <Typography gutterBottom>{mcsWidth}</Typography>
+          </Grid>
+        )}
+        {mcsHeight && (
+          <Grid item xs={12} sm={6}>
+            <Typography
+              color={"primary"}
+              variant="h6"
+              gutterBottom
+              className={classes.title}
+            >
+              MCS Height
+            </Typography>
+            <Typography gutterBottom>{mcsHeight}</Typography>
+          </Grid>
+        )}
+        {cbm && (
+          <Grid item xs={12} sm={6}>
+            <Typography
+              color={"primary"}
+              variant="h6"
+              gutterBottom
+              className={classes.title}
+            >
+              CBM
+            </Typography>
+            <Typography gutterBottom>{cbm}</Typography>
           </Grid>
         )}
         {supplyAbility && (
@@ -367,19 +391,6 @@ export default function Review({
               FOB Port
             </Typography>
             <Typography gutterBottom>{fobPort}</Typography>
-          </Grid>
-        )}
-        {remark && (
-          <Grid item xs={12} sm={6}>
-            <Typography
-              color={"primary"}
-              variant="h6"
-              gutterBottom
-              className={classes.title}
-            >
-              Remark
-            </Typography>
-            <Typography gutterBottom>{remark}</Typography>
           </Grid>
         )}
       </Grid>

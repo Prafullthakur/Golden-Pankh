@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Copyright from "../../components/copyright";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -43,7 +44,7 @@ export default function SignIn() {
   React.useEffect(() => {
     firebase
       .firestore()
-      .doc("Meta/XMyJ3LtZ3MMvUztddKXx")
+      .doc("Meta/social")
       .get()
       .then((data) => {
         setState(data.data());
@@ -58,7 +59,7 @@ export default function SignIn() {
     setLoading(true);
     firebase
       .firestore()
-      .doc("Meta/XMyJ3LtZ3MMvUztddKXx")
+      .doc("Meta/social")
       .set(state)
       .then((data) => {
         alert("Updated Successfully");
@@ -171,23 +172,7 @@ export default function SignIn() {
         </div>
       </Container>
 
-      <div
-        class="col-md-6"
-        style={{
-          paddingTop: "30px",
-
-          margin: "0px",
-        }}
-      >
-        <p class="copyright">
-          GOLDEN PANKH EXPORT IMPORT All Rights Reserved.{" "}
-          <a href="https://www.tradeindia.com/about-us/terms/terms_01.html">
-            {" "}
-            (Terms of Use)
-          </a>{" "}
-          <br /> Developed and Managed by Augur IT Consulting Pvt. Ltd
-        </p>
-      </div>
+      <Copyright />
     </>
   );
 }

@@ -16,6 +16,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems } from "./listItems";
 import Products from "./Products";
+import Copyright from "../../components/copyright";
 
 const drawerWidth = 240;
 
@@ -90,7 +91,6 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     display: "flex",
-    overflow: "auto",
     flexDirection: "column",
   },
   fixedHeight: {
@@ -163,22 +163,7 @@ export default function Dashboard() {
               </Paper>
             </Grid>
           </Grid>
-          <div
-            class="col-md-6"
-            style={{
-              paddingTop: "30px",
-              margin: "0px",
-            }}
-          >
-            <p class="copyright">
-              GOLDEN PANKH EXPORT IMPORT All Rights Reserved.{" "}
-              <a href="https://www.tradeindia.com/about-us/terms/terms_01.html">
-                {" "}
-                (Terms of Use)
-              </a>{" "}
-              <br /> Developed and Managed by Augur IT Consulting Pvt. Ltd
-            </p>
-          </div>
+          <Copyright />
         </Container>
       </main>
     </div>

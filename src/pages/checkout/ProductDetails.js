@@ -17,25 +17,24 @@ function ProductDetails({
     itemNumber,
     price,
     priceType,
-    color,
+    colorFinish,
     length,
     width,
     height,
-    cbm,
-    unit,
+    sizeUnit,
     technique,
-    origin,
     material,
+    origin,
+    remarks,
   },
   handleChange,
   handleImg1,
   handleImg2,
   handleImg3,
-  handleImg4,
+  // handleImg4,
   location,
 }) {
   const [categories, setCategories] = React.useState({});
-  const editPath = location.pathname === "/dashboard";
 
   React.useEffect(() => {
     firebase
@@ -85,6 +84,7 @@ function ProductDetails({
         <Grid item xs={12}>
           <TextField
             required
+            type="number"
             id="itemNumber"
             name="itemNumber"
             label="Item Number"
@@ -95,6 +95,7 @@ function ProductDetails({
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            type="number"
             id="price"
             name="price"
             label="Price"
@@ -105,7 +106,7 @@ function ProductDetails({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormControl style={{ width: "40%" }}>
+          <FormControl style={{ width: "100%" }}>
             <InputLabel id="demo-simple-select-label">Price Type</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -132,7 +133,7 @@ function ProductDetails({
             accept="image/*"
           />
         </Grid>
-        <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
+        <Grid item xs={12} sm={12} style={{ marginTop: 4 }}>
           <label htmlFor="image2"> Upload Image 2</label>
           <input
             style={{ marginLeft: 24 }}
@@ -143,7 +144,7 @@ function ProductDetails({
             accept="image/*"
           />
         </Grid>
-        <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
+        <Grid item xs={12} sm={12} style={{ marginTop: 4 }}>
           <label htmlFor="image3"> Upload Image 3</label>
           <input
             style={{ marginLeft: 24 }}
@@ -154,38 +155,26 @@ function ProductDetails({
             accept="image/*"
           />
         </Grid>
-        <Grid item xs={12} sm={12} style={{ marginTop: 16 }}>
-          <label htmlFor="image4"> Upload Image 4</label>
-          <input
-            style={{ marginLeft: 24 }}
-            id="image4"
-            name="image4"
-            type="file"
-            onChange={handleImg4}
-            accept="image/*"
-          />
-        </Grid>
-
         <Grid item xs={12}>
           <TextField
-            id="color"
-            name="color"
+            id="colorFinish"
+            name="colorFinish"
             onChange={handleChange}
-            value={color}
+            value={colorFinish}
             label="Color/Finish"
             fullWidth
           />
         </Grid>
 
-        <Grid item xs={6} sm={6}>
+        <Grid item xs={12} sm={12}>
           <FormControl style={{ width: "100%" }}>
             <InputLabel id="demo-simple-select-label">Size Unit</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              name="unit"
+              name="sizeUnit"
               onChange={handleChange}
-              value={unit}
+              value={sizeUnit}
             >
               <MenuItem value={"cm"}>cm</MenuItem>
 
@@ -193,8 +182,9 @@ function ProductDetails({
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={6} sm={6}>
+        <Grid item xs={12} sm={4}>
           <TextField
+            type="number"
             id="length"
             name="length"
             onChange={handleChange}
@@ -203,8 +193,9 @@ function ProductDetails({
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <TextField
+            type="number"
             id="width"
             name="width"
             onChange={handleChange}
@@ -213,9 +204,9 @@ function ProductDetails({
             fullWidth
           />
         </Grid>
-
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <TextField
+            type="number"
             id="height"
             name="height"
             onChange={handleChange}
@@ -224,18 +215,6 @@ function ProductDetails({
             fullWidth
           />
         </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="cbm"
-            name="cbm"
-            onChange={handleChange}
-            value={cbm}
-            label="CBM"
-            fullWidth
-          />
-        </Grid>
-
         <Grid item xs={12} sm={6}>
           <TextField
             id="technique"
@@ -248,38 +227,6 @@ function ProductDetails({
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="origin"
-            name="origin"
-            onChange={handleChange}
-            value={origin}
-            label="Origin"
-            fullWidth
-          />
-        </Grid>
-        {/* <Grid item xs={12} sm={6}>
-          <TextField
-            id="regionalStyle"
-            name="regionalStyle"
-            label="Regional Style"
-            onChange={handleChange}
-            value={regionalStyle}
-            fullWidth
-          />
-        </Grid> 
-        {!editPath && (
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="theme"
-              name="theme"
-              onChange={handleChange}
-              value={theme}
-              label="Theme"
-              fullWidth
-            />
-          </Grid>
-        )}*/}
-        <Grid item xs={12} sm={6}>
-          <TextField
             id="material"
             name="material"
             onChange={handleChange}
@@ -288,58 +235,26 @@ function ProductDetails({
             fullWidth
           />
         </Grid>
-        {/* {!editPath && (
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="materialType"
-              name="materialType"
-              label="Material Type"
-              onChange={handleChange}
-              value={materialType}
-              fullWidth
-            />
-          </Grid>
-        )} 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
           <TextField
-            id="productType"
-            name="productType"
-            label="Product Type"
+            id="origin"
+            name="origin"
             onChange={handleChange}
-            value={productType}
+            value={origin}
+            label="Origin"
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
           <TextField
-            id="finishing"
-            name="finishing"
-            label="Finishing/Color"
             onChange={handleChange}
-            value={finishing}
-            fullWidth
-          />
-        </Grid> 
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="feature"
-            name="feature"
-            label="Feature"
-            onChange={handleChange}
-            value={feature}
+            required
+            name="remarks"
+            label="Remarks"
+            value={remarks}
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="description"
-            name="description"
-            label="Description"
-            onChange={handleChange}
-            value={description}
-            fullWidth
-          />
-        </Grid> */}
       </Grid>
     </React.Fragment>
   );

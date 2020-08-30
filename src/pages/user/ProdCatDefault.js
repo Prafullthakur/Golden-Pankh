@@ -42,7 +42,7 @@ const ProdCatDefault = () => {
         </p>
         <h3 class="pb-4">{category}</h3>
         {products.map((product) => {
-          if (product.category === category)
+          if (product.category.includes(category))
             return <Product handleProduct={handleProduct} data={product} />;
         })}
         <br />

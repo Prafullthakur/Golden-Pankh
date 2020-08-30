@@ -9,6 +9,7 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import AirplayIcon from "@material-ui/icons/Airplay";
 export const mainListItems = (
   <div>
     <Link onClick={() => (window.location.href = "/dashboard")}>
@@ -33,6 +34,14 @@ export const mainListItems = (
           <SupervisorAccountIcon />
         </ListItemIcon>
         <ListItemText primary="Social" />
+      </ListItem>
+    </Link>
+    <Link onClick={() => (window.location.href = "/catalog")}>
+      <ListItem button>
+        <ListItemIcon>
+          <AirplayIcon />
+        </ListItemIcon>
+        <ListItemText primary="3D Catalog" />
       </ListItem>
     </Link>
     <Link onClick={() => (window.location.href = "/changePassword")}>

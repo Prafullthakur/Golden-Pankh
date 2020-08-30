@@ -97,9 +97,9 @@ export default function companyprofile() {
             </tr>
           </table>
           <div className="certificates">
-            <img src={Certificate1} alt="image1" style={{ marginRight: 20 }} />
-            <img src={Certificate2} alt="image2" style={{ marginRight: 20 }} />
-            <img src={Certificate3} alt="image3" style={{ marginRight: 20 }} />
+            <img src={Certificate1} alt="image1" />
+            <img src={Certificate2} alt="image2" />
+            <img src={Certificate3} alt="image3" />
             <img src={PersonPhoto} alt="image3" />
           </div>
         </div>

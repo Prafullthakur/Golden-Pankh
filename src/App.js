@@ -4,15 +4,15 @@ import firebase from "firebase";
 // Components
 import Navigator from "./components/Navigator";
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCY4ZBe-neEPqpB47hifDsn7cLARo50M-E",
-  authDomain: "goldenpankh-9b71e.firebaseapp.com",
-  databaseURL: "https://goldenpankh-9b71e.firebaseio.com",
-  projectId: "goldenpankh-9b71e",
-  storageBucket: "goldenpankh-9b71e.appspot.com",
-  messagingSenderId: "653785768442",
-  appId: "1:653785768442:web:c3c90d9c07073c6e320443",
-  measurementId: "G-W4DV1ZJVBL",
+const firebaseConfig = {
+  apiKey: "AIzaSyBL1Y6lG-3xfFoJufQSaae5Xvxch4lW42I",
+  authDomain: "goldenpankh-a42cb.firebaseapp.com",
+  databaseURL: "https://goldenpankh-a42cb.firebaseio.com",
+  projectId: "goldenpankh-a42cb",
+  storageBucket: "goldenpankh-a42cb.appspot.com",
+  messagingSenderId: "784384168427",
+  appId: "1:784384168427:web:46c05c77fcdd295e2709ae",
+  measurementId: "G-ZSRZ8ELRQ6",
 };
 
 window.emailjs.init("user_oOWTvwmYzDpjf3yINOs4X");
