@@ -92,7 +92,7 @@ const Product = ({ data, location, handleProduct }) => {
           .put(img1)
           .then((snap) => {
             resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName1}?alt=media`
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-a9bc7.appspot.com/o/${imgName1}?alt=media`
             );
           })
           .catch((err) => {
@@ -115,7 +115,7 @@ const Product = ({ data, location, handleProduct }) => {
           .put(img2)
           .then((snap) => {
             resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName2}?alt=media`
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-a9bc7.appspot.com/o/${imgName2}?alt=media`
             );
           })
           .catch((err) => {
@@ -137,7 +137,7 @@ const Product = ({ data, location, handleProduct }) => {
           .put(img3)
           .then((snap) => {
             resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName3}?alt=media`
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-a9bc7.appspot.com/o/${imgName3}?alt=media`
             );
           })
           .catch((err) => {
@@ -229,7 +229,7 @@ const Product = ({ data, location, handleProduct }) => {
         <div className="container">
           <div className="row">
             <div className="col-md-4 p-4">
-              <img src={data.image1} alt="product-view" />
+              <img src={data.image1} alt="Product Image" />
             </div>
             <div className="col-md-8 p-4">
               <h4>

@@ -24,7 +24,10 @@ const Login = () => {
           localStorage.setItem("userToken", token);
           window.location.href = "/dashboard";
         })
-        .catch((err) => alert(err.message));
+        .catch((err) => {
+          alert(err.message);
+          setLoading(false);
+        });
     } else {
       alert("Email or Password Empty!");
     }

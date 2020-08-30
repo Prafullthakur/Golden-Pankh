@@ -78,7 +78,7 @@ function Products({ width }) {
           .put(catImage)
           .then((snap) => {
             resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName}?alt=media`
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-a9bc7.appspot.com/o/${imgName}?alt=media`
             );
           })
           .catch((err) => {

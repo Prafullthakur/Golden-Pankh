@@ -125,7 +125,7 @@ export default function Checkout() {
           .put(image1)
           .then((snap) => {
             resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName1}?alt=media`
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-a9bc7.appspot.com/o/${imgName1}?alt=media`
             );
           })
           .catch((err) => {
@@ -148,7 +148,7 @@ export default function Checkout() {
           .put(image2)
           .then((snap) => {
             resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName2}?alt=media`
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-a9bc7.appspot.com/o/${imgName2}?alt=media`
             );
           })
           .catch((err) => {
@@ -170,7 +170,7 @@ export default function Checkout() {
           .put(image3)
           .then((snap) => {
             resolve(
-              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName3}?alt=media`
+              `https://firebasestorage.googleapis.com/v0/b/goldenpankh-a9bc7.appspot.com/o/${imgName3}?alt=media`
             );
           })
           .catch((err) => {
@@ -192,7 +192,7 @@ export default function Checkout() {
   //         .put(image4)
   //         .then((snap) => {
   //           resolve(
-  //             `https://firebasestorage.googleapis.com/v0/b/goldenpankh-9b71e.appspot.com/o/${imgName4}?alt=media`
+  //             `https://firebasestorage.googleapis.com/v0/b/goldenpankh-a9bc7.appspot.com/o/${imgName4}?alt=media`
   //           );
   //         })
   //         .catch((err) => {
@@ -206,15 +206,15 @@ export default function Checkout() {
   // Upload Product to Database
   const uploadProduct = async () => {
     const data = state;
-    if (image1) {
+    if (!!image1) {
       const tempImage1 = await uploadImage1();
       data.image1 = tempImage1;
     }
-    if (image2) {
+    if (!!image2) {
       const tempImage2 = await uploadImage2();
       data.image2 = tempImage2;
     }
-    if (image3) {
+    if (!!image3) {
       const tempImage3 = await uploadImage3();
       data.image3 = tempImage3;
     }
